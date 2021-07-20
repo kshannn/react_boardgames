@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import axios from 'axios'
+import config from "../config";
 
 export default function Register() {
 
@@ -14,13 +15,13 @@ export default function Register() {
     })
 
     async function register () {
-        await axios.post('https://3000-brown-turkey-fcvw4los.ws-us11.gitpod.io/api/users/create', {
+        await axios.post(config.API_URL + '/users/create', {
             'username': formState.username,
             'email': formState.email,
             'password': formState.password,
             'address': formState.address,
             'phone_number': formState.phone_number
-        } )
+        })
         
         history.push('/login')
     }

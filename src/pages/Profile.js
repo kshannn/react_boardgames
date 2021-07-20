@@ -7,9 +7,9 @@ export default function Profile() {
 
     return (
 
-
         <React.Fragment>
             <h1>Your Profile</h1>
+            <p>Id: {location.state.userState.userId}</p>
             <p>Your email: {location.state.formState.email}</p>
         </React.Fragment>
     )

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
+import Cart from './pages/Cart'
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route exact path ='/profile'>
           <Profile />
+        </Route>
+        <Route exact path ='/cart'>
+          <Cart />
         </Route>
         
       </Switch>
