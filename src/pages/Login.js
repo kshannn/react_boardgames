@@ -32,6 +32,8 @@ export default function Login() {
             
             // store accessToken in local storage
             localStorage.setItem('accessToken',response.data.accessToken)
+            localStorage.setItem('decodedAccessToken', JSON.stringify(decoded))
+            
 
             history.push('/profile', {
                 'formState': formState,

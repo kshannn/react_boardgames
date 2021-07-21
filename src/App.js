@@ -10,9 +10,21 @@ import Cart from './pages/Cart'
 
 
 function App() {
+
+  let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
+  
+  
+  let logout = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('decodedAccessToken')
+  }
+
   return (
     <Router>
-      
+      <div>
+        Hello, {decoded? decoded.username: "guest"}
+      </div>
+      <button onClick={logout}>Logout</button>
       <Switch>
         <Route exact path='/'>
           <Home />

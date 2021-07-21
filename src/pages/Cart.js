@@ -6,6 +6,9 @@ import config from '../config'
 // import { useLocation } from 'react-router-dom'
 
 export default function Cart() {
+
+    // decodedAccessToken
+    let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
     
    const [ cartItems, setCartItems ] = useState([])
 
@@ -13,8 +16,9 @@ export default function Cart() {
     fetchCartItems()
   }, [])
 
+    // fetch cart items based on user id
     let fetchCartItems = async () => {
-        let response = await axios.get(config.API_URL + '/cart/' + 4)        
+        let response = await axios.get(config.API_URL + '/cart/' + decoded.id)        
         setCartItems(response.data)
         console.log(response.data)
     }
