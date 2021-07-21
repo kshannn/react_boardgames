@@ -12,7 +12,7 @@ import Cart from './pages/Cart'
 function App() {
   return (
     <Router>
-    
+      
       <Switch>
         <Route exact path='/'>
           <Home />
