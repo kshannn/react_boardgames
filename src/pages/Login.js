@@ -29,6 +29,8 @@ export default function Login() {
            // decode accessToken (contains username, email, id, expiry period)
             var token = response.data.accessToken
             var decoded = jwt_decode(token);
+
+            console.log(decoded)
             
             // store accessToken in local storage
             localStorage.setItem('accessToken',response.data.accessToken)
