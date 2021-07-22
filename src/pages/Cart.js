@@ -26,7 +26,7 @@ export default function Cart() {
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item)=> {
             return (
-                <p>{item.gameListing.name} x {item.quantity}</p>
+                <p>id: {item.gameListing.id} {item.gameListing.name} x {item.quantity}</p>
             )
         })
         return cartItemsjsx

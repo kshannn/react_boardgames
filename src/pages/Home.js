@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import config from '../config'
+import UserContext from './UserContext'
 
 
 export default function Home() {
     
     const [ listingState, setListingState ] = useState([])
+
+    let context = useContext(UserContext)
     
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
@@ -18,9 +21,28 @@ export default function Home() {
         setListingState(response.data)
     }
 
+    // add item to cart on click
+    let addToCart = async (gameId,unit_price) => {
+        console.log(1)
+        console.log(localStorage.getItem('decodedAccessToken'))
+        await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
+            'user_id': context.userInfo().id,
+            'total_cost': unit_price
+        })        
+
+    }
+
     let renderListings = () => {
         let listingjsx = listingState.map((listing)=> {
-            return <p>{listing.name}</p>
+            return (
+                <React.Fragment>
+                    <p>id: {listing.id} name: {listing.name}</p>
+                    <button onClick={() => {
+                        addToCart(listing.id, listing.price)
+                        console.log(listing.id,listing.price)
+                    }}>Add to Cart</button>
+                </React.Fragment>
+            )
         })
         return listingjsx
     }
