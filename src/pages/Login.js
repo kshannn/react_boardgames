@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from "../config";
 import jwt_decode from "jwt-decode";
+import UserContext from './UserContext';
 
 export default function Login() {
+
+    let context = useContext(UserContext)
 
     const history = useHistory()
     const [formState, setFormState] = useState({
@@ -35,7 +38,9 @@ export default function Login() {
             // store accessToken in local storage
             localStorage.setItem('accessToken',response.data.accessToken)
             localStorage.setItem('decodedAccessToken', JSON.stringify(decoded))
-            
+
+            // when user log in, recall app.js to retrieve decoded and rerun app.js
+            context.setProfile(decoded);
 
             history.push('/profile', {
                 'formState': formState,
