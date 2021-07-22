@@ -4,8 +4,9 @@ import React,{ useState } from 'react'
 // import react router dom
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-// import bootstrap
+// import bootstrap and css
 import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 // import components
 import Home from './pages/Home'

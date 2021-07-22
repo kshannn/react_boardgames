@@ -5,18 +5,15 @@ import UserContext from './UserContext'
 
 export default function Cart() {
 
-    // decodedAccessToken
-    // let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
-
     let context = useContext(UserContext);
 
 
-    
-   const [ cartItems, setCartItems ] = useState([])
 
-   useEffect(() => {
-    fetchCartItems()
-  }, [])
+    const [cartItems, setCartItems] = useState([])
+
+    useEffect(() => {
+        fetchCartItems()
+    }, [])
 
     // remove cart item
     let removeCartItem = async (gameId) => {
@@ -30,24 +27,24 @@ export default function Cart() {
 
     // fetch cart items based on user id
     let fetchCartItems = async () => {
-        let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id)        
+        let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id)
         setCartItems(response.data)
     }
 
     let renderCartItems = () => {
-        let cartItemsjsx = cartItems.map((item)=> {
+        let cartItemsjsx = cartItems.map((item) => {
             return (
-                <p>id: {item.gameListing.id} {item.gameListing.name} x {item.quantity} <button onClick={() => {
+                <div>id: {item.gameListing.id} {item.gameListing.name} x {item.quantity} <button onClick={() => {
                     removeCartItem(item.gameListing.id)
-                }}>Remove from cart</button></p>
+                }}>Remove from cart</button></div>
             )
         })
         return cartItemsjsx
     }
 
-    return (    
+    return (
         <React.Fragment>
-            <h1>User's Cart</h1> 
+            <h1>User's Cart</h1>
             {renderCartItems()}
         </React.Fragment>
     )

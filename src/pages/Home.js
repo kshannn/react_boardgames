@@ -36,11 +36,15 @@ export default function Home() {
         let listingjsx = listingState.map((listing)=> {
             return (
                 <React.Fragment>
-                    <p>id: {listing.id} name: {listing.name}</p>
-                    <button onClick={() => {
-                        addToCart(listing.id, listing.price)
-                        console.log(listing.id,listing.price)
-                    }}>Add to Cart</button>
+                    <div className="eachGame" onClick={()=> {
+                        console.log(listing.id)
+                    }}>
+                        <p>id: {listing.id} name: {listing.name}</p>
+                        <button onClick={() => {
+                            addToCart(listing.id, listing.price)
+                            console.log(listing.id,listing.price)
+                        }}>Add to Cart</button>
+                    </div>
                 </React.Fragment>
             )
         })
