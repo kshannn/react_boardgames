@@ -42,6 +42,7 @@ function App() {
   // remove access token from localstorage when users log out
   let logout = () => {
     localStorage.removeItem('accessToken')
+    localStorage.removeItem('decodedAccessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
   }

@@ -25,7 +25,7 @@ export default function Cart() {
     // remove cart item
     let removeCartItem = async (gameId) => {
         // console.log(context.userInfo().id)
-        await axios.post(config.API_URL + '/cart/' + gameId + '/remove', {
+        await axios.post(config.API_URL + '/cart/' + gameId + '/remove' , {
             'user_id': context.userInfo().id
         })
         // re-render page to reflect updated changes
@@ -53,6 +53,13 @@ export default function Cart() {
         <React.Fragment>
             <h1>User's Cart</h1>
             {renderCartItems()}
+            <button onClick={async ()=>{
+                await axios.get(config.API_URL + '/checkout?token=' + localStorage.getItem('accessToken'), {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                    }
+                })
+            }}>Check out</button>
         </React.Fragment>
     )
 }
