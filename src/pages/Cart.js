@@ -7,6 +7,13 @@ export default function Cart() {
 
     let context = useContext(UserContext);
 
+    // check if user is logged in
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    // if (context.userInfo()) {
+    //     setIsLoggedIn(true)
+    // }
+
 
 
     const [cartItems, setCartItems] = useState([])
