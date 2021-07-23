@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import config from '../config'
 import UserContext from './UserContext'
 
+
 export default function Cart() {
 
     let context = useContext(UserContext);
@@ -53,13 +54,17 @@ export default function Cart() {
         <React.Fragment>
             <h1>User's Cart</h1>
             {renderCartItems()}
+            
             <button onClick={async ()=>{
-                await axios.get(config.API_URL + '/checkout?token=' + localStorage.getItem('accessToken'), {
+                await axios.get(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                     }
-                })
+                }).then(
+                    await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
+                )
             }}>Check out</button>
+         
         </React.Fragment>
     )
 }
