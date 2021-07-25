@@ -15,6 +15,7 @@ import Register from './pages/Register'
 import Profile from './pages/Profile'
 import Cart from './pages/Cart'
 import ListingDetails from './pages/ListingDetails'
+import PaymentSuccess from './pages/PaymentSuccess';
 
 // import context
 import UserContext from './pages/UserContext'
@@ -127,6 +128,9 @@ function App() {
           </Route>
           <Route path='/listing/:listingId'>
             <ListingDetails />
+          </Route>
+          <Route path='/checkout/success'>
+            <PaymentSuccess />
           </Route>
 
         </Switch>
