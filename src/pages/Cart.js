@@ -16,7 +16,6 @@ export default function Cart() {
     // }
 
 
-
     const [cartItems, setCartItems] = useState([])
 
     useEffect(() => {
@@ -39,12 +38,44 @@ export default function Cart() {
         setCartItems(response.data)
     }
 
+    // increase cart item by one
+    let addOneToCart = async (gameId,userId,unit_price) => {
+        await axios.post(config.API_URL + "/cart/" + gameId + "/add", {
+            "user_id": userId,
+            'unit_price': unit_price
+        })
+        // re-render page to reflect updated changes
+        fetchCartItems();
+    }
+
+    // decrease cart item by one
+    let subtractOneFromCart = async (gameId,userId) => {
+        await axios.post(config.API_URL + "/cart/" + gameId + "/subtract", {
+            "user_id": userId
+        })
+        // re-render page to reflect updated changes
+        fetchCartItems();
+    }
+
+
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item) => {
             return (
-                <div>id: {item.gameListing.id} {item.gameListing.name} x {item.quantity} <button onClick={() => {
+                <div>id: {item.gameListing.id} {item.gameListing.name} 
+
+                <button onClick={()=>{
+                    subtractOneFromCart(item.gameListing.id, context.userInfo().id);
+                }}>-</button>{item.quantity}<button onClick={()=>{
+                    addOneToCart(item.gameListing.id, context.userInfo().id,item.gameListing.price);
+                }}>+</button>
+                
+                
+                <button onClick={() => {
                     removeCartItem(item.gameListing.id)
-                }}>Remove from cart</button></div>
+                }}>Remove from cart
+                </button>
+                
+                </div>
             )
         })
         return cartItemsjsx
