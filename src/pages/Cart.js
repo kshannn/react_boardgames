@@ -92,6 +92,11 @@ export default function Cart() {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                     }
                 }).then(
+                    await axios.post(config.API_URL + '/checkout/preparing', {
+                        'user_id':context.userInfo().id,
+                        'total_cost':5000 //hardcoded
+                    })
+                ).then(
                     await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
                 )
             }}>Check out</button>
