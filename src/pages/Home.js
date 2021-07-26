@@ -5,6 +5,7 @@ import config from '../config'
 import UserContext from './UserContext'
 
 
+
 export default function Home() {
 
     const history = useHistory()
@@ -30,7 +31,7 @@ export default function Home() {
         let listingjsx = listingState.map((listing)=> {
             return (
                 <React.Fragment>
-                    <div className="eachGame" onClick={()=> {
+                    <div className="eachGame" style={{ backgroundImage: `url(${listing.image})` }} onClick={()=> {
                         history.push('/listing/' + listing.id)
                     }}>
                         <p>id: {listing.id} name: {listing.name}</p>
