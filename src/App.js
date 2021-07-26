@@ -16,6 +16,7 @@ import Profile from './pages/Profile'
 import Cart from './pages/Cart'
 import ListingDetails from './pages/ListingDetails'
 import PaymentSuccess from './pages/PaymentSuccess';
+import OrderHistory from './pages/OrderHistory';
 
 // import context
 import UserContext from './pages/UserContext'
@@ -108,6 +109,9 @@ function App() {
         <Link to='/register'>
           <button>Register</button>
         </Link>
+        <Link to='/history'>
+          <button>Order History</button>
+        </Link>
 
         <Switch>
 
@@ -132,6 +136,10 @@ function App() {
           <Route path='/checkout/success'>
             <PaymentSuccess />
           </Route>
+          <Route path='/history'>
+            <OrderHistory />
+          </Route>
+
 
         </Switch>
       </Router>
