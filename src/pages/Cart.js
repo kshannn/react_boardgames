@@ -81,8 +81,17 @@ export default function Cart() {
         return cartItemsjsx
     }
 
+    let calculateTotal = () => {
+        let total = 0
+        for (let each_cartItem of cartItems){
+            total = total + (each_cartItem.unit_price * each_cartItem.quantity)
+        }
+        return total
+    }
+
     return (
         <React.Fragment>
+    
             <h1>User's Cart</h1>
             {renderCartItems()}
             
@@ -92,9 +101,9 @@ export default function Cart() {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                     }
                 }).then(
-                    await axios.post(config.API_URL + '/checkout/preparing', {
+                    await axios.post(config.API_URL + '/cart/preparing', {
                         'user_id':context.userInfo().id,
-                        'total_cost':5000 //hardcoded
+                        'total_cost': calculateTotal()
                     })
                 ).then(
                     await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
