@@ -23,7 +23,6 @@ export default function ListingDetails() {
 
     // add item to cart on click
     let addToCart = async (gameId,unit_price) => {
-        console.log(localStorage.getItem('decodedAccessToken'))
         await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
             'user_id': context.userInfo().id,
             'unit_price': unit_price
@@ -39,7 +38,6 @@ export default function ListingDetails() {
             <p>stock: {activeListing.stock}</p>
             <button onClick={() => {
                 addToCart(activeListing.id, activeListing.price)
-                // console.log(listing.id,listing.price)
             }}>Add to Cart</button>
         </React.Fragment>
     )

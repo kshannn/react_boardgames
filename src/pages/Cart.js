@@ -81,13 +81,13 @@ export default function Cart() {
         return cartItemsjsx
     }
 
-    let calculateTotal = () => {
-        let total = 0
-        for (let each_cartItem of cartItems){
-            total = total + (each_cartItem.unit_price * each_cartItem.quantity)
-        }
-        return total
-    }
+    // let calculateTotal = () => {
+    //     let total = 0
+    //     for (let each_cartItem of cartItems){
+    //         total = total + (each_cartItem.unit_price * each_cartItem.quantity)
+    //     }
+    //     return total
+    // }
 
     return (
         <React.Fragment>
@@ -96,18 +96,24 @@ export default function Cart() {
             {renderCartItems()}
             
             <button onClick={async ()=>{
+                console.log(1)
                 await axios.get(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                     }
-                }).then(
-                    await axios.post(config.API_URL + '/cart/preparing', {
-                        'user_id':context.userInfo().id,
-                        'total_cost': calculateTotal()
-                    })
-                ).then(
-                    await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
-                )
+                
+                })
+                await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
+
+                // .then(
+                //     await axios.post(config.API_URL + '/cart/preparing', {
+                //         'user_id':context.userInfo().id,
+                //         'total_cost': calculateTotal() //delete calculateTotal if not needed
+                //     })
+                // )
+                // .then(
+                //     await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
+                // )
             }}>Check out</button>
          
         </React.Fragment>

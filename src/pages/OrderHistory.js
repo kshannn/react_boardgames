@@ -14,7 +14,7 @@ export default function OrderHistory() {
 
     let fetchOrderDetails = async () => {
 
-        let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/success")
+        let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history")
         setOrderState(response.data)
     }
 
