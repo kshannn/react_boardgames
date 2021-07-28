@@ -49,19 +49,19 @@ export default function OrderHistory() {
             <h1>Order History</h1>
            
             <table className="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Order Date</th>
-                                <th scope="col">Total Cost</th>
-                                <th scope="col">Status</th>
-                          
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {renderOrders()} 
-                        </tbody>
-                    </table>
+                <thead>
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Total Cost</th>
+                        <th scope="col">Status</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderOrders()} 
+                </tbody>
+            </table>
 
         </React.Fragment>
     )

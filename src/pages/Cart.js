@@ -96,14 +96,19 @@ export default function Cart() {
             {renderCartItems()}
             
             <button onClick={async ()=>{
-                console.log(1)
-                await axios.get(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
+        
+                // await axios.get(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
+                //     headers: {
+                //         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                //     }
+                
+                // })
+                await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                     }
                 
                 })
-                await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'))
 
                 // .then(
                 //     await axios.post(config.API_URL + '/cart/preparing', {
