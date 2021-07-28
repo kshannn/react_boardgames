@@ -28,7 +28,7 @@ function App() {
 
   // decoded accesstoken from localstorage
   let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
-  console.log(decoded)
+  // console.log(decoded)
 
   // set accesstoken in state
   const [userInfo, setUserInfo] = useState(decoded)
