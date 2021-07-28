@@ -1,21 +1,37 @@
 import axios from 'axios';
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import config from '../config'
+import UserContext from './UserContext';
 
 export default function Profile() {
 
-    const location = useLocation();
+    const history = useHistory();
+    const context = useContext(UserContext)
+    const [ userInfo, setUserInfo ] = useState({})
 
+    // 1. upon component did mount, call fetchprofile
+    useEffect(() => {
+        fetchProfile()
+      }, [])
 
+    // 2. user profile info is fetched from db
     let fetchProfile = async () => {
-        await axios.get(config.API_URL + '/users/profile', {
+        let userInfo = await axios.get(config.API_URL + '/users/profile', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('accessToken')
             }
         })
+        setUserInfo(userInfo.data)
+        // console.log(userInfo)
     }
 
+    let updateDetails = () => {
+        history.push('/profile/update', {
+            'userInfo': userInfo
+        })
+    }
+    
 
 
     return (
@@ -23,9 +39,14 @@ export default function Profile() {
             {/* can only see the page if they have the access token (logged in)*/}
             {localStorage.getItem('accessToken')?<div>
                 <h1>Your Profile</h1>
-                <p>Id: {location.state.id}</p>
-                <p>Your email: {location.state.formState.email}</p>
-                {fetchProfile}
+                <p>Id: {userInfo.id}</p>
+                <p>Username: {userInfo.username}</p>
+                <p>Email: {userInfo.email}</p>
+                <p>Address: {userInfo.address}</p>
+                <p>Phone No.: {userInfo.phone_number}</p>
+                <button className="btn btn-warning" onClick={updateDetails}>Update Details</button>
+                
+    
             </div>: <div>Please sign in to view this page.</div> }
             
         </React.Fragment>

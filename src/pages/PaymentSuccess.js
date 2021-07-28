@@ -31,24 +31,22 @@ export default function PaymentSuccess() {
                     <tr>
                         <td>{eachOrder.id}</td>
                         <td>{eachOrder.gameListing.name}</td>
-                        <td>{eachOrder.unit_price}</td>
+                        <td>SGD {eachOrder.unit_price/100}</td>
                         <td>{eachOrder.quantity}</td>
-                        <td>{eachOrder.quantity * eachOrder.unit_price}</td>
+                        <td>SGD {eachOrder.quantity * eachOrder.unit_price/100}</td>
 
                     </tr>
                 </React.Fragment>
             )
         })
         return orderjsx
-
     }
 
    
-
     return (
         <React.Fragment>
             <h1>Payment Successful!</h1>
-            <h2>Latest Transaction</h2>
+            <h2>Your Latest Transaction(s)</h2>
             <table className="table">
                 <thead>
                     <tr>
@@ -63,7 +61,7 @@ export default function PaymentSuccess() {
                      {renderTransactionDetail()}
                 </tbody>
             </table>
-            Total: {total}
+            Total: SGD {total/100}
                 
                 
           

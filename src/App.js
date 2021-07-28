@@ -17,6 +17,7 @@ import Cart from './pages/Cart'
 import ListingDetails from './pages/ListingDetails'
 import PaymentSuccess from './pages/PaymentSuccess';
 import OrderHistory from './pages/OrderHistory';
+import ProfileUpdate from './pages/ProfileUpdate';
 
 // import context
 import UserContext from './pages/UserContext'
@@ -27,6 +28,7 @@ function App() {
 
   // decoded accesstoken from localstorage
   let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
+  console.log(decoded)
 
   // set accesstoken in state
   const [userInfo, setUserInfo] = useState(decoded)
@@ -112,6 +114,9 @@ function App() {
         <Link to='/history'>
           <button>Order History</button>
         </Link>
+        <Link to='/profile'>
+          <button>Profile</button>
+        </Link>
 
         <Switch>
 
@@ -133,11 +138,14 @@ function App() {
           <Route path='/listing/:listingId'>
             <ListingDetails />
           </Route>
-          <Route path='/checkout/success'>
+          <Route exact path='/checkout/success'>
             <PaymentSuccess />
           </Route>
-          <Route path='/history'>
+          <Route exact path='/history'>
             <OrderHistory />
+          </Route>
+          <Route exact path='/profile/update'>
+            <ProfileUpdate />
           </Route>
 
 

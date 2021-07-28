@@ -20,7 +20,6 @@ export default function Login() {
             'email': formState.email,
             'password': formState.password
         })
-        console.log(response.data)
 
         // if(!response.status === 200){
         //     // set error validation message
@@ -33,7 +32,6 @@ export default function Login() {
             var token = response.data.accessToken
             var decoded = jwt_decode(token);
 
-            console.log(decoded)
             
             // store accessToken in local storage
             localStorage.setItem('accessToken',response.data.accessToken)
@@ -42,10 +40,13 @@ export default function Login() {
             // when user log in, recall app.js to retrieve decoded and rerun app.js
             context.setProfile(decoded);
 
-            history.push('/profile', {
-                'formState': formState,
-                'id': decoded.id
-            }) 
+            // once user logged in, they will be directed to the home page
+            history.push('/')
+
+            // history.push('/profile', {
+            //     'formState': formState,
+            //     'id': decoded.id
+            // }) 
         } 
     }
 
