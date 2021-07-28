@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import config from '../config'
-import UserContext from './UserContext';
+
 
 export default function Profile() {
 
     const history = useHistory();
-    const context = useContext(UserContext)
+    
     const [ userInfo, setUserInfo ] = useState({})
 
     // 1. upon component did mount, call fetchprofile
@@ -39,7 +39,7 @@ export default function Profile() {
             {/* can only see the page if they have the access token (logged in)*/}
             {localStorage.getItem('accessToken')?<div>
                 <h1>Your Profile</h1>
-                <p>Id: {userInfo.id}</p>
+        
                 <p>Username: {userInfo.username}</p>
                 <p>Email: {userInfo.email}</p>
                 <p>Address: {userInfo.address}</p>

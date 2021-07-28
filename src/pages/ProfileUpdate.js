@@ -16,13 +16,13 @@ export default function ProfileUpdate() {
 
     let updateForm = (e) => {
         setFormState({
-            ... formState,
+            ...formState,
             [e.target.name]: e.target.value
         })
     }
 
     let updateProfile = async () => {
-        let response = await axios.post(config.API_URL + '/users/profile/update', {
+        await axios.post(config.API_URL + '/users/profile/update', {
             'username':formState.username,
             'email':formState.email,
             'address':formState.address,
@@ -58,9 +58,6 @@ export default function ProfileUpdate() {
                 <input type="text" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
             </div>
             <button className="btn btn-success" onClick={updateProfile}>Confirm changes</button>
-            <div>
-                <button className="btn btn-danger">Delete my profile</button>
-            </div>
             
         </React.Fragment>
     )

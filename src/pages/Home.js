@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config'
-import UserContext from './UserContext'
+
 
 
 
@@ -12,7 +12,7 @@ export default function Home() {
     
     const [ listingState, setListingState ] = useState([])
 
-    let context = useContext(UserContext)
+    
     
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
