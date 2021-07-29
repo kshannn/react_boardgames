@@ -9031,6 +9031,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-multi-select-component@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-4.0.3.tgz#583b83f07af0868e27e52fdb9146cfad49918cf6"
+  integrity sha512-XRAdxakB69UmdRN8s2DmNrqIoZe5kCSBgIXDXb0ZnSri27H2/Er0L2Xu5HLle4Di2OCfEwhKoh6QvyrImORFyg==
+
 react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"

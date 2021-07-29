@@ -18,13 +18,7 @@ export default function OrderHistory() {
         setOrderState(response.data)
     }
 
-    // let renderOrdersAdditional = () => {
-    //     orderState.orderItem.map((orderItem)=> {
-    //         return(
-    //             <td>{orderItem.gameListing_id}</td>
-    //         )
-    //     })
-    // }
+   
 
     let renderOrders = () => {
         let orderjsx = orderState.map((order) => {
@@ -36,7 +30,6 @@ export default function OrderHistory() {
                          <td>{order.order_date}</td>
                          <td>{order.total_cost}</td>
                          <td>{order.status_id}</td>
-                         {/* {renderOrdersAdditional()} */}
                     </tr>   
                 </React.Fragment>
             )
