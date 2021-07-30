@@ -24,37 +24,105 @@ export default function Cart() {
 
     // remove cart item
     let removeCartItem = async (gameId) => {
-        // console.log(context.userInfo().id)
-        await axios.post(config.API_URL + '/cart/' + gameId + '/remove' , {
-            'user_id': context.userInfo().id
-        })
-        // re-render page to reflect updated changes
-        fetchCartItems();
+        
+        try {
+            await axios.post(config.API_URL + '/cart/' + gameId + '/remove' , {
+                'user_id': context.userInfo().id
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            // re-render page to reflect updated changes
+            fetchCartItems();
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
+
     }
 
     // fetch cart items based on user id
     let fetchCartItems = async () => {
-        let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id)
-        setCartItems(response.data)
+        // if user not logged in, redirected to login page
+        if(!context.userInfo()){
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+        }
+        try {
+            let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+        
+            setCartItems(response.data)
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
+
+
+
+        
     }
 
     // increase cart item by one
     let addOneToCart = async (gameId,userId,unit_price) => {
-        await axios.post(config.API_URL + "/cart/" + gameId + "/add", {
-            "user_id": userId,
-            'unit_price': unit_price
-        })
-        // re-render page to reflect updated changes
-        fetchCartItems();
+       // if user not logged in, redirected to login page
+    
+        try {
+            await axios.post(config.API_URL + "/cart/" + gameId + "/add", {
+                "user_id": userId,
+                'unit_price': unit_price
+            },{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            // re-render page to reflect updated changes
+            fetchCartItems();
+        
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
+
+
+
+
     }
 
     // decrease cart item by one
     let subtractOneFromCart = async (gameId,userId) => {
-        await axios.post(config.API_URL + "/cart/" + gameId + "/subtract", {
-            "user_id": userId
-        })
-        // re-render page to reflect updated changes
-        fetchCartItems();
+
+        try {
+            await axios.post(config.API_URL + "/cart/" + gameId + "/subtract", {
+                "user_id": userId
+            },{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            // re-render page to reflect updated changes
+            fetchCartItems();
+        
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
+
+
+
+
+
     }
 
 
@@ -83,12 +151,14 @@ export default function Cart() {
 
     return (
         <React.Fragment>
-    
+            
+            {/* can only see the page if they have the access token (logged in)*/}
+            {localStorage.getItem('accessToken')?<div>
             <h1>User's Cart</h1>
             {renderCartItems()}
             
             <button onClick={async ()=>{
-        
+                
                 await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
@@ -97,6 +167,12 @@ export default function Cart() {
                 })
 
             }}>Check out</button>
+                
+    
+            </div>: <div>Please sign in to view this page.</div> }
+
+
+           
          
         </React.Fragment>
     )

@@ -40,13 +40,16 @@ export default function Login() {
             // when user log in, recall app.js to retrieve decoded and rerun app.js
             context.setProfile(decoded);
 
-            // once user logged in, they will be directed to the home page
-            history.push('/')
+            // if they are logging in from where token expire, they get callback to the page they were trying to access
+            if (window.location.href.includes('session=expire')){
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const params = Object.fromEntries(urlSearchParams.entries());
+                window.location.assign(params.callback_url)
+            } else {
+                // once user logged in, they will be directed to the home page
+                history.push('/')
+            }
 
-            // history.push('/profile', {
-            //     'formState': formState,
-            //     'id': decoded.id
-            // }) 
         } 
     }
 

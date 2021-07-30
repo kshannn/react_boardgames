@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import config from '../config'
+import UserContext from './UserContext';
+
 
 
 export default function Profile() {
 
     const history = useHistory();
-    
+    const context = useContext(UserContext)
     const [ userInfo, setUserInfo ] = useState({})
 
     // 1. upon component did mount, call fetchprofile
@@ -17,13 +19,20 @@ export default function Profile() {
 
     // 2. user profile info is fetched from db
     let fetchProfile = async () => {
-        let userInfo = await axios.get(config.API_URL + '/users/profile', {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+       
+        try {
+            let userInfo = await axios.get(config.API_URL + '/users/profile', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            setUserInfo(userInfo.data)
+        } catch (err){
+            // if user is not logged in, clear session data and redirect to login
+            if(err.toString().includes(403)){
+                context.logoutRedirect();
             }
-        })
-        setUserInfo(userInfo.data)
-        // console.log(userInfo)
+        }
     }
 
     let updateDetails = () => {

@@ -17,7 +17,6 @@ export default function Home() {
         'searchMinPrice': "",
         'searchMaxPrice': ""
     })
-    const[ searchedListing, setSearchedListing ] = useState()
     const [ selected, setSelected ] = useState([]);
 
     
@@ -62,9 +61,6 @@ export default function Home() {
 
     // 2. clicking search button filters results
     let search = async () => {
-        console.log('search')
-
-        
 
         //extract selected categories and store them in an array of integers
         let selectedCategories = selected.map((selectedCategory)=>{
@@ -79,26 +75,10 @@ export default function Home() {
         }
 
         let response = await axios.post(config.API_URL + '/listings', searchObject)
-        console.log(response.data)
-        setSearchedListing(response.data)
+        setListingState(response.data)
     }
 
-    // 3. renders filtered results
-    let renderSearchedListing = () => {
-        console.log('rendersearched')
-        let listingjsx = searchedListing.map((listing)=> {
-            return (
-                <React.Fragment>
-                    <div className="eachGame" style={{ backgroundImage: `url(${listing.image})` }} onClick={()=> {
-                        history.push('/listing/' + listing.id)
-                    }}>
-                        <p>id: {listing.id} name: {listing.name}</p>
-                    </div>
-                </React.Fragment>
-            )
-        })
-        return listingjsx
-    }
+
 
     // multiselect (categories)
     const options = [
@@ -111,7 +91,7 @@ export default function Home() {
         { label: "Others", value: "7" }
       ];
 
-    console.log('rerender')
+    
     return (
         <React.Fragment>
             <div className="container">
@@ -140,8 +120,7 @@ export default function Home() {
                 </div>
 
                  {/* ############### Game Listings ############### */}
-                {/* show filtered search results if any */}
-                {searchedListing || selected.length > 1? renderSearchedListing():renderListings()}
+                {renderListings()}
             </div>
           
         </React.Fragment>

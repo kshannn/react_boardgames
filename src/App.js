@@ -40,6 +40,14 @@ function App() {
     },
     setProfile: (profile) => {
       setUserInfo(profile)
+    },
+    logoutRedirect: () =>{
+      // clear localStorage
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('decodedAccessToken')
+      localStorage.removeItem('userInfo')
+      // redirect user to login
+      window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
     }
   }
 

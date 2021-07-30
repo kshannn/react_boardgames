@@ -23,10 +23,36 @@ export default function ListingDetails() {
 
     // add item to cart on click
     let addToCart = async (gameId,unit_price) => {
-        await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
-            'user_id': context.userInfo().id,
-            'unit_price': unit_price
-        })        
+        if(!context.userInfo()){
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+        }
+        
+        try {
+
+            await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
+                'user_id': context.userInfo().id,
+                'unit_price': unit_price
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })       
+        
+         
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
+
+
+
+
+        // await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
+        //     'user_id': context.userInfo().id,
+        //     'unit_price': unit_price
+        // })        
     }
 
     return (
