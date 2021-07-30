@@ -84,7 +84,6 @@ function App() {
                 </li>
               </ul>
 
-              
                 {userInfo?
                   <div className="nav-item dropdown">
                   <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,8 +99,6 @@ function App() {
                 <div id="guestIcon">
                   <i className="fas fa-user-circle"></i>Guest
                 </div> }
-              
-                
                 <div className="nav-item" id="cartIcon">
                   <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
                 </div>
@@ -109,22 +106,12 @@ function App() {
                 <div className="nav-item">
                   {userInfo ? <a className="navFunc logInOut" onClick={logout}>Logout</a>:<Link to='/login' className="navFunc logInOut">Login</Link>}
                 </div>
-
             </div>
           </div>
         </nav>
 
 
-
-        
-        
-       
-        
-        
-        
-
         <Switch>
-
           <Route exact path='/'>
             <Home />
           </Route>

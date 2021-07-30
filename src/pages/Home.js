@@ -39,10 +39,15 @@ export default function Home() {
         let listingjsx = listingState.map((listing)=> {
             return (
                 <React.Fragment>
-                    <div className="eachGame" style={{ backgroundImage: `url(${listing.image})` }} onClick={()=> {
-                        history.push('/listing/' + listing.id)
-                    }}>
+                    <div id="listingContainer">
+
+                        <div className="listingImage" style={{ backgroundImage: `url(${listing.image})` }} onClick={()=> {
+                            history.push('/listing/' + listing.id)
+                        }}>
+                        </div>
+                        
                         <p>id: {listing.id} name: {listing.name}</p>
+
                     </div>
                 </React.Fragment>
             )
@@ -79,7 +84,6 @@ export default function Home() {
     }
 
 
-
     // multiselect (categories)
     const options = [
         { label: "Abstract", value: "1" },
@@ -94,21 +98,19 @@ export default function Home() {
     
     return (
         <React.Fragment>
-            <div className="container">
-                <h1>Homepage</h1>
-
+            <div className="container-fluid" id="mainSection">
                 {/* ############### Search Forms ############### */}
-                <div>
+                <section id="searchSection">
+                    {/* name */}
                     <label className="form-label">Name</label>
                     <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
 
-                   
-
+                    {/* price range */}
                     <label className="form-label">Price Range</label>
                     <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
                     <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
 
-                    
+                    {/* categories */}
                     <label className="form-label">Categories</label>
                     <MultiSelect
                         options={options}
@@ -117,10 +119,13 @@ export default function Home() {
                         labelledBy="Select"
                     />
                     <button className="btn btn-primary my-3" onClick={search}>Search</button>
-                </div>
+                </section>
 
                  {/* ############### Game Listings ############### */}
-                {renderListings()}
+                 <section id="displaySection">
+                    {renderListings()}
+                 </section>
+                
             </div>
           
         </React.Fragment>
