@@ -32,10 +32,13 @@ export default function ListingDetails() {
     return (
         <React.Fragment>
             <h1>Listing Details</h1>
-            <p>{activeListing.name}</p>
-            <p>{activeListing.price}</p>
-            <p>{activeListing.description}</p>
-            <p>stock: {activeListing.stock}</p>
+            <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
+            </div>
+            <p>Name: {activeListing.name}</p>
+            <p>Price: {activeListing.price}</p>
+            <p>Description {activeListing.description}</p>
+            {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
+        
             <button onClick={() => {
                 addToCart(activeListing.id, activeListing.price)
             }}>Add to Cart</button>

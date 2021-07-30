@@ -1,3 +1,23 @@
 .eachGame {
   border: 1px solid black;
+  height:100px;
+}
+
+/* === Listing Details Page === */
+#individualListingImage {
+  height: 500px;
+  width: 500px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 40px;
+}
+
+
+#available {
+  color: green;
+}
+
+#unavailable{
+  color: red;
 }

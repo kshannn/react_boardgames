@@ -15,13 +15,10 @@ export default function Home() {
     const [ searchForm, setSearchForm ] = useState({
         'searchName': "",
         'searchMinPrice': "",
-        'searchMaxPrice': "",
-        'searchMinPlayer': "",
-        'searchMaxPlayer': "",
-        'searchAge': ""
+        'searchMaxPrice': ""
     })
     const[ searchedListing, setSearchedListing ] = useState()
-    const [selected, setSelected] = useState([]);
+    const [ selected, setSelected ] = useState([]);
 
     
     // === All listings ===
@@ -65,6 +62,9 @@ export default function Home() {
 
     // 2. clicking search button filters results
     let search = async () => {
+        console.log('search')
+
+        
 
         //extract selected categories and store them in an array of integers
         let selectedCategories = selected.map((selectedCategory)=>{
@@ -75,18 +75,17 @@ export default function Home() {
             "searchName": searchForm.searchName,
             "searchMinPrice": searchForm.searchMinPrice,
             "searchMaxPrice": searchForm.searchMaxPrice,
-            "searchMinPlayer": searchForm.searchMinPlayer,
-            "searchMaxPlayer": searchForm.searchMaxPlayer,
-            "searchAge": searchForm.searchAge,
             "searchCategories": selectedCategories
         }
 
         let response = await axios.post(config.API_URL + '/listings', searchObject)
+        console.log(response.data)
         setSearchedListing(response.data)
     }
 
     // 3. renders filtered results
     let renderSearchedListing = () => {
+        console.log('rendersearched')
         let listingjsx = searchedListing.map((listing)=> {
             return (
                 <React.Fragment>
@@ -112,46 +111,38 @@ export default function Home() {
         { label: "Others", value: "7" }
       ];
 
+    console.log('rerender')
     return (
         <React.Fragment>
-            <h1>Homepage</h1>
-
             <div className="container">
-                <label className="form-label">Name</label>
-                <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
+                <h1>Homepage</h1>
 
-                <label className="form-label">Min. Price</label>
-                <input type="text" name="searchMinPrice" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
+                {/* ############### Search Forms ############### */}
+                <div>
+                    <label className="form-label">Name</label>
+                    <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
 
-                <label className="form-label">Max. Price</label>
-                <input type="text" name="searchMaxPrice" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
+                   
 
-                <label className="form-label">Min. Player</label>
-                <input type="text" name="searchMinPlayer" className="form-control" value={searchForm.searchMinPlayer} onChange={updateSearchForm}/>
+                    <label className="form-label">Price Range</label>
+                    <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
+                    <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
 
-                <label className="form-label">Max. Player</label>
-                <input type="text" name="searchMaxPlayer" className="form-control" value={searchForm.searchMaxPlayer} onChange={updateSearchForm}/>
+                    
+                    <label className="form-label">Categories</label>
+                    <MultiSelect
+                        options={options}
+                        value={selected}
+                        onChange={setSelected}
+                        labelledBy="Select"
+                    />
+                    <button className="btn btn-primary my-3" onClick={search}>Search</button>
+                </div>
 
-                <label className="form-label">Min. Age</label>
-                <input type="text" name="searchAge" className="form-control" value={searchForm.searchAge} onChange={updateSearchForm}/>
-
-                <label className="form-label">Categories</label>
-                <MultiSelect
-                    options={options}
-                    value={selected}
-                    onChange={setSelected}
-                    labelledBy="Select"
-                />
-                
-
-
-
-                <button className="btn btn-primary my-3" onClick={search}>Search</button>
+                 {/* ############### Game Listings ############### */}
+                {/* show filtered search results if any */}
+                {searchedListing || selected.length > 1? renderSearchedListing():renderListings()}
             </div>
-
-
-            {/* show filtered search results if any */}
-            {searchedListing ? renderSearchedListing():renderListings()}
           
         </React.Fragment>
     )
