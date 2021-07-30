@@ -13,9 +13,22 @@ export default function OrderHistory() {
     }, [])
 
     let fetchOrderDetails = async () => {
-
-        let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history")
-        setOrderState(response.data)
+        if(!context.userInfo()){
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+        }
+        try {
+            let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history",{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            setOrderState(response.data)
+        } catch (err){
+            console.log(err);
+            if(err.toString().includes(403)){
+               context.logoutRedirect()
+            }
+        }
     }
 
    
@@ -39,22 +52,28 @@ export default function OrderHistory() {
 
     return (
         <React.Fragment>
+           
+            {/* can only see the page if they have the access token (logged in)*/}
+            {localStorage.getItem('accessToken')?<div>
             <h1>Order History</h1>
            
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Order Id</th>
-                        <th scope="col">Order Date</th>
-                        <th scope="col">Total Cost</th>
-                        <th scope="col">Status</th>
-                    
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderOrders()} 
-                </tbody>
-            </table>
+           <table className="table">
+               <thead>
+                   <tr>
+                       <th scope="col">Order Id</th>
+                       <th scope="col">Order Date</th>
+                       <th scope="col">Total Cost</th>
+                       <th scope="col">Status</th>
+                   
+                   </tr>
+               </thead>
+               <tbody>
+                   {renderOrders()} 
+               </tbody>
+           </table>
+                
+    
+            </div>: <div>Please sign in to view this page.</div> }
 
         </React.Fragment>
     )
