@@ -1,3 +1,45 @@
+/* Navigation Bar */
+#guestIcon, #userIcon, #cartIcon {
+  display:inline-block;
+  color: grey;
+}
+
+#guestIcon{
+  margin-right: 15px;
+}
+
+#userIcon {
+  margin-right: 5px;
+}
+
+#cartIcon {
+  margin-right: 20px;
+}
+
+.fa-user-circle {
+  margin-right: 5px;
+}
+
+.navFunc {
+  color: grey;
+  text-decoration: none;
+}
+
+.logInOut {
+  margin-right: 10px;
+}
+
+.fa-shopping-cart {
+  color: grey;
+}
+
+.navFunc:hover, #cartIcon:hover, .fa-shopping-cart:hover, .nav-link:hover, #userIcon:hover {
+  color: black !important;
+  cursor:pointer;
+}
+
+
+/* === Home Page === */
 .eachGame {
   border: 1px solid black;
   height:100px;

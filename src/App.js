@@ -41,7 +41,7 @@ function App() {
     setProfile: (profile) => {
       setUserInfo(profile)
     },
-    logoutRedirect: () =>{
+    logoutRedirect: () => {
       // clear localStorage
       localStorage.removeItem('accessToken')
       localStorage.removeItem('decodedAccessToken')
@@ -57,6 +57,7 @@ function App() {
     localStorage.removeItem('decodedAccessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
+    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login')
   }
 
 
@@ -66,65 +67,61 @@ function App() {
     <UserContext.Provider value={context}>
       <Router>
 
-        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/posters">Navbar</a>
+            <a className="navbar-brand" href="/">Brand</a>
+            
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/posters">Home</a>
+                  <Link to='/' className="nav-link navFunc" aria-current="page">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item" href="#">Action</a></li>
-                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  <Link to='/history' className="nav-link navFunc" aria-current="page">Order History</Link>
                 </li>
               </ul>
-              <div className="d-flex">
-                Hello, {userInfo? userInfo.username: "guest"}
-                <button className="btn btn-danger" onClick={logout}>Logout</button>
-              </div>
+
+              
+                {userInfo?
+                  <div className="nav-item dropdown">
+                  <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div id="userIcon">
+                      <i className="fas fa-user-circle"></i> {userInfo.username}
+                    </div>
+                  </a>
+                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><Link to='/profile' className="dropdown-item">View profile</Link></li>
+                    <li><Link to='/register' className="dropdown-item">Create an account</Link></li>
+                  </ul>
+                </div>:
+                <div id="guestIcon">
+                  <i className="fas fa-user-circle"></i>Guest
+                </div> }
+              
+                
+                <div className="nav-item" id="cartIcon">
+                  <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
+                </div>
+                
+                <div className="nav-item">
+                  {userInfo ? <a className="navFunc logInOut" onClick={logout}>Logout</a>:<Link to='/login' className="navFunc logInOut">Login</Link>}
+                </div>
+
             </div>
           </div>
-        </nav> */}
+        </nav>
 
-        <div>
-          Hello, {userInfo ? userInfo.username : "guest"}
-        </div>
-        <button onClick={logout}>Logout</button>
-        <Link to='/login'>
-          <button>Login</button>
-        </Link>
-        <Link to='/'>
-          <button>Home</button>
-        </Link>
-        <Link to='/cart'>
-          <button>Your cart</button>
-        </Link>
-        <Link to='/register'>
-          <button>Register</button>
-        </Link>
-        <Link to='/history'>
-          <button>Order History</button>
-        </Link>
-        <Link to='/profile'>
-          <button>Profile</button>
-        </Link>
+
+
+        
+        
+       
+        
+        
+        
 
         <Switch>
 

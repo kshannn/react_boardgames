@@ -30,6 +30,7 @@ export default function Profile() {
         } catch (err){
             // if user is not logged in, clear session data and redirect to login
             if(err.toString().includes(403)){
+                console.log(1)
                 context.logoutRedirect();
             }
         }
