@@ -321,3 +321,53 @@
   top: 10px;
   right: 20px;
 }
+
+.popupBackground{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+}
+
+#deleteConfirmation {
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:90%;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 10px 30px;
+  border-radius: 15px;
+  line-height: 2;
+}
+.deleteBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteBtnContainer button{
+  color: white;
+}
+
+.cancelBtn{
+  margin-right: -7px;
+  background: #788D98;
+}
+
+.cancelBtn:hover{
+  background: #a2abb1;
+  color: white;
+}
+
+.deleteBtn {
+  background: #ff685e;
+}
+
+.deleteBtn:hover {
+  background: #ff8b83;
+  color:white;
+}

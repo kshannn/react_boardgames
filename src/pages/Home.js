@@ -48,7 +48,7 @@ export default function Home() {
                             </div>
                             
                             <h3 id="listingName">{listing.name}</h3>
-                            <h4 id="listingPrice">SGD {listing.price/100}</h4>
+                            <h4 id="listingPrice">SGD {listing.price/100}.00</h4>
                         </div>
 
                     </div>

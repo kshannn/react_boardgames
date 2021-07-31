@@ -9,6 +9,7 @@ export default function Cart() {
     let context = useContext(UserContext);
 
     const [cartItems, setCartItems] = useState([])
+    const [ deleteState, setDeleteState ] = useState(false)
 
     useEffect(() => {
         fetchCartItems()
@@ -112,10 +113,17 @@ export default function Cart() {
         }
     }
 
+    // calculate grandtotal from subtotals
     let grandTotal = 0
     let calculateGrandTotal = (subtotal) => {
         grandTotal += subtotal
     }
+
+
+
+
+
+
 
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item) => {
@@ -124,7 +132,7 @@ export default function Cart() {
                     <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
                     <div id="cartItemInfo">
                         <h2>{item.gameListing.name}</h2>
-                        <h3 id="cartItemPrice">SGD{item.unit_price/100}</h3> 
+                        <h3 id="cartItemPrice">SGD{item.unit_price/100}.00</h3> 
 
                         Quantity:
                         <button className="addSubtractBtn" onClick={()=>{
@@ -139,7 +147,7 @@ export default function Cart() {
                         }}>x
                         </button>
 
-                        <h4 id="cartSubtotal">Subtotal: SGD{item.unit_price/100 * item.quantity}</h4>
+                        <h4 id="cartSubtotal">Subtotal: SGD{item.unit_price/100 * item.quantity}.00</h4>
                         {calculateGrandTotal(item.unit_price/100 * item.quantity)}
                     </div>
                     
@@ -165,7 +173,7 @@ export default function Cart() {
                     {renderCartItems()}
 
                     <div id="checkoutContainer">
-                        <h3 id="grandTotal">Grand Total: ${grandTotal}</h3>
+                        <h3 id="grandTotal">Grand Total: ${grandTotal}.00</h3>
                         <button id="checkoutBtn" className="btn my-4" onClick={async ()=>{
                         
                             await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
