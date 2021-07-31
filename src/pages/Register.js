@@ -35,30 +35,38 @@ export default function Register() {
 
     return (
         <React.Fragment>
-            <h1>Account Registration</h1>
-            <div>
-                <label>Username: </label>
-                <input type='text' name='username' onChange={updateFormField} value={formState.username} />
-            </div>
-            <div>
-                <label>Email: </label>
-                <input type='email' name='email' onChange={updateFormField} value={formState.email} />
-            </div>
+            <div id="registrationHeroImage">
+                <div id="registerPage">
+                    <div id="registerContainer">
+                        <h2>Account Registration</h2>
+                        <hr></hr>
 
-            <div>
-                <label>Password: </label>
-                <input type='password' name='password' onChange={updateFormField} value={formState.password}/>
-            </div>
-            <div>
-                <label>Address: </label>
-                <input type='text' name='address' onChange={updateFormField} value={formState.address}/>
-            </div>
-            <div>
-                <label>Phone Number: </label>
-                <input type='text' name='phone_number' onChange={updateFormField} value={formState.phone_number}/>
-            </div>
+                        <div>
+                            <label className="form-label">Username </label>
+                            <input type='text' className="form-control" name='username' onChange={updateFormField} value={formState.username} />
+                        </div>
+                        <div>
+                            <label className="form-label">Email </label>
+                            <input type='email' className="form-control" name='email' onChange={updateFormField} value={formState.email} />
+                        </div>
 
-            <button onClick={register}>Register</button>
+                        <div>
+                            <label className="form-label">Password </label>
+                            <input type='password' className="form-control" name='password' onChange={updateFormField} value={formState.password}/>
+                        </div>
+                        <div>
+                            <label className="form-label">Address </label>
+                            <input type='text' className="form-control" name='address' onChange={updateFormField} value={formState.address}/>
+                        </div>
+                        <div>
+                            <label className="form-label">Phone Number </label>
+                            <input type='text' className="form-control" name='phone_number' onChange={updateFormField} value={formState.phone_number}/>
+                        </div>
+
+                        <button id="registerBtn" className="btn my-3" onClick={register}>Register</button>
+                    </div>
+                </div>
+            </div>
         </React.Fragment>
     )
 }

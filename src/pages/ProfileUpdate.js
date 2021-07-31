@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config';
+import UserContext from './UserContext';
 
 export default function ProfileUpdate() {
 
+    const context = useContext(UserContext)
     const history = useHistory();
     const location = useLocation();
     const [formState, setFormState] = useState({
@@ -22,42 +24,68 @@ export default function ProfileUpdate() {
     }
 
     let updateProfile = async () => {
-        await axios.post(config.API_URL + '/users/profile/update', {
-            'username':formState.username,
-            'email':formState.email,
-            'address':formState.address,
-            'phone_number':formState.phone_number
-        }, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+
+        try {
+            await axios.post(config.API_URL + '/users/profile/update', {
+                'username':formState.username,
+                'email':formState.email,
+                'address':formState.address,
+                'phone_number':formState.phone_number
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            history.push('/profile')
+            
+        } catch (err){
+            // if user is not logged in, clear session data and redirect to login
+            if(err.toString().includes(403)){
+                // clear localStorage
+                localStorage.removeItem('accessToken')
+                localStorage.removeItem('decodedAccessToken')
+                localStorage.removeItem('userInfo')
+                // redirect user to login
+                window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + 'https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/profile')
             }
-        })
-        history.push('/profile')
+        }
+
+
+
+        
 
     }
 
     return(
         <React.Fragment>
-            <h1>Update your profile</h1>
-            
-            <div>
-                <label>Username</label>
-                <input type="text" name="username" value={formState.username} onChange={updateForm}/>
-            </div>
 
-            <div>
-                <label>Email</label>
-                <input type="email" name="email" value={formState.email} onChange={updateForm}/>
+             {/* can only see the page if they have the access token (logged in)*/}
+             {localStorage.getItem('accessToken')?<React.Fragment>
+            <div id="updateProfilePage">
+            
+                <div id="updateProfileContainer">
+                    <h2>Update Profile</h2>
+                    <hr></hr>
+                  
+                    <label className="form-label">Username</label>
+                    <input type="text" className="form-control" name="username" value={formState.username} onChange={updateForm}/>
+                
+                    <label className="form-label">Email</label>
+                    <input type="email" className="form-control" name="email" value={formState.email} onChange={updateForm}/>
+                
+            
+                    <label className="form-label">Address</label>
+                    <input type="text" className="form-control" name="address" value={formState.address} onChange={updateForm}/>
+                
+                    <label className="form-label">Phone No.</label>
+                    <input type="text" className="form-control" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
+                 
+                    <button className="btn btn-success my-4" onClick={updateProfile}>Save changes</button>
+                    <a className="btn btn-secondary ms-2" href="/profile">Cancel</a>
+                </div>
             </div>
-            <div>
-                <label>Address</label>
-                <input type="text" name="address" value={formState.address} onChange={updateForm}/>
-            </div>
-            <div>
-                <label>Phone No.</label>
-                <input type="text" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
-            </div>
-            <button className="btn btn-success" onClick={updateProfile}>Confirm changes</button>
+            </React.Fragment>: <div>Please sign in to view this page.</div> }
+           
             
         </React.Fragment>
     )

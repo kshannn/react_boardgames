@@ -162,12 +162,14 @@ export default function Cart() {
 
     return (
         <React.Fragment>
-            <h1>Your Cart</h1>
+            
             
 
             
                 {/* can only see the page if they have the access token (logged in)*/}
                 {localStorage.getItem('accessToken')?
+                <React.Fragment>
+                <h1>Your Cart</h1>
                 <div id="cartPage">
                 
                     {renderCartItems()}
@@ -188,7 +190,7 @@ export default function Cart() {
                     
                    
         
-                </div>: <div>Please sign in to view this page.</div> }
+                </div></React.Fragment>: <div>Please sign in to view this page.</div> }
 
         
            

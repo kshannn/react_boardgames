@@ -60,8 +60,24 @@ export default function Login() {
          })
     }
 
+    const renderFlashMessage = () => {
+        if (window.location.href.includes('session=expire')){
+           return (
+               <React.Fragment>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Sessions expired. Please log in again.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </React.Fragment>
+           )
+        } else {
+            return null
+        }
+    }
+
     return (
         <React.Fragment>
+            {renderFlashMessage()}
             <div id="heroImage">
                 <div id="loginPage">
                     <section id="loginExtraSection">
@@ -71,10 +87,10 @@ export default function Login() {
                         <div id="loginContainer">
                             <h1>Login</h1>
                             
-                            <label className="form-label">Email </label>
+                            <label className="form-label my-2">Email</label>
                             <input type='email' className="form-control" name='email' onChange={updateFormField} value={formState.email} />
                         
-                            <label className="form-label">Password: </label>
+                            <label className="form-label my-2">Password</label>
                             <input type='password' className="form-control" name='password' onChange={updateFormField} value={formState.password}/>
                             
                             <button id="loginBtn" className="btn my-4" onClick={login}>LOGIN</button>

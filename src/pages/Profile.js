@@ -30,7 +30,6 @@ export default function Profile() {
         } catch (err){
             // if user is not logged in, clear session data and redirect to login
             if(err.toString().includes(403)){
-                console.log(1)
                 context.logoutRedirect();
             }
         }
@@ -46,18 +45,22 @@ export default function Profile() {
 
     return (
         <React.Fragment>
+            
             {/* can only see the page if they have the access token (logged in)*/}
-            {localStorage.getItem('accessToken')?<div>
-                <h1>Your Profile</h1>
-        
-                <p>Username: {userInfo.username}</p>
-                <p>Email: {userInfo.email}</p>
-                <p>Address: {userInfo.address}</p>
-                <p>Phone No.: {userInfo.phone_number}</p>
-                <button className="btn btn-warning" onClick={updateDetails}>Update Details</button>
+            {localStorage.getItem('accessToken')?<React.Fragment>
+            <div id="profilePage">
+                <div id="profileContainer">
+                    <h2>Your Profile</h2>
+                    <hr></hr>
+                    <p>Username: {userInfo.username}</p>
+                    <p>Email: {userInfo.email}</p>
+                    <p>Address: {userInfo.address}</p>
+                    <p>Phone No: {userInfo.phone_number}</p>
+                    <button id="updateProfileBtn" className="btn btn-warning my-3" onClick={updateDetails}>Edit</button>
+                </div>
                 
     
-            </div>: <div>Please sign in to view this page.</div> }
+            </div></React.Fragment>: <div>Please sign in to view this page.</div> }
             
         </React.Fragment>
     )
