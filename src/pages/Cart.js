@@ -110,13 +110,12 @@ export default function Cart() {
                context.logoutRedirect()
             }
         }
-
-
-
-
-
     }
 
+    let grandTotal = 0
+    let calculateGrandTotal = (subtotal) => {
+        grandTotal += subtotal
+    }
 
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item) => {
@@ -139,10 +138,16 @@ export default function Cart() {
                             removeCartItem(item.gameListing.id)
                         }}>x
                         </button>
-                        </div>
+
+                        <h4 id="cartSubtotal">Subtotal: SGD{item.unit_price/100 * item.quantity}</h4>
+                        {calculateGrandTotal(item.unit_price/100 * item.quantity)}
+                    </div>
                     
                 </div>
+                
             )
+            
+
         })
         return cartItemsjsx
     }
@@ -158,17 +163,22 @@ export default function Cart() {
                 <div id="cartPage">
                 
                     {renderCartItems()}
-                    
-                    <button onClick={async ()=>{
-                        
-                        await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
-                            headers: {
-                                Authorization: 'Bearer ' + localStorage.getItem('accessToken')
-                            }
-                        
-                        })
 
-                    }}>Check out</button>
+                    <div id="checkoutContainer">
+                        <h3 id="grandTotal">Grand Total: ${grandTotal}</h3>
+                        <button id="checkoutBtn" className="btn my-4" onClick={async ()=>{
+                        
+                            await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
+                                headers: {
+                                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                                }
+                            
+                            })
+
+                        }}>Proceed to Check out</button>
+                    </div>
+                    
+                   
         
                 </div>: <div>Please sign in to view this page.</div> }
 

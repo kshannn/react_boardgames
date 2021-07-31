@@ -74,6 +74,7 @@
 
 #listingContainer:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .listingImage {
@@ -289,4 +290,34 @@
 
 .addSubtractBtn:hover {
   background-color:orange;
+}
+
+#checkoutBtn {
+  background-color: orange;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+
+#checkoutBtn:hover {
+  background-color: rgb(255, 145, 0);
+}
+
+#checkoutContainer {
+  width: 85%;
+  height: 100px;
+  /* background-color: blue; */
+  position: relative;
+}
+
+#cartSubtotal {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+#grandTotal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
