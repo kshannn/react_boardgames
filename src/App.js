@@ -80,7 +80,7 @@ function App() {
                   <Link to='/' className="nav-link navFunc" aria-current="page">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to='/history' className="nav-link navFunc" aria-current="page">Order History</Link>
+                  <Link to='/history' className="nav-link navFunc" aria-current="page">Orders</Link>
                 </li>
               </ul>
 

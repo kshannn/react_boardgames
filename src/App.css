@@ -38,7 +38,7 @@
   color: grey;
 }
 
-.navFunc:hover, #cartIcon:hover, .fa-shopping-cart:hover, .nav-link:hover, #userIcon:hover {
+.navFunc:hover, #cartIcon:hover, .fa-shopping-cart:hover, .nav-link:hover, #userIcon:hover, .breadcrumb-item > a:hover {
   color: black !important;
   cursor:pointer;
 }
@@ -97,6 +97,18 @@
   font-size: 1.5rem;
   color: rgb(255, 187, 42);
 }
+
+
+#priceRange {
+  display: flex;
+  color: grey;
+}
+
+#priceRange span {
+  margin: 0 10px;
+}
+
+
 /* === Listing Details Page === */
 #detailsPageContainer {
   width: 100%;
@@ -106,10 +118,19 @@
   flex-wrap: wrap;
 }
 
-#listingImageSection, #listingDetailsSection {
-  flex: 1
+#listingImageSection {
+  flex: 1;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
 
+#listingDetailsSection {
+  flex: 1.5;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
 
 #individualListingImage {
   height: 70%;
@@ -122,15 +143,150 @@
 }
 
 #listingDetails {
+  min-width: 400px;
   margin-top: 50px;
-  margin-right: 50px;
+  margin-right: 25px;
+  margin-left: 25px;
+  width: 90%;
+  background-color: yellow;
+  height: 70%;
+  min-height: 500px;
 }
 
-
+.breadcrumb-item > a {
+  color: grey;
+}
 #available {
   color: green;
 }
 
 #unavailable{
   color: red;
+}
+
+/* === Login Page ===  */
+#heroImage {
+  width: 100%;
+  height: calc(100vh - 56px);
+  background-image: url('https://blackshellmedia.com/wp-content/uploads/2017/09/A_Game_Of_Thrones_board_game_detail-1080x675.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: cover;
+  background-color: pink;
+}
+
+#loginPage {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+#loginExtraSection {
+  flex: 2;
+}
+
+#loginFormSection {
+  flex: 1;
+  padding: 80px 50px;
+
+}
+
+#loginContainer {
+  height: 500px;
+  width: 100%;
+  min-width: 300px;
+  padding: 50px 20px;
+  background-color: white;
+}
+
+#loginBtn {
+  width: 100%;
+  background-color: rgb(241, 171, 65);
+}
+
+#loginBtn:hover {
+  background-color: rgb(235, 135, 21);
+}
+
+#loginContainer > a {
+  color: orange;
+}
+
+#loginContainer > a:hover{
+  color: rgb(235, 135, 21);
+}
+
+#loginExtraSection {
+  color: white;
+  font-size: 3rem;
+  margin: 50px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+/* === Cart ===  */
+
+#cartPage {
+  height: calc(100vh - 56px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  /* background-color: darkkhaki; */
+}
+
+#cartItemContainer {
+  height: 250px;
+  width: 85%;
+  display: flex;
+  /* background-color: cornflowerblue; */
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+#cartItemImage {
+  height: 245px;
+  width: 250px;
+  /* background-color: red; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#cartItemInfo {
+  flex: 1;
+  position: relative;
+  padding: 10px 30px;
+}
+
+#cartItemPrice {
+  color: rgb(255, 145, 0);
+  font-size: 1.3rem;
+}
+
+#removeBtn {
+  position: absolute;
+  top: 0;
+  right:15px;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: grey;
+}
+
+#removeBtn:hover {
+  color: black;
+}
+
+.addSubtractBtn {
+  border: none;
+  background-color:lightgrey;
+  width:20px;
+  margin: 5px;
+}
+
+.addSubtractBtn:hover {
+  background-color:orange;
 }

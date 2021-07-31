@@ -42,7 +42,7 @@ export default function OrderHistory() {
                          <td>{order.id}</td>
                          <td>{order.order_date}</td>
                          <td>{order.total_cost}</td>
-                         <td>{order.status_id}</td>
+                         <td>{order.status.name}</td>
                     </tr>   
                 </React.Fragment>
             )
@@ -55,7 +55,7 @@ export default function OrderHistory() {
            
             {/* can only see the page if they have the access token (logged in)*/}
             {localStorage.getItem('accessToken')?<div>
-            <h1>Order History</h1>
+            <h1>Your Order History</h1>
            
            <table className="table">
                <thead>

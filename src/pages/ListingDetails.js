@@ -57,7 +57,12 @@ export default function ListingDetails() {
 
     return (
         <React.Fragment>
-            <h1>Listing Details</h1>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="/">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">{activeListing.name}</li>
+                </ol>
+            </nav>
             <div id="detailsPageContainer">
                 <section id="listingImageSection">
                     <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
@@ -66,8 +71,14 @@ export default function ListingDetails() {
                 <section id="listingDetailsSection">
                     <div id="listingDetails">
                         <h2>{activeListing.name}</h2>
-                        <p>Price: {activeListing.price}</p>
-                        <p>Description {activeListing.description}</p>
+                        <h3>SGD {activeListing.price/100}</h3>
+                        <p>{activeListing.description}</p>
+                        <p>No. of players:{activeListing.min_player_count} - {activeListing.max_player_count}</p>
+                        <p>Recommended age: {activeListing.min_age} +</p>
+                        <p>Min. duration: {activeListing.duration} mins</p>
+                        <p>Publisher: {activeListing.publisher}</p>
+                        <p>Designer: {activeListing.designer}</p>
+                        <p>Published date: {activeListing.published_date}</p>
                         {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
                     
                         <button onClick={() => {

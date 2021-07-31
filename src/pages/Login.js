@@ -62,18 +62,31 @@ export default function Login() {
 
     return (
         <React.Fragment>
-            <h1>Login Page</h1>
-            <div>
-                <label>Email: </label>
-                <input type='email' name='email' onChange={updateFormField} value={formState.email} />
-            </div>
+            <div id="heroImage">
+                <div id="loginPage">
+                    <section id="loginExtraSection">
+                        Board Games Society
+                    </section>
+                    <section id="loginFormSection">
+                        <div id="loginContainer">
+                            <h1>Login</h1>
+                            
+                            <label className="form-label">Email </label>
+                            <input type='email' className="form-control" name='email' onChange={updateFormField} value={formState.email} />
+                        
+                            <label className="form-label">Password: </label>
+                            <input type='password' className="form-control" name='password' onChange={updateFormField} value={formState.password}/>
+                            
+                            <button id="loginBtn" className="btn my-4" onClick={login}>LOGIN</button>
 
-            <div>
-                <label>Password: </label>
-                <input type='password' name='password' onChange={updateFormField} value={formState.password}/>
+                            <a href="/register">Create an account</a>
+                        </div>
+                    </section>
+                    
+                </div>
             </div>
-
-            <button onClick={login}>Login</button>
+            
+            
 
         </React.Fragment>
     )

@@ -110,9 +110,11 @@ export default function Home() {
 
                     {/* price range */}
                     <label className="form-label">Price Range</label>
-                    <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
-                    <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
-
+                    <div id="priceRange">
+                        <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
+                        <span>_</span>
+                        <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
+                        </div>
                     {/* categories */}
                     <label className="form-label">Categories</label>
                     <MultiSelect

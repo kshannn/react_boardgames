@@ -8,14 +8,6 @@ export default function Cart() {
 
     let context = useContext(UserContext);
 
-    // check if user is logged in
-    // const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-    // if (context.userInfo()) {
-    //     setIsLoggedIn(true)
-    // }
-
-
     const [cartItems, setCartItems] = useState([])
 
     useEffect(() => {
@@ -129,20 +121,26 @@ export default function Cart() {
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item) => {
             return (
-                <div>id: {item.gameListing.id} {item.gameListing.name} 
+                <div id="cartItemContainer">
+                    <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
+                    <div id="cartItemInfo">
+                        <h2>{item.gameListing.name}</h2>
+                        <h3 id="cartItemPrice">SGD{item.unit_price/100}</h3> 
 
-                <button onClick={()=>{
-                    subtractOneFromCart(item.gameListing.id, context.userInfo().id);
-                }}>-</button>{item.quantity}<button onClick={()=>{
-                    addOneToCart(item.gameListing.id, context.userInfo().id,item.gameListing.price);
-                }}>+</button>
-                
-                
-                <button onClick={() => {
-                    removeCartItem(item.gameListing.id)
-                }}>Remove from cart
-                </button>
-                
+                        Quantity:
+                        <button className="addSubtractBtn" onClick={()=>{
+                            subtractOneFromCart(item.gameListing.id, context.userInfo().id);
+                        }}>-</button>{item.quantity}<button className="addSubtractBtn" onClick={()=>{
+                            addOneToCart(item.gameListing.id, context.userInfo().id,item.gameListing.price);
+                        }}>+</button>
+
+
+                        <button id="removeBtn" onClick={() => {
+                            removeCartItem(item.gameListing.id)
+                        }}>x
+                        </button>
+                        </div>
+                    
                 </div>
             )
         })
@@ -151,27 +149,30 @@ export default function Cart() {
 
     return (
         <React.Fragment>
+            <h1>Your Cart</h1>
             
-            {/* can only see the page if they have the access token (logged in)*/}
-            {localStorage.getItem('accessToken')?<div>
-            <h1>User's Cart</h1>
-            {renderCartItems()}
+
             
-            <button onClick={async ()=>{
+                {/* can only see the page if they have the access token (logged in)*/}
+                {localStorage.getItem('accessToken')?
+                <div id="cartPage">
                 
-                await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
-                    headers: {
-                        Authorization: 'Bearer ' + localStorage.getItem('accessToken')
-                    }
-                
-                })
+                    {renderCartItems()}
+                    
+                    <button onClick={async ()=>{
+                        
+                        await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
+                            headers: {
+                                Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                            }
+                        
+                        })
 
-            }}>Check out</button>
-                
-    
-            </div>: <div>Please sign in to view this page.</div> }
+                    }}>Check out</button>
+        
+                </div>: <div>Please sign in to view this page.</div> }
 
-
+        
            
          
         </React.Fragment>
