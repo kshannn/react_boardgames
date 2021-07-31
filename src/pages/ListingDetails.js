@@ -58,16 +58,24 @@ export default function ListingDetails() {
     return (
         <React.Fragment>
             <h1>Listing Details</h1>
-            <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
+            <div id="detailsPageContainer">
+                <section id="listingImageSection">
+                    <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
+                    </div>
+                </section>
+                <section id="listingDetailsSection">
+                    <div id="listingDetails">
+                        <h2>{activeListing.name}</h2>
+                        <p>Price: {activeListing.price}</p>
+                        <p>Description {activeListing.description}</p>
+                        {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
+                    
+                        <button onClick={() => {
+                            addToCart(activeListing.id, activeListing.price)
+                        }}>Add to Cart</button>
+                    </div>
+                </section>
             </div>
-            <p>Name: {activeListing.name}</p>
-            <p>Price: {activeListing.price}</p>
-            <p>Description {activeListing.description}</p>
-            {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
-        
-            <button onClick={() => {
-                addToCart(activeListing.id, activeListing.price)
-            }}>Add to Cart</button>
         </React.Fragment>
     )
 }
