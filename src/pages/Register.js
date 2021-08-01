@@ -42,7 +42,7 @@ export default function Register() {
                         <hr></hr>
 
                         <div>
-                            <label className="form-label">Username </label>
+                            <label className="form-label">Name </label>
                             <input type='text' className="form-control" name='username' onChange={updateFormField} value={formState.username} />
                         </div>
                         <div>

@@ -67,7 +67,7 @@ export default function ProfileUpdate() {
                     <h2>Update Profile</h2>
                     <hr></hr>
                   
-                    <label className="form-label">Username</label>
+                    <label className="form-label">Name</label>
                     <input type="text" className="form-control" name="username" value={formState.username} onChange={updateForm}/>
                 
                     <label className="form-label">Email</label>

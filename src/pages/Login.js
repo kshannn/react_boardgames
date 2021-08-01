@@ -65,7 +65,7 @@ export default function Login() {
            return (
                <React.Fragment>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Sessions expired. Please log in again.
+                        Please log in to continue.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </React.Fragment>

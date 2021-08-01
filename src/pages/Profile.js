@@ -52,7 +52,7 @@ export default function Profile() {
                 <div id="profileContainer">
                     <h2>Your Profile</h2>
                     <hr></hr>
-                    <p>Username: {userInfo.username}</p>
+                    <p>Name: {userInfo.username}</p>
                     <p>Email: {userInfo.email}</p>
                     <p>Address: {userInfo.address}</p>
                     <p>Phone No: {userInfo.phone_number}</p>

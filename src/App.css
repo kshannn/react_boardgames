@@ -431,7 +431,7 @@
 #orderItemImage {
   height: 95%;
   width: 95%;
-  background-color: blue;
+  /* background-color: blue; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
