@@ -404,17 +404,20 @@
 /* === order history === */
 #orderContainer {
   border: 1px solid black;
-  margin: 20px;
+  margin: 20px auto;
   min-height: 200px;
+  width: 85%;
+  position: relative;
 }
 
 #orderItem {
   height: 150px;
   width: 95%;
   margin: 10px auto;
-  border: 1px solid black;
-  background-color: yellow;
+  border-top: 1px solid grey;
+  /* background-color: yellow; */
   display: flex;
+  padding-top: 5px;
 }
 
 #orderItemImageSection {
@@ -434,7 +437,57 @@
   background-size: contain;
 }
 
-#orderItemDetails {
+#orderItemDetailsSection {
   flex: 1;
   padding: 20px;
+  position: relative;
 }
+
+#orderStatus {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+#orderTotalContainer {
+  height: 40px;
+  width: 95%;
+  border-top: 1px solid grey;
+  margin: 0 auto;
+}
+
+#orderTotal {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+#orderSubtotal {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+#accordionFlush {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#flush-heading > button {
+  color: grey;
+}
+
+#flush-heading > button:hover {
+  color: black;
+}
+
+
+
+.accordion-button:not(.collapsed){
+  background-color: transparent;
+}
+
+.accordion-button:focus{
+  box-shadow: none;
+}
+
