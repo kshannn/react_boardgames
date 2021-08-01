@@ -22,6 +22,7 @@ export default function OrderHistory() {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
             })
+            console.log(response.data)
             setOrderState(response.data)
         } catch (err){
             console.log(err);
@@ -38,12 +39,33 @@ export default function OrderHistory() {
 
             return (
                 <React.Fragment>
-                   <tr>
-                         <td>{order.id}</td>
-                         <td>{order.order_date}</td>
-                         <td>{order.total_cost}</td>
-                         <td>{order.status.name}</td>
-                    </tr>   
+                    <div id="orderContainer">
+                        <p>Order ID: {order.id} [{order.order_date}]</p>
+                        <p>Status: {order.status.name}</p>
+                         
+                         
+                         
+                         {order.orderItem.map((eachItem)=>{
+                             return <div id="orderItem">
+
+                                 <section id="orderItemImageSection">
+                                     <div id="orderItemImage" style={{ backgroundImage: `url(${eachItem.gameListing.image})` }}></div>
+                                 </section>
+
+
+                                 <section id="orderItemDetails">
+                                    {eachItem.gameListing.name}
+                                    Quantity: {eachItem.quantity}
+                                    Unit Price: {eachItem.unit_price}
+                                </section>
+                                 
+                                 
+                            </div>
+                         })}
+
+                        <p>Grand Total: ${order.total_cost/100}.00</p>
+
+                    </div>
                 </React.Fragment>
             )
         })
@@ -57,21 +79,9 @@ export default function OrderHistory() {
             {localStorage.getItem('accessToken')?<div>
             <h1>Your Order History</h1>
            
-           <table className="table">
-               <thead>
-                   <tr>
-                       <th scope="col">Order Id</th>
-                       <th scope="col">Order Date</th>
-                       <th scope="col">Total Cost</th>
-                       <th scope="col">Status</th>
-                   
-                   </tr>
-               </thead>
-               <tbody>
-                   {renderOrders()} 
-               </tbody>
-           </table>
-                
+           
+            {renderOrders()} 
+             
     
             </div>: <div>Please sign in to view this page.</div> }
 

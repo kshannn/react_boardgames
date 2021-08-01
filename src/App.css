@@ -400,3 +400,41 @@
 #registerBtn:hover {
   background-color: rgb(235, 135, 21);
 }
+
+/* === order history === */
+#orderContainer {
+  border: 1px solid black;
+  margin: 20px;
+  min-height: 200px;
+}
+
+#orderItem {
+  height: 150px;
+  width: 95%;
+  margin: 10px auto;
+  border: 1px solid black;
+  background-color: yellow;
+  display: flex;
+}
+
+#orderItemImageSection {
+  height: 150px;
+  width: 150px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#orderItemImage {
+  height: 95%;
+  width: 95%;
+  background-color: blue;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#orderItemDetails {
+  flex: 1;
+  padding: 20px;
+}
