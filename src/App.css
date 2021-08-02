@@ -1,12 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 
 /* Navigation Bar */
+.navbar {
+  background-image: url(https://i.dlpng.com/static/png/6563923_preview.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #guestIcon, #userIcon, #cartIcon {
   display:inline-block;
-  color: grey;
+  color: rgb(255, 255, 255);
 }
 
 #guestIcon{
@@ -26,7 +38,7 @@
 }
 
 .navFunc {
-  color: grey;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
@@ -35,11 +47,11 @@
 }
 
 .fa-shopping-cart {
-  color: grey;
+  color: rgb(255, 255, 255);
 }
 
 .navFunc:hover, #cartIcon:hover, .fa-shopping-cart:hover, .nav-link:hover, #userIcon:hover, .breadcrumb-item > a:hover {
-  color: black !important;
+  color: rgb(110, 110, 110) !important;
   cursor:pointer;
 }
 
@@ -48,28 +60,27 @@
 #mainSection{
   display:flex;
   min-height: 100vh;
-  /* background-color:pink; */
+  background-image: url('https://www.ppt-backgrounds.net/large/wooden-texture-image-downloads-slides.jpg');
+  padding-bottom: 50px;
 }
 
 #searchSection{
   flex:1;
-  /* background: blue; */
 }
 
 #displaySection{
   flex: 5;
-  /* background: green; */
 }
 
 #listingGrid {
-  /* background-color: brown; */
   margin-top: 15px;
 }
 
 #listingContainer {
-  /* background: yellow; */
-  border: 1px solid black;
+  background-color: white;
   height: 100%;
+  text-align: center;
+
 }
 
 #listingContainer:hover {
@@ -77,13 +88,28 @@
   cursor: pointer;
 }
 
+#listingImageContainer {
+width: 100%;
+height: 400px;
+/* background: red; */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#listingContent {
+  height: calc(100% - 400px);
+  width: 100%;
+  background: rgba(207, 172, 140, 0.856);
+  padding: 5px 0px;
+}
+
 .listingImage {
-  border: 1px solid black;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  height:200px;
-  width: 100%;
+  height: 96%;
+  width: 98%;
 }
 
 .row {
@@ -92,12 +118,13 @@
 
 #listingName {
   font-size: 1.2rem;
+  margin-top: 10px;
 }
 
-#listingPrice {
+/* #listingPrice {
   font-size: 1.5rem;
   color: rgb(255, 187, 42);
-}
+} */
 
 
 #priceRange {
@@ -228,6 +255,11 @@
   display: flex;
   justify-content:center;
   align-items: center;
+}
+
+.invalidMessage {
+  color: red;
+  font-size: 0.9rem;
 }
 
 /* === Cart ===  */

@@ -14,8 +14,37 @@ export default function Login() {
         'email': "",
         'password': ""
     })
+    const [ errorState, setErrorState ] = useState({
+        'emailErr': "",
+        'passwordErr': ""
+    })
+
 
     const login = async () => {
+        // frontend validation
+        let isError = false
+
+        if (formState.email === "") {
+            isError = true
+            setErrorState({
+                ...errorState,
+                'emailErr': "Please provide a valid email."
+            })
+        }
+
+        if (formState.password === "") {
+            isError = true
+            setErrorState({
+                ...errorState,
+                'passwordErr': "Please fill in your password."
+            })
+        }
+
+        if (isError){
+            return
+        }
+
+
         let response = await axios.post(config.API_URL + '/users/login', {
             'email': formState.email,
             'password': formState.password
@@ -88,11 +117,13 @@ export default function Login() {
                             <h1>Login</h1>
                             
                             <label className="form-label my-2">Email</label>
-                            <input type='email' className="form-control" name='email' onChange={updateFormField} value={formState.email} />
-                        
+                            <input type='email' className="form-control" name='email' placeholder="e.g. claire@gmail.com" onChange={updateFormField} value={formState.email} />
+                            {formState.email == ""? <div className="invalidMessage">{errorState.emailErr}</div> : null}
+
                             <label className="form-label my-2">Password</label>
-                            <input type='password' className="form-control" name='password' onChange={updateFormField} value={formState.password}/>
-                            
+                            <input type='password' className="form-control" name='password' placeholder="**********" onChange={updateFormField} value={formState.password}/>
+                            {formState.password == ""? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
+
                             <button id="loginBtn" className="btn my-4" onClick={login}>LOGIN</button>
 
                             <a href="/register">Create an account</a>

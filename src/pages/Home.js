@@ -39,16 +39,19 @@ export default function Home() {
         let listingjsx = listingState.map((listing)=> {
             return (
                 <React.Fragment>
-                    <div id="listingGrid" className="col-lg-3 col-md-4 col-sm-6 col-xs-12" onClick={()=> {
+                    <div id="listingGrid" className="col-lg-4 col-md-4 col-sm-6 col-xs-12" onClick={()=> {
                             history.push('/listing/' + listing.id)
                         }}>
 
                         <div id="listingContainer">
-                            <div className="listingImage" style={{ backgroundImage: `url(${listing.image})` }} >
+                            <div id="listingImageContainer">
+                                <div className="listingImage" style={{ backgroundImage: `url(${listing.image})` }} >
+                                </div>
                             </div>
                             
-                            <h3 id="listingName">{listing.name}</h3>
-                            <h4 id="listingPrice">SGD {listing.price/100}.00</h4>
+                            <div id="listingContent">
+                                <h3 id="listingName">{listing.name} — ${listing.price/100}.00 </h3>
+                            </div>
                         </div>
 
                     </div>

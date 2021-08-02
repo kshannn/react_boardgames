@@ -67,7 +67,7 @@ function App() {
     <UserContext.Provider value={context}>
       <Router>
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-light">
           <div className="container-fluid">
             <a className="navbar-brand" href="/">Brand</a>
             
