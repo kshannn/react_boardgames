@@ -435,7 +435,7 @@ align-items: center;
 }
 
 #registerContainer {
-  height: 550px;
+  min-height: 550px;
   width: 30%;
   min-width: 300px;
   padding: 50px 20px;
@@ -446,6 +446,7 @@ align-items: center;
 #registerBtn {
   width: 100%;
   background-color: rgb(241, 171, 65);
+  margin-bottom: 0px !important;
 }
 
 #registerBtn:hover {
