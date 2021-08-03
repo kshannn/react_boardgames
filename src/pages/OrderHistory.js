@@ -23,8 +23,8 @@ export default function OrderHistory() {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
             })
-            console.log(response.data)
-            setOrderState(response.data)
+
+            setOrderState(response.data.reverse())
         } catch (err){
             console.log(err);
             if(err.toString().includes(403)){
@@ -96,16 +96,18 @@ export default function OrderHistory() {
 
     return (
         <React.Fragment>
+            <div id="orderHistoryPage">
            
-            {/* can only see the page if they have the access token (logged in)*/}
-            {localStorage.getItem('accessToken')?<div>
-            <h1>Your Order History</h1>
-           
-           
-            {renderOrders()} 
-             
-    
-            </div>: <div>Please sign in to view this page.</div> }
+                {/* can only see the page if they have the access token (logged in)*/}
+                {localStorage.getItem('accessToken')?<div>
+                <h1>Your Order History</h1>
+            
+            
+                {renderOrders()} 
+                
+        
+                </div>: <div>Please sign in to view this page.</div> }
+            </div>
 
         </React.Fragment>
     )

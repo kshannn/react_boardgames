@@ -129,7 +129,9 @@ export default function Cart() {
             return (
                 <React.Fragment>
                     <div id="cartItemContainer">
-                        <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
+                        <div id="cartItemImageContainer">
+                            <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
+                        </div>
                         <div id="cartItemInfo">
                             <h2>{item.gameListing.name}</h2>
                             <h3 id="cartItemPrice">SGD{item.unit_price/100}.00</h3> 
@@ -169,8 +171,9 @@ export default function Cart() {
                 {/* can only see the page if they have the access token (logged in)*/}
                 {localStorage.getItem('accessToken')?
                 <React.Fragment>
-                <h1>Your Cart</h1>
+                
                 <div id="cartPage">
+                <h1>Your Cart</h1>
                 
                     {renderCartItems()}
 
