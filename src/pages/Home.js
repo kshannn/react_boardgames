@@ -110,7 +110,7 @@ export default function Home() {
                     <div id="searchForm">
                         {/* name */}
                         <label className="form-label">Name</label>
-                        <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
+                        <input type="text" name="searchName" className="form-control" placeholder="Search name of game" value={searchForm.searchName} onChange={updateSearchForm}/>
 
                         {/* price range */}
                         <label className="form-label">Price Range</label>

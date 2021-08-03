@@ -86,9 +86,6 @@ export default function Cart() {
             }
         }
 
-
-
-
     }
 
     // decrease cart item by one

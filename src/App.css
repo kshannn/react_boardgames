@@ -395,13 +395,13 @@ align-items: center;
   width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url('./images/woodbg.jpg');
 }
 
 #profileContainer {
   height: 380px;
   width: 400px;
-  /* background-color: rgb(204, 179, 162); */
-  border: 1px solid black;
+  background-color: white;
   padding: 50px;
   margin-top: 80px;
   border-radius: 5px;

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import config from '../config'
 import axios from 'axios'
 import UserContext from './UserContext'
+import Moment from 'moment';
 
 export default function OrderHistory() {
 
@@ -38,8 +39,10 @@ export default function OrderHistory() {
         let orderjsx = orderState.map((order) => {
             return (
                 <React.Fragment>
+                    
                     <div id="orderContainer">
-                        <p>Order ID: {order.id} [{order.order_date}]</p>
+                        <p>Order ID: {order.id} [{Moment(order.order_date).format('LLL')}  ]</p>
+                        
                         <p id="orderStatus">Status: {order.status.name}</p>
                          
                         <div className="accordion accordion-flush" id="accordionFlush">
