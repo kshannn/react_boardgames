@@ -545,8 +545,35 @@ align-items: center;
   background-color: white;
   margin: 20px auto;
   min-height: 200px;
-  width: 85%;
+  min-width: 300px;
+  width: 65%;
   position: relative;
+  border-radius: 3px;
+}
+
+#orderInfoContainer {
+  height: 40px;
+  width: 100%;
+  background-color: #b7c3a4;
+  position: relative;
+  border-radius: 3px 3px 0px 0px;
+}
+
+#orderIdOrderDate {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 1rem;
+}
+
+#orderIdOrderDate span {
+  margin-left: 10px;
+}
+
+#orderStatus {
+  position:absolute;
+  top: 10px;
+  right: 20px;
 }
 
 #orderItem {
@@ -582,10 +609,18 @@ align-items: center;
   position: relative;
 }
 
-#orderStatus {
-  position: absolute;
-  top: 0;
-  right: 20px;
+#orderItemDetailsSection div, #orderSubtotalContainer {
+  width: 100%;
+  height: fit-content;
+  background: blue;
+}
+
+#orderItemDetailsSection h2 {
+  font-size: 1.5rem;
+}
+
+#orderItemDetailsSection p {
+  margin-bottom: 0px;
 }
 
 #orderTotalContainer {
@@ -593,11 +628,12 @@ align-items: center;
   width: 95%;
   border-top: 1px solid grey;
   margin: 0 auto;
+  position: relative;
 }
 
 #orderTotal {
   position: absolute;
-  bottom: 0;
+  top: 5px;
   right: 20px;
 }
 
@@ -613,7 +649,7 @@ align-items: center;
 }
 
 #flush-heading > button {
-  color: grey;
+  color: rgb(95, 95, 95);
 }
 
 #flush-heading > button:hover {
@@ -633,7 +669,24 @@ align-items: center;
 
 /* ========= FOR SMALLER DEVICES ========= */
 @media screen and (max-width: 576px){
+  /* === Home Page === */
   #mainSection {
     flex-direction: column;
+  }
+
+  /* === order history === */
+  #orderItemImageSection {
+    height: 100;
+    width: 100px;
+  }
+
+  #orderItemDetailsSection h2 {
+    font-size: 1rem;
+  }
+
+ 
+
+  #quantity {
+    margin-bottom: 0px;
   }
 }

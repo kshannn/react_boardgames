@@ -41,9 +41,12 @@ export default function OrderHistory() {
                 <React.Fragment>
                     
                     <div id="orderContainer">
-                        <p>Order ID: {order.id} [{Moment(order.order_date).format('LLL')}  ]</p>
+                        <div id="orderInfoContainer">
+                            <p id="orderIdOrderDate">Order ID: {order.id} <span>{Moment(order.order_date).format('LLL')}</span></p>
+                            <p id="orderStatus">Status: {order.status.name}</p>
+                        </div>
                         
-                        <p id="orderStatus">Status: {order.status.name}</p>
+                        
                          
                         <div className="accordion accordion-flush" id="accordionFlush">
                             <div className="accordion-item">
@@ -73,11 +76,15 @@ export default function OrderHistory() {
 
 
                                             <section id="orderItemDetailsSection">
-                                            <h2>{eachItem.gameListing.name}</h2>
-                                            <p>SGD{eachItem.unit_price/100}.00</p>
-                                            <p>Quantity: {eachItem.quantity}</p>
-                                            <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>
-                                        </section>    
+                                                <div>
+                                                    <h2>{eachItem.gameListing.name}</h2>
+                                                    <p>${eachItem.unit_price/100}.00</p>
+                                                    <p id="quantity">Quantity: {eachItem.quantity}</p>
+                                                </div>
+                                                <div id="orderSubtotalSection">
+                                                    <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>
+                                                </div>
+                                            </section>    
                                     </div>
                                 </React.Fragment>
                              )
