@@ -39,7 +39,7 @@ export default function Home() {
         let listingjsx = listingState.map((listing)=> {
             return (
                 <React.Fragment>
-                    <div id="listingGrid" className="col-lg-4 col-md-4 col-sm-6 col-xs-12" onClick={()=> {
+                    <div id="listingGrid" className="col-lg-4 col-md-6 col-sm-12 col-xs-12" onClick={()=> {
                             history.push('/listing/' + listing.id)
                         }}>
 
@@ -107,26 +107,28 @@ export default function Home() {
             <div className="container-fluid" id="mainSection">
                 {/* ############### Search Forms ############### */}
                 <section id="searchSection">
-                    {/* name */}
-                    <label className="form-label">Name</label>
-                    <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
+                    <div id="searchForm">
+                        {/* name */}
+                        <label className="form-label">Name</label>
+                        <input type="text" name="searchName" className="form-control" value={searchForm.searchName} onChange={updateSearchForm}/>
 
-                    {/* price range */}
-                    <label className="form-label">Price Range</label>
-                    <div id="priceRange">
-                        <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
-                        <span>_</span>
-                        <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
-                        </div>
-                    {/* categories */}
-                    <label className="form-label">Categories</label>
-                    <MultiSelect
-                        options={options}
-                        value={selected}
-                        onChange={setSelected}
-                        labelledBy="Select"
-                    />
-                    <button className="btn btn-primary my-3" onClick={search}>Search</button>
+                        {/* price range */}
+                        <label className="form-label">Price Range</label>
+                        <div id="priceRange">
+                            <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
+                            <span>_</span>
+                            <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
+                            </div>
+                        {/* categories */}
+                        <label className="form-label">Categories</label>
+                        <MultiSelect
+                            options={options}
+                            value={selected}
+                            onChange={setSelected}
+                            labelledBy="Select"
+                        />
+                        <button className="btn btn-primary my-3" onClick={search}>Search</button>
+                    </div>
                 </section>
 
                  {/* ############### Game Listings ############### */}

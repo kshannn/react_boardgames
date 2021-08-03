@@ -22,25 +22,21 @@ export default function Login() {
 
     const login = async () => {
         // frontend validation
-        let isError = false
+        let isError = false;
+        let errMsg = {};
 
         if (formState.email === "") {
             isError = true
-            setErrorState({
-                ...errorState,
-                'emailErr': "Please provide a valid email."
-            })
+            errMsg['emailErr'] = "Please provide a valid email."
         }
 
         if (formState.password === "") {
             isError = true
-            setErrorState({
-                ...errorState,
-                'passwordErr': "Please fill in your password."
-            })
+            errMsg['passwordErr'] = "Please fill in your password."
         }
 
         if (isError){
+            setErrorState(errMsg);
             return
         }
 
