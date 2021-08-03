@@ -3,6 +3,7 @@ import config from '../config'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import UserContext from './UserContext'
+import Moment from 'moment'
 
 export default function ListingDetails() {
 
@@ -57,31 +58,35 @@ export default function ListingDetails() {
 
     return (
         <React.Fragment>
-            <nav id="breadCrumb" aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="/">Home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">{activeListing.name}</li>
-                </ol>
-            </nav>
+            <div id="breadCrumb"> 
+                <nav  aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="/">Home</a></li>
+                        <li className="breadcrumb-item active" aria-current="page">{activeListing.name}</li>
+                    </ol>
+                </nav>
+            </div>
             <div id="detailsPageContainer">
                 <section id="listingImageSection">
-                    <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
+                    <div id="individualListingImageContainer">
+                        <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
+                        </div>
                     </div>
                 </section>
                 <section id="listingDetailsSection">
                     <div id="listingDetails">
                         <h2>{activeListing.name}</h2>
-                        <h3>SGD {activeListing.price/100}</h3>
+                        <h3>${activeListing.price/100}</h3>
                         <p>{activeListing.description}</p>
-                        <p>No. of players:{activeListing.min_player_count} - {activeListing.max_player_count}</p>
-                        <p>Recommended age: {activeListing.min_age} +</p>
-                        <p>Min. duration: {activeListing.duration} mins</p>
-                        <p>Publisher: {activeListing.publisher}</p>
-                        <p>Designer: {activeListing.designer}</p>
-                        <p>Published date: {activeListing.published_date}</p>
+                        <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p>
+                        <p><i class="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
+                        <p><i class="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>
+                        <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
+                        <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
+                        <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
                         {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
                     
-                        <button onClick={() => {
+                        <button id="addToCartBtn" className="btn" onClick={() => {
                             addToCart(activeListing.id, activeListing.price)
                         }}>Add to Cart</button>
                     </div>

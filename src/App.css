@@ -7,6 +7,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   font-size: 1.05rem;
+  box-sizing: border-box;
 }
 
 /* Navigation Bar */
@@ -56,6 +57,16 @@
   cursor:pointer;
 }
 
+#logoContainer {
+  height: 30px;
+  width: 108px;
+  background-image: url('./images/brandLogo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+
+}
+
 
 /* === Home Page === */
 #mainSection{
@@ -78,7 +89,7 @@
   width: 100%;
   min-width: 200px;
   padding: 10px;
-  background: #4a3333;
+  background: #4a3333dc;
   border-radius: 10px;
   margin-top: 15px;
 }
@@ -155,9 +166,16 @@ align-items: center;
 
 /* === Listing Details Page === */
 #breadCrumb {
+  height: 45px;
+  position:relative;
+  width: 100%;
   position: absolute;
+}
+
+#breadCrumb > nav {
+  position: absolute;
+  top: 10px;
   left: 20px;
-  top: 75px;
 }
 
 .breadcrumb-item > a {
@@ -179,6 +197,7 @@ align-items: center;
   display: flex;
   flex-wrap: wrap;
   background-image: url('./images/woodbg.jpg');
+  padding-bottom: 50px;
 }
 
 #listingImageSection {
@@ -195,30 +214,67 @@ align-items: center;
   align-items: center;
 }
 
+#individualListingImageContainer {
+  min-width: 300px;
+  margin: 50px 25px 0px 25px;
+  /* margin-top: 50px;
+  margin-right: 25px;
+  margin-left: 25px; */
+  width: 100%;
+  background-color: white;
+  min-height: 75%;
+  min-height: 500px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #individualListingImage {
   height: 70%;
   min-height: 500px;
-  width: 500px;
+  width: 90%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   margin: 40px;
+  margin-top: 70px;
 }
 
 #listingDetails {
-  min-width: 400px;
+  min-width: 300px;
   margin-top: 50px;
   margin-right: 25px;
   margin-left: 25px;
-  width: 90%;
-  background-color: yellow;
-  height: 70%;
+  width: 100%;
+  background-color: white;
+  min-height: 75%;
   min-height: 500px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+#listingDetails .fas {
+  margin-right: 10px;
+}
+
+#listingDetails h2 {
+  font-weight: 700;
 }
 
 .breadcrumb-item > a {
   color: grey;
 }
+
+#addToCartBtn {
+  border: none;
+  background-color: orange;
+}
+
+#addToCartBtn:hover {
+  background-color: rgb(255, 145, 0);
+}
+
 #available {
   color: green;
 }
