@@ -217,13 +217,9 @@ align-items: center;
 #individualListingImageContainer {
   min-width: 300px;
   margin: 50px 25px 0px 25px;
-  /* margin-top: 50px;
-  margin-right: 25px;
-  margin-left: 25px; */
   width: 100%;
   background-color: white;
-  min-height: 75%;
-  min-height: 500px;
+  height: 600px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -242,14 +238,11 @@ align-items: center;
 }
 
 #listingDetails {
-  min-width: 300px;
-  margin-top: 50px;
-  margin-right: 25px;
-  margin-left: 25px;
+  min-width: 430px;
+  margin: 50px 25px 0px 25px;
   width: 100%;
   background-color: white;
-  min-height: 75%;
-  min-height: 500px;
+  height: 600px;
   padding: 30px;
   border-radius: 15px;
 }
@@ -541,6 +534,12 @@ align-items: center;
   background-image: url('./images/woodbg.jpg');
 }
 
+#orderHistoryPage h1 {
+  text-align: center;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
 #orderContainer {
   background-color: white;
   margin: 20px auto;
@@ -597,7 +596,6 @@ align-items: center;
 #orderItemImage {
   height: 95%;
   width: 95%;
-  /* background-color: blue; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -609,10 +607,9 @@ align-items: center;
   position: relative;
 }
 
-#orderItemDetailsSection div, #orderSubtotalContainer {
+div #orderItemDetailsSection {
   width: 100%;
   height: fit-content;
-  background: blue;
 }
 
 #orderItemDetailsSection h2 {
@@ -668,7 +665,7 @@ align-items: center;
 
 
 /* ========= FOR SMALLER DEVICES ========= */
-@media screen and (max-width: 576px){
+@media screen and (max-width: 768px){
   /* === Home Page === */
   #mainSection {
     flex-direction: column;
@@ -682,11 +679,24 @@ align-items: center;
 
   #orderItemDetailsSection h2 {
     font-size: 1rem;
+    font-weight: 600;
   }
 
- 
+  #orderSubtotalSection {
+    margin-top: 10px;
+  }
 
   #quantity {
     margin-bottom: 0px;
   }
+
+  #orderStatus {
+    top: 35px;
+    left: 20px;
+  }
+
+  #orderInfoContainer {
+    height: 65px;
+  }
+
 }

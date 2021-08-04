@@ -59,8 +59,8 @@ export default function OrderHistory() {
                                 <div className="accordion-body">
                                     <h4>Recipient's details</h4>
                                     <p>Name: {order.user.username}</p>
-                                    <p>Phone No.:{order.user.phone_number}</p>
-                                    <p>Shipping Address:{order.user.address}</p>
+                                    <p>Phone No.: {order.user.phone_number}</p>
+                                    <p>Shipping Address: {order.user.address}</p>
                                 </div>
                                 </div>
                             </div>

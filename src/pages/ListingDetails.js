@@ -17,8 +17,14 @@ export default function ListingDetails() {
         fetchListing()
     },[])
 
+    useEffect(()=>{
+        console.log('useeffect called')
+        renderCategories()
+    }, [activeListing])
+
     let fetchListing = async () => {
         let response = await axios.get(config.API_URL + '/listings/' + listingId)
+        // console.log(response.data)
         setActiveListing(response.data)
     }
 
@@ -45,15 +51,20 @@ export default function ListingDetails() {
             if(err.toString().includes(403)){
                context.logoutRedirect()
             }
+        } 
+    }
+
+    // render each game category
+    let renderCategories = () => {
+        
+        console.log(activeListing)
+        if (activeListing !== undefined){
+            // let category = activeListing.category.map((category)=>{
+            //     return <span class="badge rounded-pill bg-secondary">{category.name}</span>
+            // })
         }
-
-
-
-
-        // await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
-        //     'user_id': context.userInfo().id,
-        //     'unit_price': unit_price
-        // })        
+       
+        
     }
 
     return (
@@ -79,6 +90,7 @@ export default function ListingDetails() {
                         <h3>${activeListing.price/100}</h3>
                         <p>{activeListing.description}</p>
                         <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p>
+                        <p>Categories:{renderCategories()}</p>
                         <p><i class="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
                         <p><i class="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>
                         <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
