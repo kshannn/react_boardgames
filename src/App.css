@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-/* Navigation Bar */
+/* ==================== Navigation Bar ====================*/
 .navbar {
   background-color: #2f211b;
   /* background-image: url('./images/woodbgnav.png'); */
@@ -68,7 +68,7 @@
 }
 
 
-/* === Home Page === */
+/* ==================== Home Page ==================== */
 #mainSection{
   display:flex;
   min-height: 100vh;
@@ -164,7 +164,7 @@ align-items: center;
   margin-bottom: 0rem;
 }
 
-/* === Listing Details Page === */
+/* ==================== Listing Details Page ==================== */
 #breadCrumb {
   height: 45px;
   position:relative;
@@ -280,7 +280,7 @@ align-items: center;
   margin-left: 5px;
 }
 
-/* === Login Page ===  */
+/* ==================== Login Page ====================  */
 #heroImage {
   width: 100%;
   height: calc(100vh - 56px);
@@ -347,7 +347,7 @@ align-items: center;
   font-size: 0.9rem;
 }
 
-/* === Cart ===  */
+/* ==================== Cart ====================  */
 
 #cartPage {
   /* height: calc(100vh - 56px); */
@@ -462,7 +462,7 @@ align-items: center;
   font-weight: 800;
 }
 
-/* === profile page === */
+/* ==================== profile page ==================== */
 #profilePage {
   height: calc(100vh - 56px);
   width: 100%;
@@ -484,7 +484,7 @@ align-items: center;
   width: 100%;
 }
 
-/* === update profile page === */
+/* ==================== update profile page ==================== */
 #updateProfilePage {
   height: calc(100vh - 56px);
   width: 100%;
@@ -506,7 +506,7 @@ align-items: center;
   font-weight: 600;
 }
 
-/* === create account page === */
+/* ==================== create account page ==================== */
 #registrationHeroImage {
   width: 100%;
   height: calc(100vh - 56px);
@@ -680,6 +680,44 @@ div #orderItemDetailsSection {
 .accordion-button:focus{
   box-shadow: none;
 }
+
+/* ==================== payment success page ==================== */
+
+#paymentSuccessPage {
+  min-height: calc(100vh - 56px);
+  width: 100%;
+  background-image: url('./images/woodbg.jpg');
+  padding: 50px;
+}
+
+#paymentSuccessPage .table {
+  background-color: white;
+  border-radius: 3px;
+  min-width: 300px;
+}
+
+#grandTotalContainer {
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+
+#grandTotalContainer p {
+  position: absolute;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#paymentSuccessPage .table  > thead > tr > th {
+ font-size: 1.2rem; 
+ font-weight: 700;
+}
+
+#paymentSuccessPage .table  > tbody > tr > td {
+  font-size: 1.2rem; 
+ }
+ 
 
 
 /* ========= FOR SMALLER DEVICES ========= */

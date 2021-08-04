@@ -84,7 +84,7 @@ export default function ProfileUpdate() {
                 localStorage.removeItem('decodedAccessToken')
                 localStorage.removeItem('userInfo')
                 // redirect user to login
-                window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + 'https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/profile')
+                window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + 'https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/profile')
             }
         }
 

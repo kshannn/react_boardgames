@@ -31,9 +31,9 @@ export default function PaymentSuccess() {
                     <tr>
                         <td>{eachOrder.id}</td>
                         <td>{eachOrder.gameListing.name}</td>
-                        <td>SGD {eachOrder.unit_price/100}</td>
+                        <td>${eachOrder.unit_price/100}</td>
                         <td>{eachOrder.quantity}</td>
-                        <td>SGD {eachOrder.quantity * eachOrder.unit_price/100}</td>
+                        <td>${eachOrder.quantity * eachOrder.unit_price/100}</td>
 
                     </tr>
                 </React.Fragment>
@@ -45,23 +45,27 @@ export default function PaymentSuccess() {
    
     return (
         <React.Fragment>
-            <h1>Payment Successful!</h1>
-            <h2>Your Latest Transaction(s)</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Order Item Id</th>
-                        <th>Game</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Sub-total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     {renderTransactionDetail()}
-                </tbody>
-            </table>
-            Total: SGD {total/100}
+            <div id="paymentSuccessPage">
+                <h1>Payment Successful!</h1>
+                <h2>Your Latest Transaction(s)</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Order Item Id</th>
+                            <th>Game</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Sub-total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderTransactionDetail()}
+                    </tbody>
+                </table>
+                <div id="grandTotalContainer">
+                    <p>Grand Total: ${total/100}</p>
+                </div>
+            </div>
                 
                 
           
