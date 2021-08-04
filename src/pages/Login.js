@@ -16,7 +16,8 @@ export default function Login() {
     })
     const [ errorState, setErrorState ] = useState({
         'emailErr': "",
-        'passwordErr': ""
+        'passwordErr': "",
+        'authErr': ""
     })
 
 
@@ -40,42 +41,51 @@ export default function Login() {
             return
         }
 
-
-        let response = await axios.post(config.API_URL + '/users/login', {
-            'email': formState.email,
-            'password': formState.password
-        })
-
-        // if(!response.status === 200){
-        //     // set error validation message
-        // }
-        
-
-        if (response.status === 200){
+        try {
+            let response = await axios.post(config.API_URL + '/users/login', {
+                'email': formState.email,
+                'password': formState.password
+            })
+    
+            // if(!response.status === 200){
+            //     // set error validation message
+            // }
             
-           // decode accessToken (contains username, email, id, expiry period)
-            var token = response.data.accessToken
-            var decoded = jwt_decode(token);
-
-            
-            // store accessToken in local storage
-            localStorage.setItem('accessToken',response.data.accessToken)
-            localStorage.setItem('decodedAccessToken', JSON.stringify(decoded))
-
-            // when user log in, recall app.js to retrieve decoded and rerun app.js
-            context.setProfile(decoded);
-
-            // if they are logging in from where token expire, they get callback to the page they were trying to access
-            if (window.location.href.includes('session=expire')){
-                const urlSearchParams = new URLSearchParams(window.location.search);
-                const params = Object.fromEntries(urlSearchParams.entries());
-                window.location.assign(params.callback_url)
-            } else {
-                // once user logged in, they will be directed to the home page
-                history.push('/')
+    
+            if (response.status === 200){
+                
+               // decode accessToken (contains username, email, id, expiry period)
+                var token = response.data.accessToken
+                var decoded = jwt_decode(token);
+    
+                
+                // store accessToken in local storage
+                localStorage.setItem('accessToken',response.data.accessToken)
+                localStorage.setItem('decodedAccessToken', JSON.stringify(decoded))
+    
+                // when user log in, recall app.js to retrieve decoded and rerun app.js
+                context.setProfile(decoded);
+    
+                // if they are logging in from where token expire, they get callback to the page they were trying to access
+                if (window.location.href.includes('session=expire')){
+                    const urlSearchParams = new URLSearchParams(window.location.search);
+                    const params = Object.fromEntries(urlSearchParams.entries());
+                    window.location.assign(params.callback_url)
+                } else {
+                    // once user logged in, they will be directed to the home page
+                    history.push('/')
+                }
+    
+            } 
+        } catch (e) {
+            console.log(e.response)
+            if (e.response.status == 401){
+                errMsg['authErr'] = "Error in authentication details. Please try again."
+                setErrorState(errMsg)
             }
+        }
 
-        } 
+       
     }
 
     const updateFormField = (e) => {
@@ -111,6 +121,7 @@ export default function Login() {
                     <section id="loginFormSection">
                         <div id="loginContainer">
                             <h1>Login</h1>
+                            {errorState.authErr? <div className="alert alert-danger">{errorState.authErr}</div>: null}
                             
                             <label className="form-label my-2">Email</label>
                             <input type='email' className="form-control" name='email' placeholder="e.g. claire@gmail.com" onChange={updateFormField} value={formState.email} />

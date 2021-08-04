@@ -25,7 +25,7 @@ export default function ListingDetails() {
     // add item to cart on click
     let addToCart = async (gameId,unit_price) => {
         if(!context.userInfo()){
-            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         
         try {
