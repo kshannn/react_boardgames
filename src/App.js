@@ -1,5 +1,5 @@
 // import react and useState
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // import react router dom
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 // import bootstrap and css
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+
+import config from './config';
+import axios from 'axios'
 
 // import components
 import Home from './pages/Home'
@@ -32,6 +35,9 @@ function App() {
 
   // set accesstoken in state
   const [userInfo, setUserInfo] = useState(decoded)
+  const [ name, setName ] = useState("")
+
+
 
   // context object
   const context = {
@@ -40,6 +46,14 @@ function App() {
     },
     setProfile: (profile) => {
       setUserInfo(profile)
+    },
+    setName: async() => {
+      let userInfo = await axios.get(config.API_URL + '/users/profile', {
+          headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+          }
+      })
+      setName(userInfo.data.username)
     },
     logoutRedirect: () => {
       // clear localStorage
@@ -90,7 +104,7 @@ function App() {
                   <div className="nav-item dropdown">
                   <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <div id="userIcon">
-                      <i className="fas fa-user-circle"></i> {userInfo.username}
+                      <i className="fas fa-user-circle"></i> {name || userInfo.username}
                     </div>
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdown">

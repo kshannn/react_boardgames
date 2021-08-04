@@ -52,11 +52,6 @@ export default function Register() {
             errMsg['phoneErr'] = "Please provide a valid phone number."
         }
 
-        if (formState.phone_number === "") {
-            isError = true
-            errMsg['phoneErr'] = "Please provide a valid phone number."
-        } 
-
         
 
         if (isError){

@@ -27,6 +27,7 @@ export default function Profile() {
                 }
             })
             setUserInfo(userInfo.data)
+            context.setName()
         } catch (err){
             // if user is not logged in, clear session data and redirect to login
             if(err.toString().includes(403)){

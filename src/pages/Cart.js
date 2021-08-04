@@ -9,7 +9,7 @@ export default function Cart() {
     let context = useContext(UserContext);
 
     const [cartItems, setCartItems] = useState([])
-    const [ deleteState, setDeleteState ] = useState(false)
+    // const [ deleteState, setDeleteState ] = useState(false)
 
     useEffect(() => {
         fetchCartItems()
@@ -134,7 +134,7 @@ export default function Cart() {
                         </div>
                         <div id="cartItemInfo">
                             <h2>{item.gameListing.name}</h2>
-                            <h3 id="cartItemPrice">SGD{item.unit_price/100}.00</h3> 
+                            <h3 id="cartItemPrice">${item.unit_price/100}.00</h3> 
 
                             Quantity:
                             <button className="addSubtractBtn" onClick={()=>{
@@ -149,7 +149,7 @@ export default function Cart() {
                             }}>x
                             </button>
 
-                            <h4 id="cartSubtotal">Subtotal: SGD{item.unit_price/100 * item.quantity}.00</h4>
+                            <h4 id="cartSubtotal">Subtotal: ${item.unit_price/100 * item.quantity}.00</h4>
                             {calculateGrandTotal(item.unit_price/100 * item.quantity)}
                         </div>
                         
