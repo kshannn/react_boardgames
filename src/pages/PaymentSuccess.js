@@ -51,7 +51,7 @@ export default function PaymentSuccess() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Order Item Id</th>
+                            <th>Id</th>
                             <th>Game</th>
                             <th>Unit Price</th>
                             <th>Quantity</th>

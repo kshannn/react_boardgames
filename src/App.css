@@ -712,10 +712,12 @@ div #orderItemDetailsSection {
 #paymentSuccessPage .table  > thead > tr > th {
  font-size: 1.2rem; 
  font-weight: 700;
+ /* padding: 0; */
 }
 
 #paymentSuccessPage .table  > tbody > tr > td {
   font-size: 1.2rem; 
+  /* padding: 0; */
  }
  
 
@@ -774,6 +776,25 @@ div #orderItemDetailsSection {
     font-size: 1.2rem;
     font-weight: 600;
   }
+
+/* ==================== payment success page ==================== */
+
+#paymentSuccessPage .table  > thead > tr > th {
+ font-size: 0.8rem; 
+ font-weight: 600;
+}
+
+#paymentSuccessPage .table  > tbody > tr > td {
+  font-size: 0.8rem; 
+ }
+
+ #grandTotalContainer p {
+   font-size: 1.5rem;
+ }
+
+ #paymentSuccessPage {
+   padding: 5px;
+ }
 
  
 
