@@ -97,12 +97,38 @@ function App() {
     <UserContext.Provider value={context}>
       <Router>
 
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg navbar-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
               <div id="logoContainer"></div>
             </a>
-            
+            <div className="ms-auto userIconContainer">
+            {userInfo?
+                  <div className="nav-item dropdown">
+                    <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div id="userIcon">
+                        <i className="fas fa-user-circle"></i> {name || userInfo.username}
+                      </div>
+                    </a>
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><Link to='/profile' className="dropdown-item">View profile</Link></li>
+                      <li><Link to='/register' className="dropdown-item">Create an account</Link></li>
+                    </ul>
+                  </div>:
+                  <div id="guestIcon">
+                    <i className="fas fa-user-circle"></i>Guest
+                  </div> }
+
+                  <div className="ms-auto cartIconContainer">
+                    <div className="nav-item position-relative" id="cartIcon">
+                        {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
+                          <span class="visually-hidden">New alerts</span>
+                        </span>:null }
+                  </div>
+                      
+                      <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
+                  </div>
+            </div>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -116,28 +142,8 @@ function App() {
                 </li>
               </ul>
 
-                {userInfo?
-                  <div className="nav-item dropdown">
-                  <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div id="userIcon">
-                      <i className="fas fa-user-circle"></i> {name || userInfo.username}
-                    </div>
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><Link to='/profile' className="dropdown-item">View profile</Link></li>
-                    <li><Link to='/register' className="dropdown-item">Create an account</Link></li>
-                  </ul>
-                </div>:
-                <div id="guestIcon">
-                  <i className="fas fa-user-circle"></i>Guest
-                </div> }
-                <div className="nav-item position-relative" id="cartIcon">
-                  {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                  </span>:null }
+               
                   
-                  <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
-                </div>
                 
                 <div className="nav-item">
                   {userInfo ? <a className="navFunc logInOut" onClick={logout}>Logout</a>:<Link to='/login' className="navFunc logInOut">Login</Link>}

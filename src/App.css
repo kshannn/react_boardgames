@@ -39,6 +39,17 @@ font-family: 'Noto Serif JP', serif; */
   margin-right: 20px;
 }
 
+.userIconContainer {
+  position: absolute;
+  right: 123px;
+  top: 16px;
+}
+.cartIconContainer {
+  position: absolute;
+  top: 0;
+  right: -27px;
+}
+
 .fa-user-circle {
   margin-right: 5px;
 }
@@ -70,6 +81,9 @@ font-family: 'Noto Serif JP', serif; */
   background-repeat:no-repeat;
 }
 
+#navbarDropdown {
+  padding:0;
+}
 
 /* ==================== Home Page ==================== */
 #mainSection{
@@ -784,6 +798,17 @@ div #orderItemDetailsSection {
 
 
 /* ========= FOR SMALLER DEVICES ========= */
+@media screen and (max-width: 992px){
+  /* === Home Page === */
+  .userIconContainer {
+      position: absolute;
+      right: 114px;
+      top: 16px;
+  }
+}
+
+
+
 @media screen and (max-width: 768px){
   /* === Home Page === */
   #mainSection {
