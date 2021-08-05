@@ -10,7 +10,7 @@ font-family: 'Noto Serif JP', serif; */
   /* font-family: 'Cormorant Garamond', serif; */
   font-family: 'Noto Serif JP', serif;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1rem;
   box-sizing: border-box;
 }
 
@@ -190,6 +190,7 @@ align-items: center;
   width: 100%;
   padding-top: 15px;
   text-align: center;
+  color: white;
 }
 
 /* ==================== Listing Details Page ==================== */
@@ -270,7 +271,7 @@ align-items: center;
   margin: 50px 25px 0px 25px;
   width: 100%;
   background-color: white;
-  height: 600px;
+  min-height: 600px;
   height: fit-content;
   padding: 30px;
   border-radius: 15px;
@@ -393,6 +394,7 @@ align-items: center;
 #cartPage h1 {
   font-weight: 700;
   padding-top: 20px;
+  color: white;
 }
 
 #cartItemContainer {
@@ -429,7 +431,6 @@ align-items: center;
 }
 
 #cartItemPrice {
-  color: rgb(255, 145, 0);
   font-size: 1.3rem;
 }
 
@@ -449,9 +450,11 @@ align-items: center;
 
 .addSubtractBtn {
   border: none;
-  background-color:lightgrey;
+  background-color:rgb(226, 226, 226);
   width:20px;
   margin: 5px;
+  line-height: 1.3;
+  border-radius: 24px;
 }
 
 .addSubtractBtn:hover {
@@ -461,8 +464,8 @@ align-items: center;
 #checkoutBtn {
   background-color: orange;
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 40px;
+  right: 1%;
   font-weight: 600;
 }
 
@@ -473,7 +476,6 @@ align-items: center;
 #checkoutContainer {
   width: 65%;
   height: 100px;
-  /* background-color: blue; */
   position: relative;
 }
 
@@ -486,9 +488,10 @@ align-items: center;
 #grandTotal {
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 1%;
   font-size: 2rem;
   font-weight: 800;
+  color: white;
 }
 
 #addedMsg {
@@ -590,6 +593,7 @@ align-items: center;
   text-align: center;
   padding-top: 10px;
   font-weight: 700;
+  color: white;
 }
 
 #orderContainer {
@@ -605,7 +609,7 @@ align-items: center;
 #orderInfoContainer {
   height: 40px;
   width: 100%;
-  background-color: #b7c3a4;
+  background-color: #c3b2a4;
   position: relative;
   border-radius: 3px 3px 0px 0px;
 }
@@ -684,6 +688,7 @@ div #orderItemDetailsSection {
   position: absolute;
   top: 5px;
   right: 20px;
+  font-weight: 800;
 }
 
 #orderSubtotal {
@@ -695,6 +700,10 @@ div #orderItemDetailsSection {
 #accordionFlush {
   width: 95%;
   margin: 0 auto;
+}
+
+.accordion-body h4 {
+  margin-bottom: 1rem;
 }
 
 #flush-heading > button {
@@ -755,6 +764,11 @@ div #orderItemDetailsSection {
  }
  
 
+/* === Misc === */
+.whiteFont {
+  color: white
+}
+
 
 /* ========= FOR SMALLER DEVICES ========= */
 @media screen and (max-width: 768px){
@@ -801,6 +815,10 @@ div #orderItemDetailsSection {
     height: 200px;
   }
 
+  #checkoutContainer {
+    min-width: 300px;
+  }
+
   #cartItemInfo {
     min-width: 200px;
     padding: 20px 30px;
@@ -811,24 +829,40 @@ div #orderItemDetailsSection {
     font-weight: 600;
   }
 
-/* ==================== payment success page ==================== */
+  #cartItemPrice {
+    font-size: 1rem;
+  }
 
-#paymentSuccessPage .table  > thead > tr > th {
- font-size: 0.8rem; 
- font-weight: 600;
-}
+  #cartItemQuantity {
+    font-size: 0.9rem;
+  }
 
-#paymentSuccessPage .table  > tbody > tr > td {
+  #cartSubtotal {
+    font-size: 1.2rem;
+  }
+
+  #grandTotal {
+    font-size: 1.3rem;
+  }
+
+  /* === payment success page === */
+
+  #paymentSuccessPage .table  > thead > tr > th {
   font-size: 0.8rem; 
- }
+  font-weight: 600;
+  }
 
- #grandTotalContainer p {
-   font-size: 1.5rem;
- }
+  #paymentSuccessPage .table  > tbody > tr > td {
+    font-size: 0.8rem; 
+  }
 
- #paymentSuccessPage {
-   padding: 5px;
- }
+  #grandTotalContainer p {
+    font-size: 1.5rem;
+  }
+
+  #paymentSuccessPage {
+    padding: 5px;
+  }
 
  
 

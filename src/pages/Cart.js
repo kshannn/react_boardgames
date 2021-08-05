@@ -136,7 +136,7 @@ export default function Cart() {
                             <h2>{item.gameListing.name}</h2>
                             <h3 id="cartItemPrice">${item.unit_price/100}.00</h3> 
 
-                            Quantity:
+                            <span id="cartItemQuantity">Quantity:</span>
                             <button className="addSubtractBtn" onClick={()=>{
                                 subtractOneFromCart(item.gameListing.id, context.userInfo().id);
                             }}>-</button>{item.quantity}<button className="addSubtractBtn" onClick={()=>{
@@ -177,7 +177,7 @@ export default function Cart() {
                 
                     {renderCartItems()}
 
-                    {!cartItems.length? <div>Cart is empty</div>: <div id="checkoutContainer">
+                    {!cartItems.length? <div className="whiteFont">Cart is empty</div>: <div id="checkoutContainer">
                         <h3 id="grandTotal">Grand Total: ${grandTotal}.00</h3>
                         <button id="checkoutBtn" className="btn my-4" onClick={async ()=>{
                         
@@ -195,7 +195,7 @@ export default function Cart() {
                     
                    
         
-                </div></React.Fragment>: <div>Please sign in to view this page.</div> }
+                </div></React.Fragment>: <div className="whiteFont">Please sign in to view this page.</div> }
 
         
            
