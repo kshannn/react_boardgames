@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
 
+/* font-family: 'Cormorant Garamond', serif;
+font-family: 'Noto Serif JP', serif; */
 
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Cormorant Garamond', serif; */
+  font-family: 'Noto Serif JP', serif;
   font-weight: 600;
   font-size: 1.05rem;
   box-sizing: border-box;
@@ -14,8 +18,8 @@
 .navbar {
   background-color: #2f211b;
   /* background-image: url('./images/woodbgnav.png'); */
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 #guestIcon, #userIcon, #cartIcon {
@@ -64,7 +68,6 @@
   background-position: center;
   background-size: cover;
   background-repeat:no-repeat;
-
 }
 
 
@@ -91,7 +94,7 @@
   padding: 10px;
   background: #4a3333dc;
   border-radius: 10px;
-  margin-top: 15px;
+  margin-top: 55px;
 }
 
 #searchForm > .form-label {
@@ -162,6 +165,31 @@ align-items: center;
 
 .alert {
   margin-bottom: 0rem;
+}
+
+#resetBtn {
+  background-color: orange;
+  margin-bottom: 10px;
+}
+
+#resetBtn:hover {
+  background-color: rgb(255, 145, 0);
+  margin-bottom: 10px;
+}
+
+#searchBtn {
+  margin: 15px 0px 10px 0px;
+}
+
+#searchForm .btn {
+  width: 100%;
+}
+
+#resultsNum {
+  padding-top: 10px;
+  width: 100%;
+  padding-top: 15px;
+  text-align: center;
 }
 
 /* ==================== Listing Details Page ==================== */
@@ -243,6 +271,7 @@ align-items: center;
   width: 100%;
   background-color: white;
   height: 600px;
+  height: fit-content;
   padding: 30px;
   border-radius: 15px;
 }
@@ -460,6 +489,11 @@ align-items: center;
   right: 20px;
   font-size: 2rem;
   font-weight: 800;
+}
+
+#addedMsg {
+  color: green;
+  font-size: 0.7rem;
 }
 
 /* ==================== profile page ==================== */

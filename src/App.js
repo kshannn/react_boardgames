@@ -34,8 +34,9 @@ function App() {
   // console.log(decoded)
 
   // set accesstoken in state
-  const [userInfo, setUserInfo] = useState(decoded)
+  const [ userInfo, setUserInfo ]  = useState(decoded)
   const [ name, setName ] = useState("")
+  const [ cartEmpty, setCartEmpty ] = useState(true)
 
 
 
@@ -54,6 +55,21 @@ function App() {
           }
       })
       setName(userInfo.data.username)
+    },
+    setCartEmpty: async (user) => {
+      // if(!user){
+      //   window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+      // }
+      let response = await axios.get(config.API_URL + '/cart/' + user.id, {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+        }
+      })
+
+      if (response.data.length){
+        console.log(1)
+        setCartEmpty(false)
+      }
     },
     logoutRedirect: () => {
       // clear localStorage
@@ -115,7 +131,11 @@ function App() {
                 <div id="guestIcon">
                   <i className="fas fa-user-circle"></i>Guest
                 </div> }
-                <div className="nav-item" id="cartIcon">
+                <div className="nav-item position-relative" id="cartIcon">
+                  {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>:null }
+                  
                   <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
                 </div>
                 

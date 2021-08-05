@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config'
 import MultiSelect from "react-multi-select-component";
+import UserContext from './UserContext';
 
 
 
 
 export default function Home() {
 
+    const context = useContext(UserContext)
     const history = useHistory()
     
     const [ listingState, setListingState ] = useState([])
@@ -24,6 +26,7 @@ export default function Home() {
     // 1. call function to fetch listings after component mount
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
+        context.setCartEmpty(context.userInfo())
         fetchListings()
       }, [])
 
@@ -127,12 +130,15 @@ export default function Home() {
                             onChange={setSelected}
                             labelledBy="Select"
                         />
-                        <button className="btn btn-primary my-3" onClick={search}>Search</button>
+                        <button id="searchBtn" className="btn btn-primary" onClick={search}>Search</button>
+                        <a href="/" id="resetBtn" className="btn">Reset</a>
+                        
                     </div>
                 </section>
 
                  {/* ############### Game Listings ############### */}
                  <section id="displaySection">
+                     <div id="resultsNum">Displaying {listingState.length} result(s)</div>
                      <div className="row">
                         {renderListings()}
                     </div>

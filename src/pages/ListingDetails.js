@@ -9,6 +9,7 @@ export default function ListingDetails() {
 
     let context = useContext(UserContext)
     const [ activeListing, setActiveListing ] = useState({})
+    const [ addedMsg, setAddedMsg ] = useState("")
 
     let { listingId } = useParams();
 
@@ -37,7 +38,10 @@ export default function ListingDetails() {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
-            })       
+            })
+            
+            // context.setCartEmpty(context.userInfo())
+            setAddedMsg("Item added to cart!")
         
          
         } catch (err){
@@ -93,6 +97,7 @@ export default function ListingDetails() {
                         <button id="addToCartBtn" className="btn" onClick={() => {
                             addToCart(activeListing.id, activeListing.price)
                         }}>Add to Cart</button>
+                        <div id="addedMsg">{addedMsg}</div>
                     </div>
                 </section>
             </div>
