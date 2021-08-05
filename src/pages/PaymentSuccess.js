@@ -45,9 +45,13 @@ export default function PaymentSuccess() {
    
     return (
         <React.Fragment>
+            <div className="alert alert-success" role="alert">
+                Payment was made successfully!
+            </div>
             <div id="paymentSuccessPage">
-                <h1>Payment Successful!</h1>
-                <h2>Your Latest Transaction(s)</h2>
+                <div id="transactionTable">
+                <h2>Your Latest Transaction</h2>
+                </div>
                 <table className="table">
                     <thead>
                         <tr>

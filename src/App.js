@@ -87,7 +87,7 @@ function App() {
     localStorage.removeItem('decodedAccessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
-    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login')
+    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?loggedout=true')
   }
 
 

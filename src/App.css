@@ -733,6 +733,12 @@ div #orderItemDetailsSection {
   padding: 50px;
 }
 
+#paymentSuccessPage h2 {
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
 #paymentSuccessPage .table {
   background-color: white;
   border-radius: 3px;
@@ -750,6 +756,7 @@ div #orderItemDetailsSection {
   right: 20px;
   font-size: 2rem;
   font-weight: 700;
+  color: white;
 }
 
 #paymentSuccessPage .table  > thead > tr > th {
@@ -763,6 +770,12 @@ div #orderItemDetailsSection {
   /* padding: 0; */
  }
  
+ #transactionTable {
+  background: #442727;
+  height: 50px;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px;
+ }
 
 /* === Misc === */
 .whiteFont {
@@ -857,13 +870,22 @@ div #orderItemDetailsSection {
   }
 
   #grandTotalContainer p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   #paymentSuccessPage {
     padding: 5px;
   }
 
+  #paymentSuccessPage h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  #transactionTable {
+    margin-top: 20px;
+    height: 45px;
+  }
  
 
 }

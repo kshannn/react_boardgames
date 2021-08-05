@@ -105,6 +105,15 @@ export default function Login() {
                     </div>
                 </React.Fragment>
            )
+        } else if (window.location.href.includes('loggedout=true')){
+               return(
+                <React.Fragment>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        You have logged out successfully. See you!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </React.Fragment>
+                ) 
         } else {
             return null
         }
