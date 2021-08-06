@@ -52,15 +52,15 @@ export default function OrderHistory() {
                             <div className="accordion-item">
                                 <h2 className="accordion-header" id="flush-heading">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#flush-collapse-" + order.id}  aria-expanded="false" aria-controls={"flush-collapse-" + order.id} >
-                                    Delivery Details
+                                    See delivery details
                                 </button>
                                 </h2>
                                 <div id={"flush-collapse-" + order.id} className="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlush">
                                 <div className="accordion-body">
-                                    <h4>Recipient's details</h4>
+                                    <h4>Recipient's Information</h4>
                                     <p>Name: {order.user.username}</p>
                                     <p>Phone No.: {order.user.phone_number}</p>
-                                    <p>Shipping Address: {order.user.address}</p>
+                                    <p>Shipping Address: {order.user_address}</p>
                                 </div>
                                 </div>
                             </div>
