@@ -18,6 +18,9 @@ export default function ListingDetails() {
         fetchListing()
     },[])
 
+
+    
+
     let fetchListing = async () => {
         let response = await axios.get(config.API_URL + '/listings/' + listingId)
         setActiveListing(response.data)
@@ -30,8 +33,7 @@ export default function ListingDetails() {
         }
         
         try {
-
-            await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
+            let response = await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
                 'user_id': context.userInfo().id,
                 'unit_price': unit_price
             }, {
@@ -40,8 +42,10 @@ export default function ListingDetails() {
                 }
             })
             
-            // context.setCartEmpty(context.userInfo())
+            
+            context.setCartEmpty(context.userInfo())
             setAddedMsg("Item added to cart!")
+
         
          
         } catch (err){

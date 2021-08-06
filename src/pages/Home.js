@@ -26,8 +26,8 @@ export default function Home() {
     // 1. call function to fetch listings after component mount
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
-        context.setCartEmpty(context.userInfo())
         fetchListings()
+        context.setCartEmpty(context.userInfo())
       }, [])
 
 

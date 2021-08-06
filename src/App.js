@@ -1,5 +1,5 @@
 // import react and useState
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // import react router dom
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
@@ -67,8 +67,9 @@ function App() {
       })
 
       if (response.data.length){
-        console.log(1)
         setCartEmpty(false)
+      } else {
+        setCartEmpty(true)
       }
     },
     logoutRedirect: () => {
@@ -120,11 +121,12 @@ function App() {
                   </div> }
 
                   <div className="ms-auto cartIconContainer">
-                    <div className="nav-item position-relative" id="cartIcon">
-                        {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
+                  {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
                           <span class="visually-hidden">New alerts</span>
                         </span>:null }
-                  </div>
+                    <div className="nav-item" id="cartIcon">
+                       
+                    </div>
                       
                       <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
                   </div>

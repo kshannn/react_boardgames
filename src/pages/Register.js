@@ -73,7 +73,7 @@ export default function Register() {
             history.push('/login')
 
         } catch (e) {
-            if (e.response.status == 400){
+            if (e.response.status === 400){
                 errMsg['emailTakenErr'] = "Email taken. Please choose another email."
                 setErrorState(errMsg);
             }
@@ -100,25 +100,25 @@ export default function Register() {
                         
                             <label className="form-label">Name </label>
                             <input type='text' className="form-control" name='username' placeholder="e.g. Claire" onChange={updateFormField} value={formState.username} />
-                            {formState.username == ""? <div className="invalidMessage">{errorState.nameErr}</div> : null}
+                            {formState.username === ""? <div className="invalidMessage">{errorState.nameErr}</div> : null}
                         
                             <label className="form-label">Email </label>
                             <input type='email' className="form-control" name='email' placeholder="e.g. claire@gmail.com" onChange={updateFormField} value={formState.email} />
-                            {formState.email == ""? <div className="invalidMessage">{errorState.emailErr}</div> : null}
+                            {formState.email === ""? <div className="invalidMessage">{errorState.emailErr}</div> : null}
                             {<div className="invalidMessage">{errorState.emailTakenErr}</div>}
 
                         
                             <label className="form-label">Password </label>
                             <input type='password' className="form-control" name='password' placeholder="**********" onChange={updateFormField} value={formState.password}/>
-                            {formState.password == ""? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
+                            {formState.password === ""? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
                         
                             <label className="form-label">Shipping Address </label>
                             <input type='text' className="form-control" name='address'  placeholder="e.g. Blk 204C Punggol Field, #02-345, Singapore 823204" onChange={updateFormField} value={formState.address}/>
-                            {formState.address == ""? <div className="invalidMessage">{errorState.addressErr}</div> : null}
+                            {formState.address === ""? <div className="invalidMessage">{errorState.addressErr}</div> : null}
                         
                             <label className="form-label">Phone Number </label>
                             <input type='text' className="form-control" name='phone_number' placeholder="e.g. 98765432" onChange={updateFormField} value={formState.phone_number}/>
-                            {formState.phone_number == ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
+                            {formState.phone_number === ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
 
                         <button id="registerBtn" className="btn my-3" onClick={register}>Register</button>
                     </div>

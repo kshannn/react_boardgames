@@ -26,8 +26,13 @@ export default function Cart() {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
             })
+
             // re-render page to reflect updated changes
             fetchCartItems();
+
+            context.setCartEmpty(context.userInfo())
+            
+
         } catch (err){
             console.log(err);
             if(err.toString().includes(403)){

@@ -111,11 +111,11 @@ export default function ProfileUpdate() {
             
                     <label className="form-label">Address</label>
                     <input type="text" className="form-control" name="address" value={formState.address} onChange={updateForm}/>
-                    {formState.address == ""? <div className="invalidMessage">{errorState.addressErr}</div> : null}
+                    {formState.address === ""? <div className="invalidMessage">{errorState.addressErr}</div> : null}
                 
                     <label className="form-label">Phone No.</label>
                     <input type="text" className="form-control" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
-                    {formState.phone_number == ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
+                    {formState.phone_number === ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
                  
                     <button className="btn btn-success my-4" onClick={updateProfile}>Save changes</button>
                     <a className="btn btn-secondary ms-2" href="/profile">Cancel</a>

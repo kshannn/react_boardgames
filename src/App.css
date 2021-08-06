@@ -164,7 +164,7 @@ align-items: center;
 }
 
 #listingName {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 10px;
 }
 
@@ -510,6 +510,7 @@ align-items: center;
 
 #addedMsg {
   color: green;
+  margin-top: 7px;
   font-size: 0.7rem;
 }
 
@@ -597,7 +598,7 @@ align-items: center;
 
 /* === order history === */
 #orderHistoryPage {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   padding-bottom: 50px;
   background-image: url('./images/woodbg.jpg');
@@ -793,7 +794,11 @@ div #orderItemDetailsSection {
 
 /* === Misc === */
 .whiteFont {
-  color: white
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 100px;
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from "../config";
@@ -22,6 +22,13 @@ export default function Login() {
 
 
     const login = async () => {
+        // if user is logged in and tries to log in with another acct, log out first acct
+        // clear localStorage
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('decodedAccessToken')
+        localStorage.removeItem('userInfo')
+
+
         // frontend validation
         let isError = false;
         let errMsg = {};
@@ -79,7 +86,7 @@ export default function Login() {
             } 
         } catch (e) {
             console.log(e.response)
-            if (e.response.status == 401){
+            if (e.response.status === 401){
                 errMsg['authErr'] = "Error in authentication details. Please try again."
                 setErrorState(errMsg)
             }
@@ -134,11 +141,11 @@ export default function Login() {
                             
                             <label className="form-label my-2">Email</label>
                             <input type='email' className="form-control" name='email' placeholder="e.g. claire@gmail.com" onChange={updateFormField} value={formState.email} />
-                            {formState.email == ""? <div className="invalidMessage">{errorState.emailErr}</div> : null}
+                            {formState.email === ""? <div className="invalidMessage">{errorState.emailErr}</div> : null}
 
                             <label className="form-label my-2">Password</label>
                             <input type='password' className="form-control" name='password' placeholder="**********" onChange={updateFormField} value={formState.password}/>
-                            {formState.password == ""? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
+                            {formState.password === ""? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
 
                             <button id="loginBtn" className="btn my-4" onClick={login}>LOGIN</button>
 
