@@ -8,6 +8,7 @@ export default function OrderHistory() {
 
     const [orderState, setOrderState] = useState([])
     let context = useContext(UserContext)
+    
 
     useEffect(() => {
         fetchOrderDetails();
@@ -24,6 +25,8 @@ export default function OrderHistory() {
                 }
             })
 
+            console.log(response.data)
+
             setOrderState(response.data.reverse())
         } catch (err){
             console.log(err);
@@ -34,6 +37,31 @@ export default function OrderHistory() {
     }
 
    
+    // render each unique seller's information 
+    
+    let renderSeller = (order) => {
+        let sellers = []
+
+        let jsx = order.orderItem.map((eachItem)=> {
+
+            // if not in the array, add into array and render list
+            if (!sellers.includes(eachItem.gameListing.vendor.id)){
+                sellers.push(eachItem.gameListing.vendor.id)
+            
+                return (
+                    <React.Fragment>
+                        <div id="eachSeller">
+                            <p>Seller's name: {eachItem.gameListing.vendor.username}</p>
+                            <p>Seller's contact no: {eachItem.gameListing.vendor.phone_number}</p>
+                            <p>Shipping from: {eachItem.gameListing.vendor.address}</p>
+                        </div>
+                    </React.Fragment>
+                )
+            } 
+             // if in array skip
+        })
+        return jsx
+    }
 
     let renderOrders = () => {
         let orderjsx = orderState.map((order) => {
@@ -61,6 +89,26 @@ export default function OrderHistory() {
                                     <p>Name: {order.user.username}</p>
                                     <p>Phone No.: {order.user.phone_number}</p>
                                     <p>Shipping Address: {order.user_address}</p>
+
+                                    <h4>Seller's Information</h4>
+                                    {renderSeller(order)}
+                                    {/* {order.orderItem.map((eachItem)=> {
+
+                                        // if not in the array, add into array and render list
+                                        
+                                        
+                                        return (
+                                            <React.Fragment>
+                                                <div id="eachSeller">
+                                                    <p>Seller's name: {eachItem.gameListing.vendor.username}</p>
+                                                    <p>Seller's contact no: {eachItem.gameListing.vendor.phone_number}</p>
+                                                    <p>Shipping from: {eachItem.gameListing.vendor.address}</p>
+                                                </div>
+                                            </React.Fragment>
+                                        )
+
+                                         // if in array skip
+                                    })} */}
                                 </div>
                                 </div>
                             </div>
@@ -80,6 +128,7 @@ export default function OrderHistory() {
                                                     <h2>{eachItem.gameListing.name}</h2>
                                                     <p>${eachItem.unit_price/100}.00</p>
                                                     <p id="quantity">Quantity: {eachItem.quantity}</p>
+                                                    <p>Seller: {eachItem.gameListing.vendor.username}</p>
                                                 </div>
                                                 <div id="orderSubtotalSection">
                                                     <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>
