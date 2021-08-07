@@ -8,7 +8,6 @@ export default function OrderHistory() {
 
     const [orderState, setOrderState] = useState([])
     let context = useContext(UserContext)
-    
 
     useEffect(() => {
         fetchOrderDetails();
@@ -16,7 +15,7 @@ export default function OrderHistory() {
 
     let fetchOrderDetails = async () => {
         if(!context.userInfo()){
-            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         try {
             let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history",{
@@ -24,8 +23,6 @@ export default function OrderHistory() {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
             })
-
-            console.log(response.data)
 
             setOrderState(response.data.reverse())
         } catch (err){
@@ -37,31 +34,6 @@ export default function OrderHistory() {
     }
 
    
-    // render each unique seller's information 
-    
-    let renderSeller = (order) => {
-        let sellers = []
-
-        let jsx = order.orderItem.map((eachItem)=> {
-
-            // if not in the array, add into array and render list
-            if (!sellers.includes(eachItem.gameListing.vendor.id)){
-                sellers.push(eachItem.gameListing.vendor.id)
-            
-                return (
-                    <React.Fragment>
-                        <div id="eachSeller">
-                            <p>Seller's name: {eachItem.gameListing.vendor.username}</p>
-                            <p>Seller's contact no: {eachItem.gameListing.vendor.phone_number}</p>
-                            <p>Shipping from: {eachItem.gameListing.vendor.address}</p>
-                        </div>
-                    </React.Fragment>
-                )
-            } 
-             // if in array skip
-        })
-        return jsx
-    }
 
     let renderOrders = () => {
         let orderjsx = orderState.map((order) => {
@@ -80,35 +52,15 @@ export default function OrderHistory() {
                             <div className="accordion-item">
                                 <h2 className="accordion-header" id="flush-heading">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#flush-collapse-" + order.id}  aria-expanded="false" aria-controls={"flush-collapse-" + order.id} >
-                                    See delivery details
+                                    Delivery Details
                                 </button>
                                 </h2>
                                 <div id={"flush-collapse-" + order.id} className="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlush">
                                 <div className="accordion-body">
-                                    <h4>Recipient's Information</h4>
+                                    <h4>Recipient's details</h4>
                                     <p>Name: {order.user.username}</p>
-                                    <p>Phone No.: {order.user.phone_number}</p>
-                                    <p>Shipping Address: {order.user_address}</p>
-
-                                    <h4>Seller's Information</h4>
-                                    {renderSeller(order)}
-                                    {/* {order.orderItem.map((eachItem)=> {
-
-                                        // if not in the array, add into array and render list
-                                        
-                                        
-                                        return (
-                                            <React.Fragment>
-                                                <div id="eachSeller">
-                                                    <p>Seller's name: {eachItem.gameListing.vendor.username}</p>
-                                                    <p>Seller's contact no: {eachItem.gameListing.vendor.phone_number}</p>
-                                                    <p>Shipping from: {eachItem.gameListing.vendor.address}</p>
-                                                </div>
-                                            </React.Fragment>
-                                        )
-
-                                         // if in array skip
-                                    })} */}
+                                    <p>Phone No.:{order.user.phone_number}</p>
+                                    <p>Shipping Address:{order.user.address}</p>
                                 </div>
                                 </div>
                             </div>
@@ -128,9 +80,8 @@ export default function OrderHistory() {
                                                     <h2>{eachItem.gameListing.name}</h2>
                                                     <p>${eachItem.unit_price/100}.00</p>
                                                     <p id="quantity">Quantity: {eachItem.quantity}</p>
-                                                    <p>Seller: {eachItem.gameListing.vendor.username}</p>
                                                 </div>
-                                                <div id="orderSubtotalSection">
+                                                <div id="orderSubtotalContainer">
                                                     <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>
                                                 </div>
                                             </section>    
@@ -158,8 +109,8 @@ export default function OrderHistory() {
                 {localStorage.getItem('accessToken')?<div>
                 <h1>Your Order History</h1>
             
-                {orderState.length? renderOrders(): <div className="whiteFont">Currently no orders made</div>}
-                
+            
+                {renderOrders()} 
                 
         
                 </div>: <div>Please sign in to view this page.</div> }

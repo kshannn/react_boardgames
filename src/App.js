@@ -24,6 +24,7 @@ import ProfileUpdate from './pages/ProfileUpdate';
 
 // import context
 import UserContext from './pages/UserContext'
+import ProductContext from './pages/ProductContext';
 
 
 
@@ -37,10 +38,42 @@ function App() {
   const [ userInfo, setUserInfo ]  = useState(decoded)
   const [ name, setName ] = useState("")
   const [ cartEmpty, setCartEmpty ] = useState(true)
+  const [ haveStock, setHaveStock ] = useState(true)
+
+
+  // product context object
+  const productContext = {
+    setCartEmpty: async (user) => {
+      if(!user){
+        window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+      }
+      let response = await axios.get(config.API_URL + '/cart/' + user.id, {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+        }
+      })
+
+      if (response.data.length){
+        setCartEmpty(false)
+      } else {
+        setCartEmpty(true)
+      }
+    },
+    haveStock: async (listingId) =>{
+      let gameListing = await axios.get(config.API_URL + '/listings/' + listingId)
+      console.log(gameListing.data)
+
+      if (gameListing.data.stock <= 0){
+        setHaveStock(false)
+      } else {
+        setHaveStock(true)
+      }
+    }
+  }
 
 
 
-  // context object
+  // user context object
   const context = {
     userInfo: () => {
       return userInfo
@@ -56,29 +89,13 @@ function App() {
       })
       setName(userInfo.data.username)
     },
-    setCartEmpty: async (user) => {
-      // if(!user){
-      //   window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
-      // }
-      let response = await axios.get(config.API_URL + '/cart/' + user.id, {
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('accessToken')
-        }
-      })
-
-      if (response.data.length){
-        setCartEmpty(false)
-      } else {
-        setCartEmpty(true)
-      }
-    },
     logoutRedirect: () => {
       // clear localStorage
       localStorage.removeItem('accessToken')
       localStorage.removeItem('decodedAccessToken')
       localStorage.removeItem('userInfo')
       // redirect user to login
-      window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+      window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
     }
   }
 
@@ -88,7 +105,7 @@ function App() {
     localStorage.removeItem('decodedAccessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
-    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?loggedout=true')
+    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?loggedout=true')
   }
 
 
@@ -156,9 +173,13 @@ function App() {
 
 
         <Switch>
+          
           <Route exact path='/'>
-            <Home />
+            <ProductContext.Provider value={productContext}>
+              <Home />
+            </ProductContext.Provider>
           </Route>
+          
           <Route exact path='/login'>
             <Login />
           </Route>
@@ -168,12 +189,20 @@ function App() {
           <Route exact path='/profile'>
             <Profile />
           </Route>
+          
           <Route exact path='/cart'>
-            <Cart />
+            <ProductContext.Provider value={productContext}>
+              <Cart />
+            </ProductContext.Provider>
           </Route>
+          
+          
           <Route path='/listing/:listingId'>
-            <ListingDetails />
+            <ProductContext.Provider value={productContext}>
+              <ListingDetails />
+            </ProductContext.Provider>
           </Route>
+          
           <Route exact path='/checkout/success'>
             <PaymentSuccess />
           </Route>

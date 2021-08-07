@@ -4,9 +4,11 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import UserContext from './UserContext'
 import Moment from 'moment'
+import ProductContext from './ProductContext'
 
 export default function ListingDetails() {
 
+    let productContext = useContext(ProductContext)
     let context = useContext(UserContext)
     const [ activeListing, setActiveListing ] = useState({})
     const [ addedMsg, setAddedMsg ] = useState("")
@@ -16,6 +18,7 @@ export default function ListingDetails() {
 
     useEffect(()=>{
         fetchListing()
+        productContext.haveStock(listingId)
     },[])
 
 
@@ -29,7 +32,7 @@ export default function ListingDetails() {
     // add item to cart on click
     let addToCart = async (gameId,unit_price) => {
         if(!context.userInfo()){
-            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         
         try {
@@ -43,7 +46,7 @@ export default function ListingDetails() {
             })
             
             
-            context.setCartEmpty(context.userInfo())
+            productContext.setCartEmpty(context.userInfo())
             setAddedMsg("Item added to cart!")
 
         
@@ -89,7 +92,13 @@ export default function ListingDetails() {
                         <h2>{activeListing.name}</h2>
                         <h3>${activeListing.price/100}</h3>
                         <p>{activeListing.description}</p>
-                        <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p>
+
+                        {activeListing.max_player_count != 0?
+                         <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p>:
+                         <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} +</p>}
+                       
+
+
                         <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
                         <p><i class="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
                         <p><i class="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>

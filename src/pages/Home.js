@@ -4,12 +4,14 @@ import axios from 'axios'
 import config from '../config'
 import MultiSelect from "react-multi-select-component";
 import UserContext from './UserContext';
+import ProductContext from './ProductContext';
 
 
 
 
 export default function Home() {
 
+    const productContext = useContext(ProductContext)
     const context = useContext(UserContext)
     const history = useHistory()
     
@@ -27,7 +29,7 @@ export default function Home() {
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
         fetchListings()
-        context.setCartEmpty(context.userInfo())
+        productContext.setCartEmpty(context.userInfo())
       }, [])
 
 

@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
 import config from '../config'
+import ProductContext from './ProductContext'
 import UserContext from './UserContext'
 
 
 export default function Cart() {
 
+    let  productContext = useContext(ProductContext)
     let context = useContext(UserContext);
 
     const [cartItems, setCartItems] = useState([])
@@ -30,7 +32,7 @@ export default function Cart() {
             // re-render page to reflect updated changes
             fetchCartItems();
 
-            context.setCartEmpty(context.userInfo())
+            productContext.setCartEmpty(context.userInfo())
             
 
         } catch (err){
@@ -46,7 +48,7 @@ export default function Cart() {
     let fetchCartItems = async () => {
         // if user not logged in, redirected to login page
         if(!context.userInfo()){
-            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us14.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         try {
             let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id, {
