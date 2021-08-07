@@ -58,17 +58,18 @@ function App() {
       } else {
         setCartEmpty(true)
       }
-    },
-    haveStock: async (listingId) =>{
-      let gameListing = await axios.get(config.API_URL + '/listings/' + listingId)
-      console.log(gameListing.data)
-
-      if (gameListing.data.stock <= 0){
-        setHaveStock(false)
-      } else {
-        setHaveStock(true)
-      }
     }
+    // ,
+    // haveStock: async (listingId) =>{
+    //   let gameListing = await axios.get(config.API_URL + '/listings/' + listingId)
+    //   console.log(gameListing.data)
+
+    //   if (gameListing.data.stock <= 0){
+    //     setHaveStock(false)
+    //   } else {
+    //     setHaveStock(true)
+    //   }
+    // }
   }
 
 

@@ -99,6 +99,22 @@ export default function Cart() {
     let subtractOneFromCart = async (gameId,userId) => {
 
         try {
+            
+            // get current cart item quantity for particular game
+            let currentCartItem = await axios.post(config.API_URL + "/cart/" + gameId, {
+                'user_id': userId
+            },{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            // console.log(currentCartItem.data)
+            if (currentCartItem.data.quantity <= 1 ){
+                return
+            }
+            // if quantity <1, don't allow the next axios call (provide error message)
+
+
             await axios.post(config.API_URL + "/cart/" + gameId + "/subtract", {
                 "user_id": userId
             },{
@@ -178,8 +194,12 @@ export default function Cart() {
                 {/* can only see the page if they have the access token (logged in)*/}
                 {localStorage.getItem('accessToken')?
                 <React.Fragment>
-                
+                {window.location.href.includes('stock=insufficient')? <div className="alert alert-danger" role="alert">
+                Insufficient stock. Please try again.
+                </div>: null}
+                 
                 <div id="cartPage">
+               
                 <h1>Your Cart</h1>
                 
                     {renderCartItems()}

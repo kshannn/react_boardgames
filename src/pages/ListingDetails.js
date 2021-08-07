@@ -13,12 +13,13 @@ export default function ListingDetails() {
     const [ activeListing, setActiveListing ] = useState({})
     const [ addedMsg, setAddedMsg ] = useState("")
 
+
     let { listingId } = useParams();
 
 
     useEffect(()=>{
         fetchListing()
-        productContext.haveStock(listingId)
+        // productContext.haveStock(listingId)
     },[])
 
 
@@ -105,12 +106,18 @@ export default function ListingDetails() {
                         <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
                         <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
                         <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
-                        {activeListing.stock >= 0? <p id="available">Stocks available!</p>: <p id="unavailable">Out of stock</p>}
+                        {activeListing.stock >= 0? 
+                        <React.Fragment>
+                            <p>Stocks left: {activeListing.stock}</p>
+                            <p id="available">Stocks available!</p>
+                            <button id="addToCartBtn" className="btn" onClick={() => {
+                                addToCart(activeListing.id, activeListing.price)
+                            }}>Add to Cart</button>
+                            <div id="addedMsg">{addedMsg}</div>
+                        </React.Fragment>
+                        : <p id="unavailable">Out of stock</p>}
                     
-                        <button id="addToCartBtn" className="btn" onClick={() => {
-                            addToCart(activeListing.id, activeListing.price)
-                        }}>Add to Cart</button>
-                        <div id="addedMsg">{addedMsg}</div>
+                        
                     </div>
                 </section>
             </div>
