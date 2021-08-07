@@ -29,7 +29,10 @@ export default function Home() {
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
         fetchListings()
-        productContext.setCartEmpty(context.userInfo())
+
+        if (context.userInfo()){
+            productContext.setCartEmpty(context.userInfo())
+        }
       }, [])
 
 

@@ -329,7 +329,7 @@ align-items: center;
 /* ==================== Login Page ====================  */
 #heroImage {
   width: 100%;
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   background-image: url('./images/boardgamesHero.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -337,35 +337,38 @@ align-items: center;
 }
 
 #loginPage {
-  height: 100%;
+  min-height: calc(100vh - 56px);
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
+  flex-wrap: wrap;
 }
 
 #loginExtraSection {
   flex: 2;
   color: white;
   font-size: 3rem;
-  padding-bottom: 61px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#loginFormSection {
-  flex: 1;
-  padding: 80px 50px;
 
+#loginFormSection {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #aboutUsContainer {
   height: 310px;
   min-width: 300px;
   width: 85%;
-  background-color: rgb(224 151 42 / 61%);
+  background-color: rgb(224 151 42 / 60%);
   padding: 30px;
   border-radius: 20px;
+  margin-top: 50px;
 }
 
 #aboutUsContainer h1 {
@@ -377,11 +380,12 @@ align-items: center;
 
 #loginContainer {
   height: 500px;
-  width: 100%;
+  width: 85%;
   min-width: 300px;
   padding: 50px 20px;
   background-color: white;
   border-radius: 5px;
+  margin: 20px 0px;
 }
 
 #loginBtn {
@@ -401,14 +405,7 @@ align-items: center;
   color: rgb(235, 135, 21);
 }
 
-#loginExtraSection {
-  color: white;
-  font-size: 3rem;
-  margin: 50px;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-}
+
 
 .invalidMessage {
   color: red;

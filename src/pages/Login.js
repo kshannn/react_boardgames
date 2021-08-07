@@ -134,7 +134,7 @@ export default function Login() {
                     <section id="loginExtraSection">
                         <div id="aboutUsContainer">
                             <h1>GameOn!</h1>
-                            <p>Have you gotten your GAME on? Not yet? Fret not! We've got you covered here on GameOn! where we have a large collection of your favourite boardgames to choose from! </p>
+                            <p>Haven't gotten your GAME on? Fret not! We've got you covered here on GameOn! where we have a large collection of boardgames for you to choose from! </p>
                         </div>
                     </section>
                     <section id="loginFormSection">
