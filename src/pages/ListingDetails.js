@@ -108,8 +108,7 @@ export default function ListingDetails() {
                         <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
                         {activeListing.stock >= 0? 
                         <React.Fragment>
-                            <p>Stocks left: {activeListing.stock}</p>
-                            <p id="available">Stocks available!</p>
+                            <p>Stocks left: {activeListing.stock}<span id="available">Stocks available!</span></p>
                             <button id="addToCartBtn" className="btn" onClick={() => {
                                 addToCart(activeListing.id, activeListing.price)
                             }}>Add to Cart</button>
