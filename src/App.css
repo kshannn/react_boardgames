@@ -345,6 +345,12 @@ align-items: center;
 
 #loginExtraSection {
   flex: 2;
+  color: white;
+  font-size: 3rem;
+  padding-bottom: 61px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #loginFormSection {
@@ -352,6 +358,22 @@ align-items: center;
   padding: 80px 50px;
 
 }
+
+#aboutUsContainer {
+  height: 310px;
+  min-width: 300px;
+  width: 85%;
+  background-color: rgb(224 151 42 / 61%);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+#aboutUsContainer h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+
 
 #loginContainer {
   height: 500px;
@@ -739,6 +761,10 @@ div #orderItemDetailsSection {
 
 .accordion-button:focus{
   box-shadow: none;
+}
+
+#eachSeller {
+  margin-bottom: 30px;
 }
 
 /* ==================== payment success page ==================== */

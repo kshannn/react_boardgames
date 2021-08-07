@@ -132,7 +132,10 @@ export default function Login() {
             <div id="heroImage">
                 <div id="loginPage">
                     <section id="loginExtraSection">
-                        Board Games Society
+                        <div id="aboutUsContainer">
+                            <h1>GameOn!</h1>
+                            <p>Have you gotten your GAME on? Not yet? Fret not! We've got you covered here on GameOn! where we have a large collection of your favourite boardgames to choose from! </p>
+                        </div>
                     </section>
                     <section id="loginFormSection">
                         <div id="loginContainer">

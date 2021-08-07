@@ -48,8 +48,8 @@ export default function OrderHistory() {
             return (
                 <React.Fragment>
                     <div id="eachSeller">
-                        <p>Seller's name: {eachItem.gameListing.vendor.username}</p>
-                        <p>Seller's contact no: {eachItem.gameListing.vendor.phone_number}</p>
+                        <p>Name: {eachItem.gameListing.vendor.username}</p>
+                        <p>Contact no: {eachItem.gameListing.vendor.phone_number}</p>
                         <p>Shipping from: {eachItem.gameListing.vendor.address}</p>
                     </div>
                 </React.Fragment>
@@ -86,7 +86,7 @@ export default function OrderHistory() {
                                 <div className="accordion-body">
                                     <h4>Recipient's Information</h4>
                                     <p>Name: {order.user.username}</p>
-                                    <p>Phone No.:{order.user.phone_number}</p>
+                                    <p>Contact no:{order.user.phone_number}</p>
                                     <p>Shipping Address:{order.user_address}</p>
 
                                     <h4>Seller's Information</h4>
