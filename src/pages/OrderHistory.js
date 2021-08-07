@@ -145,7 +145,7 @@ export default function OrderHistory() {
                 {renderOrders()} 
                 
         
-                </div>: <div>Please sign in to view this page.</div> }
+                </div>: <div className="whiteFont">Please sign in to view this page.</div> }
             </div>
 
         </React.Fragment>

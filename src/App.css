@@ -1,15 +1,19 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
 
 /* font-family: 'Cormorant Garamond', serif;
 font-family: 'Noto Serif JP', serif; */
+/* font-family: 'Noto Sans JP', sans-serif; */
 
 * {
   padding: 0;
   margin: 0;
   /* font-family: 'Cormorant Garamond', serif; */
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 600;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  /* font-family: 'Noto Serif JP', serif; */
+  /* font-weight: 600; */
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -147,7 +151,7 @@ align-items: center;
   height: calc(100% - 400px);
   width: 100%;
   background: rgba(48, 34, 27, 0.856);
-  padding: 5px 0px;
+  padding: 5px 5px;
   color: white;
   border-radius: 0px 0px 5px 5px;
 }
@@ -194,6 +198,12 @@ align-items: center;
 
 #searchBtn {
   margin: 15px 0px 10px 0px;
+  background: #ad4848;
+  color: white;
+}
+
+#searchBtn:hover {
+  background: #c24a4a;
 }
 
 #searchForm .btn {
@@ -249,6 +259,7 @@ align-items: center;
   display: flex;
   justify-content:center;
   align-items: center;
+  margin: 0px 10px;
 }
 
 #listingDetailsSection {
@@ -256,12 +267,13 @@ align-items: center;
   display: flex;
   justify-content:center;
   align-items: center;
+  margin: 0px 10px;
 }
 
 #individualListingImageContainer {
   min-width: 300px;
-  margin: 50px 25px 0px 25px;
-  width: 100%;
+  width: 85%;
+  margin: 50px 0px;
   background-color: white;
   height: 600px;
   border-radius: 15px;
@@ -282,9 +294,8 @@ align-items: center;
 }
 
 #listingDetails {
-  min-width: 430px;
-  margin: 50px 25px 0px 25px;
-  width: 100%;
+  min-width: 300px;
+  width: 85%;
   background-color: white;
   min-height: 600px;
   height: fit-content;
@@ -297,7 +308,7 @@ align-items: center;
 }
 
 #listingDetails h2 {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .breadcrumb-item > a {
@@ -546,7 +557,8 @@ align-items: center;
 
 #profileContainer {
   height: 380px;
-  width: 400px;
+  width: 35%;
+  min-width: 300px;
   background-color: white;
   padding: 50px;
   margin-top: 80px;
@@ -568,7 +580,8 @@ align-items: center;
 
 #updateProfileContainer {
   height: fit-content;
-  width: 400px;
+  min-width: 300px;
+  width: 35%;
   background-color: white;
   padding: 50px;
   margin-top: 80px;
@@ -619,7 +632,7 @@ align-items: center;
 
 /* === order history === */
 #orderHistoryPage {
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   width: 100%;
   padding-bottom: 50px;
   background-image: url('./images/woodbg.jpg');

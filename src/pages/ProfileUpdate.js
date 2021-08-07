@@ -117,8 +117,8 @@ export default function ProfileUpdate() {
                     <input type="text" className="form-control" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
                     {formState.phone_number === ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
                  
-                    <button className="btn btn-success my-4" onClick={updateProfile}>Save changes</button>
-                    <a className="btn btn-secondary ms-2" href="/profile">Cancel</a>
+                    <button className="btn btn-success my-4 me-2" onClick={updateProfile}>Save changes</button>
+                    <a className="btn btn-secondary" href="/profile">Cancel</a>
                 </div>
             </div>
             </React.Fragment>: <div>Please sign in to view this page.</div> }

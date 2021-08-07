@@ -106,7 +106,7 @@ export default function ListingDetails() {
                         <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
                         <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
                         <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
-                        {activeListing.stock >= 0? 
+                        {activeListing.stock > 0? 
                         <React.Fragment>
                             <p>Stocks left: {activeListing.stock}<span id="available">Stocks available!</span></p>
                             <button id="addToCartBtn" className="btn" onClick={() => {

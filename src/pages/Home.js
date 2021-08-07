@@ -135,7 +135,7 @@ export default function Home() {
                             onChange={setSelected}
                             labelledBy="Select"
                         />
-                        <button id="searchBtn" className="btn btn-primary" onClick={search}>Search</button>
+                        <button id="searchBtn" className="btn" onClick={search}>Search</button>
                         <a href="/" id="resetBtn" className="btn">Reset</a>
                         
                     </div>
