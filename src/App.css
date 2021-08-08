@@ -350,7 +350,7 @@ align-items: center;
 #heroImage {
   width: 100%;
   min-height: calc(100vh - 56px);
-  background-image: url('./images/boardgamesHero.jpg');
+  background-image: url('./images/boardgamesHero.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: cover;
@@ -607,7 +607,7 @@ align-items: center;
 #registrationHeroImage {
   width: 100%;
   height: calc(100vh - 56px);
-  background-image: url('./images/boardgamesHero.jpg');
+  background-image: url('./images/boardgamesHero.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: cover;
