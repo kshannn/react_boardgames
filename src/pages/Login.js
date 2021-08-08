@@ -25,7 +25,6 @@ export default function Login() {
         // if user is logged in and tries to log in with another acct, log out first acct
         // clear localStorage
         localStorage.removeItem('accessToken')
-        localStorage.removeItem('decodedAccessToken')
         localStorage.removeItem('userInfo')
 
 
@@ -68,7 +67,7 @@ export default function Login() {
                 
                 // store accessToken in local storage
                 localStorage.setItem('accessToken',response.data.accessToken)
-                localStorage.setItem('decodedAccessToken', JSON.stringify(decoded))
+        
     
                 // when user log in, recall app.js to retrieve decoded and rerun app.js
                 context.setProfile(decoded);
@@ -106,18 +105,16 @@ export default function Login() {
         if (window.location.href.includes('session=expire')){
            return (
                <React.Fragment>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         Please log in to continue.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </React.Fragment>
            )
         } else if (window.location.href.includes('loggedout=true')){
                return(
                 <React.Fragment>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success" role="alert">
                         You have logged out successfully. See you!
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </React.Fragment>
                 ) 

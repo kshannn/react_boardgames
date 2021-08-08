@@ -8,6 +8,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
+// import jwt_decode
+import jwt_decode from "jwt-decode";
+
 import config from './config';
 import axios from 'axios'
 
@@ -31,14 +34,20 @@ import ProductContext from './pages/ProductContext';
 function App() {
 
   // decoded accesstoken from localstorage
-  let decoded = JSON.parse(localStorage.getItem('decodedAccessToken'))
-  // console.log(decoded)
+  
+  var accessToken = localStorage.getItem('accessToken')
+
+  if (accessToken){
+    var decoded = jwt_decode(accessToken)
+
+  }
+  
 
   // set accesstoken in state
   const [ userInfo, setUserInfo ]  = useState(decoded)
   const [ name, setName ] = useState("")
   const [ cartEmpty, setCartEmpty ] = useState(true)
-  const [ haveStock, setHaveStock ] = useState(true)
+
 
 
   // product context object
@@ -59,17 +68,6 @@ function App() {
         setCartEmpty(true)
       }
     }
-    // ,
-    // haveStock: async (listingId) =>{
-    //   let gameListing = await axios.get(config.API_URL + '/listings/' + listingId)
-    //   console.log(gameListing.data)
-
-    //   if (gameListing.data.stock <= 0){
-    //     setHaveStock(false)
-    //   } else {
-    //     setHaveStock(true)
-    //   }
-    // }
   }
 
 
@@ -93,7 +91,6 @@ function App() {
     logoutRedirect: () => {
       // clear localStorage
       localStorage.removeItem('accessToken')
-      localStorage.removeItem('decodedAccessToken')
       localStorage.removeItem('userInfo')
       // redirect user to login
       window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
@@ -103,7 +100,6 @@ function App() {
   // remove access token from localstorage when users log out
   let logout = () => {
     localStorage.removeItem('accessToken')
-    localStorage.removeItem('decodedAccessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
     window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?loggedout=true')
