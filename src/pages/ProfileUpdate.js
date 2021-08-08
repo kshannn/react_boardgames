@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config';
-import UserContext from './UserContext';
+// import UserContext from './UserContext';
 
 export default function ProfileUpdate() {
 
-    const context = useContext(UserContext)
+    // const context = useContext(UserContext)
     const history = useHistory();
     const location = useLocation();
     const [formState, setFormState] = useState({
@@ -107,7 +107,7 @@ export default function ProfileUpdate() {
                   
                     <label className="form-label">Name</label>
                     <input type="text" className="form-control" name="username" value={formState.username} onChange={updateForm}/>
-                    {formState.username == ""? <div className="invalidMessage">{errorState.nameErr}</div> : null}        
+                    {formState.username === ""? <div className="invalidMessage">{errorState.nameErr}</div> : null}        
             
                     <label className="form-label">Address</label>
                     <input type="text" className="form-control" name="address" value={formState.address} onChange={updateForm}/>
@@ -117,7 +117,7 @@ export default function ProfileUpdate() {
                     <input type="text" className="form-control" name="phone_number" value={formState.phone_number} onChange={updateForm}/>
                     {formState.phone_number === ""? <div className="invalidMessage">{errorState.phoneErr}</div> : null}
                  
-                    <button className="btn btn-success my-4 me-2" onClick={updateProfile}>Save changes</button>
+                    <button className="btn btn-warning my-4 me-2" onClick={updateProfile}>Save changes</button>
                     <a className="btn btn-secondary" href="/profile">Cancel</a>
                 </div>
             </div>

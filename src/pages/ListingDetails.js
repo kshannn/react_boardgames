@@ -37,7 +37,7 @@ export default function ListingDetails() {
         }
         
         try {
-            let response = await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
+            await axios.post(config.API_URL + '/cart/' + gameId + '/add', {
                 'user_id': context.userInfo().id,
                 'unit_price': unit_price
             }, {
@@ -92,15 +92,15 @@ export default function ListingDetails() {
                     <div id="listingDetails">
                         <h2>{activeListing.name}</h2>
                         <h3>${activeListing.price/100}</h3>
-                        <p>{activeListing.description}</p>
-
+                        <p id="description">{activeListing.description}</p>
+                        <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
                         {activeListing.max_player_count != 0?
                          <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p>:
                          <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} +</p>}
                        
 
 
-                        <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
+                       
                         <p><i class="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
                         <p><i class="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>
                         <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>

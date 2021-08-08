@@ -307,8 +307,13 @@ align-items: center;
   margin-right: 10px;
 }
 
-#listingDetails h2 {
+#listingDetails h2, #listingDetails h3 {
   font-weight: 500;
+  font-family: 'Noto Serif JP', serif;
+}
+
+#description {
+  color: dimgray;
 }
 
 .breadcrumb-item > a {
@@ -335,6 +340,10 @@ align-items: center;
 
 .badge {
   margin-left: 5px;
+}
+
+.fas {
+  width: 20px;
 }
 
 /* ==================== Login Page ====================  */
@@ -441,6 +450,7 @@ align-items: center;
   font-weight: 700;
   padding-top: 20px;
   color: white;
+  font-family: 'Noto Serif JP', serif;
 }
 
 #cartItemContainer {
@@ -536,8 +546,9 @@ align-items: center;
   top: 10px;
   right: 1%;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 500;
   color: white;
+
 }
 
 #addedMsg {
@@ -589,7 +600,7 @@ align-items: center;
 }
 
 #updateProfileContainer .btn {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* ==================== create account page ==================== */
@@ -643,6 +654,11 @@ align-items: center;
   padding-top: 10px;
   font-weight: 700;
   color: white;
+  font-family: 'Noto Serif JP', serif;
+}
+
+#sellerName {
+  color: dimgray
 }
 
 #orderContainer {
@@ -799,7 +815,7 @@ div #orderItemDetailsSection {
 }
 
 #grandTotalContainer {
-  height: 40px;
+  height: 100px;
   width: 100%;
   position: relative;
 }
@@ -808,7 +824,7 @@ div #orderItemDetailsSection {
   position: absolute;
   right: 20px;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
 }
 
@@ -829,6 +845,19 @@ div #orderItemDetailsSection {
   padding: 5px;
   border-radius: 5px 5px 0px 0px;
  }
+
+ #transactionTable h2 {
+  font-family: 'Noto Serif JP', serif;
+ }
+
+ #backHomeBtn {
+   background-color: orange;
+   position: absolute;
+   bottom: 0;
+   right: 20px;
+ }
+
+ 
 
 /* === Misc === */
 .whiteFont {
@@ -880,10 +909,23 @@ div #orderItemDetailsSection {
   #orderStatus {
     top: 35px;
     left: 20px;
+    font-size: 0.9rem;
+  }
+
+  #orderIdOrderDate {
+    font-size: 0.9rem;
+  }
+  
+  #orderIdOrderDate span {
+    font-size: 0.9rem;
   }
 
   #orderInfoContainer {
     height: 65px;
+  }
+
+  #orderSubtotalContainer {
+    height: 10px;
   }
 
   /* === Cart ===  */
@@ -953,6 +995,11 @@ div #orderItemDetailsSection {
   #transactionTable {
     margin-top: 20px;
     height: 45px;
+  }
+
+  #backHomeBtn {
+    bottom: 25px; 
+    font-size: 0.8rem;
   }
  
 

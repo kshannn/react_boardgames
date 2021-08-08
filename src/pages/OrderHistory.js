@@ -86,8 +86,8 @@ export default function OrderHistory() {
                                 <div className="accordion-body">
                                     <h4>Recipient's Information</h4>
                                     <p>Name: {order.user.username}</p>
-                                    <p>Contact no:{order.user.phone_number}</p>
-                                    <p>Shipping Address:{order.user_address}</p>
+                                    <p>Contact no: {order.user.phone_number}</p>
+                                    <p>Shipping Address: {order.user_address}</p>
 
                                     <h4>Seller's Information</h4>
                                     {renderSeller(order)}
@@ -111,7 +111,7 @@ export default function OrderHistory() {
                                                     <h2>{eachItem.gameListing.name}</h2>
                                                     <p>${eachItem.unit_price/100}.00</p>
                                                     <p id="quantity">Quantity: {eachItem.quantity}</p>
-                                                    <p>Seller: {eachItem.gameListing.vendor.username}</p>
+                                                    <p id="sellerName">Seller: {eachItem.gameListing.vendor.username}</p>
                                                 </div>
                                                 <div id="orderSubtotalContainer">
                                                     <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>
