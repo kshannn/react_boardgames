@@ -219,11 +219,17 @@ align-items: center;
 }
 
 /* ==================== Listing Details Page ==================== */
+
+#detailsPage {
+  background-image: url('./images/woodbg.jpg');
+  min-height: 100vh;
+  width: 100%;
+}
 #breadCrumb {
-  height: 45px;
+  height: 30px;
   position:relative;
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
 }
 
 #breadCrumb > nav {
@@ -250,7 +256,7 @@ align-items: center;
   /* background-color: teal; */
   display: flex;
   flex-wrap: wrap;
-  background-image: url('./images/woodbg.jpg');
+  /* background-image: url('./images/woodbg.jpg'); */
   padding-bottom: 50px;
 }
 
@@ -657,8 +663,9 @@ align-items: center;
   font-family: 'Noto Serif JP', serif;
 }
 
-#sellerName {
-  color: dimgray
+.sellerName {
+  color: dimgray;
+  font-size: 0.9rem;
 }
 
 #orderContainer {

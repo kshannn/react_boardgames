@@ -111,7 +111,7 @@ export default function OrderHistory() {
                                                     <h2>{eachItem.gameListing.name}</h2>
                                                     <p>${eachItem.unit_price/100}.00</p>
                                                     <p id="quantity">Quantity: {eachItem.quantity}</p>
-                                                    <p id="sellerName">Seller: {eachItem.gameListing.vendor.username}</p>
+                                                    <p className="sellerName">Seller: {eachItem.gameListing.vendor.username}</p>
                                                 </div>
                                                 <div id="orderSubtotalContainer">
                                                     <p id="orderSubtotal">Subtotal: ${eachItem.unit_price/100 * eachItem.quantity}.00 </p>

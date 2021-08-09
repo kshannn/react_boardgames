@@ -39,7 +39,7 @@ export default function Home() {
     // 2. fetch all game listings using api
     let fetchListings = async () => {
         let response = await axios.get(config.API_URL + '/listings')
-        setListingState(response.data)
+        setListingState(response.data.reverse())
     }
 
     // render all the game listings
@@ -94,7 +94,7 @@ export default function Home() {
         }
 
         let response = await axios.post(config.API_URL + '/listings', searchObject)
-        setListingState(response.data)
+        setListingState(response.data.reverse())
     }
 
 

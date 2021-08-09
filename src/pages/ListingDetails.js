@@ -28,6 +28,7 @@ export default function ListingDetails() {
     let fetchListing = async () => {
         let response = await axios.get(config.API_URL + '/listings/' + listingId)
         setActiveListing(response.data)
+        
     }
 
     // add item to cart on click
@@ -73,6 +74,7 @@ export default function ListingDetails() {
 
     return (
         <React.Fragment>
+            <div id="detailsPage">
             <div id="breadCrumb"> 
                 <nav  aria-label="breadcrumb">
                     <ol className="breadcrumb">
@@ -106,6 +108,8 @@ export default function ListingDetails() {
                         <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
                         <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
                         <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
+            
+                    
                         {activeListing.stock > 0? 
                         <React.Fragment>
                             <p>Stocks left: {activeListing.stock}<span id="available">Stocks available!</span></p>
@@ -119,6 +123,7 @@ export default function ListingDetails() {
                         
                     </div>
                 </section>
+            </div>
             </div>
         </React.Fragment>
     )
