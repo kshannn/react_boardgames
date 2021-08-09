@@ -140,9 +140,11 @@ export default function OrderHistory() {
                 {/* can only see the page if they have the access token (logged in)*/}
                 {localStorage.getItem('accessToken')?<div>
                 <h1>Your Order History</h1>
+
+                {orderState.length?renderOrders():<div className="whiteFont">No orders to date</div>}
             
             
-                {renderOrders()} 
+                
                 
         
                 </div>: <div className="whiteFont">Please sign in to view this page.</div> }
