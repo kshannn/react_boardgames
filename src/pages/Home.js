@@ -14,26 +14,26 @@ export default function Home() {
     const productContext = useContext(ProductContext)
     const context = useContext(UserContext)
     const history = useHistory()
-    
-    const [ listingState, setListingState ] = useState([])
-    const [ searchForm, setSearchForm ] = useState({
+
+    const [listingState, setListingState] = useState([])
+    const [searchForm, setSearchForm] = useState({
         'searchName': "",
         'searchMinPrice': "",
         'searchMaxPrice': ""
     })
-    const [ selected, setSelected ] = useState([]);
+    const [selected, setSelected] = useState([]);
 
-    
+
     // === All listings ===
     // 1. call function to fetch listings after component mount
     // note: if second arg of useEffect is [], behaves like componentDidMount
     useEffect(() => {
         fetchListings()
 
-        if (context.userInfo()){
+        if (context.userInfo()) {
             productContext.setCartEmpty(context.userInfo())
         }
-      }, [])
+    }, [])
 
 
     // 2. fetch all game listings using api
@@ -44,21 +44,21 @@ export default function Home() {
 
     // render all the game listings
     let renderListings = () => {
-        let listingjsx = listingState.map((listing)=> {
+        let listingjsx = listingState.map((listing) => {
             return (
                 <React.Fragment>
-                    <div id="listingGrid" className="col-lg-4 col-md-6 col-sm-12 col-xs-12" onClick={()=> {
-                            history.push('/listing/' + listing.id)
-                        }}>
+                    <div id="listingGrid" className="col-lg-4 col-md-6 col-sm-12 col-xs-12" onClick={() => {
+                        history.push('/listing/' + listing.id)
+                    }}>
 
                         <div id="listingContainer">
                             <div id="listingImageContainer">
                                 <div className="listingImage" style={{ backgroundImage: `url(${listing.image})` }} >
                                 </div>
                             </div>
-                            
+
                             <div id="listingContent">
-                                <h3 id="listingName">{listing.name} — ${listing.price/100}.00 </h3>
+                                <h3 id="listingName">{listing.name} — ${listing.price / 100}.00 </h3>
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@ export default function Home() {
     let updateSearchForm = (e) => {
         setSearchForm({
             ...searchForm,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -82,7 +82,7 @@ export default function Home() {
     let search = async () => {
 
         //extract selected categories and store them in an array of integers
-        let selectedCategories = selected.map((selectedCategory)=>{
+        let selectedCategories = selected.map((selectedCategory) => {
             return selectedCategory.value
         })
 
@@ -107,9 +107,9 @@ export default function Home() {
         { label: "Party", value: "5" },
         { label: "Trivia", value: "6" },
         { label: "Others", value: "7" }
-      ];
+    ];
 
-    
+
     return (
         <React.Fragment>
             <div className="container-fluid" id="mainSection">
@@ -118,15 +118,15 @@ export default function Home() {
                     <div id="searchForm">
                         {/* name */}
                         <label className="form-label">Name</label>
-                        <input type="text" name="searchName" className="form-control" placeholder="Search name of game" value={searchForm.searchName} onChange={updateSearchForm}/>
+                        <input type="text" name="searchName" className="form-control" placeholder="Search name of game" value={searchForm.searchName} onChange={updateSearchForm} />
 
                         {/* price range */}
                         <label className="form-label">Price Range</label>
                         <div id="priceRange">
-                            <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm}/>
+                            <input type="text" name="searchMinPrice" placeholder="$MIN" className="form-control" value={searchForm.searchMinPrice} onChange={updateSearchForm} />
                             <span>_</span>
-                            <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm}/>
-                            </div>
+                            <input type="text" name="searchMaxPrice" placeholder="$MAX" className="form-control" value={searchForm.searchMaxPrice} onChange={updateSearchForm} />
+                        </div>
                         {/* categories */}
                         <label className="form-label">Categories</label>
                         <MultiSelect
@@ -137,20 +137,20 @@ export default function Home() {
                         />
                         <button id="searchBtn" className="btn" onClick={search}>Search</button>
                         <a href="/" id="resetBtn" className="btn">Reset</a>
-                        
+
                     </div>
                 </section>
 
-                 {/* ############### Game Listings ############### */}
-                 <section id="displaySection">
-                     <div id="resultsNum">Displaying {listingState.length} result(s)</div>
-                     <div className="row">
+                {/* ############### Game Listings ############### */}
+                <section id="displaySection">
+                    <div id="resultsNum">Displaying {listingState.length} result(s)</div>
+                    <div className="row">
                         {renderListings()}
                     </div>
-                 </section>
-                
+                </section>
+
             </div>
-          
+
         </React.Fragment>
     )
 }

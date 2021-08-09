@@ -1,19 +1,10 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
-
-/* font-family: 'Cormorant Garamond', serif;
-font-family: 'Noto Serif JP', serif; */
-/* font-family: 'Noto Sans JP', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
 
 * {
   padding: 0;
   margin: 0;
-  /* font-family: 'Cormorant Garamond', serif; */
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 400;
-  /* font-family: 'Noto Serif JP', serif; */
-  /* font-weight: 600; */
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -21,9 +12,6 @@ font-family: 'Noto Serif JP', serif; */
 /* ==================== Navigation Bar ====================*/
 .navbar {
   background-color: #2f211b;
-  /* background-image: url('./images/woodbgnav.png'); */
-  /* background-repeat: no-repeat;
-  background-size: cover; */
 }
 
 #guestIcon, #userIcon, #cartIcon {
@@ -229,7 +217,6 @@ align-items: center;
   height: 30px;
   position:relative;
   width: 100%;
-  /* position: absolute; */
 }
 
 #breadCrumb > nav {
@@ -253,10 +240,8 @@ align-items: center;
 #detailsPageContainer {
   width: 100%;
   min-height: 100vh;
-  /* background-color: teal; */
   display: flex;
   flex-wrap: wrap;
-  /* background-image: url('./images/woodbg.jpg'); */
   padding-bottom: 50px;
 }
 
@@ -402,8 +387,6 @@ align-items: center;
   margin-bottom: 20px;
 }
 
-
-
 #loginContainer {
   height: 500px;
   width: 85%;
@@ -432,7 +415,6 @@ align-items: center;
 }
 
 
-
 .invalidMessage {
   color: red;
   font-size: 0.9rem;
@@ -441,7 +423,6 @@ align-items: center;
 /* ==================== Cart ====================  */
 
 #cartPage {
-  /* height: calc(100vh - 56px); */
   min-height: 100vh;
   height: fit-content;
   width: 100%;
@@ -565,7 +546,7 @@ align-items: center;
 
 /* ==================== profile page ==================== */
 #profilePage {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -588,7 +569,7 @@ align-items: center;
 
 /* ==================== update profile page ==================== */
 #updateProfilePage {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   width: 100%;
   background-image: url('./images/woodbg.jpg');
   display: flex;
@@ -612,7 +593,7 @@ align-items: center;
 /* ==================== create account page ==================== */
 #registrationHeroImage {
   width: 100%;
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   background-image: url('./images/boardgamesHero.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -708,7 +689,6 @@ align-items: center;
   width: 95%;
   margin: 10px auto;
   border-top: 1px solid grey;
-  /* background-color: yellow; */
   display: flex;
   padding-top: 5px;
 }
@@ -838,12 +818,10 @@ div #orderItemDetailsSection {
 #paymentSuccessPage .table  > thead > tr > th {
  font-size: 1.2rem; 
  font-weight: 700;
- /* padding: 0; */
 }
 
 #paymentSuccessPage .table  > tbody > tr > td {
   font-size: 1.2rem; 
-  /* padding: 0; */
  }
  
  #transactionTable {
@@ -885,7 +863,6 @@ div #orderItemDetailsSection {
       top: 16px;
   }
 }
-
 
 
 @media screen and (max-width: 768px){

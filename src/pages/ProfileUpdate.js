@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config';
-// import UserContext from './UserContext';
+
 
 export default function ProfileUpdate() {
 
-    // const context = useContext(UserContext)
     const history = useHistory();
     const location = useLocation();
     const [formState, setFormState] = useState({
@@ -51,8 +50,6 @@ export default function ProfileUpdate() {
              errMsg['phoneErr'] = "Please provide a valid phone number."
          }
 
- 
-         
  
          if (isError){
              setErrorState(errMsg);
