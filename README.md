@@ -214,7 +214,7 @@ _General Features_
     * To deploy React application
 
 * [Google Font](https://fonts.google.com/)
-    * To select font families used for web app 
+    * To select font families used for web app (e.g. Noto Sans JP, Noto Serif JP)
 
 
 
@@ -224,14 +224,180 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
 **Steps to deployment using Heroku**
 
+**Step 1| Log into Heroku**
+
+At the terminal, log in to heroku with:
+```
+heroku login - i
+```
+Enter your username and password.
+
+**Step 2| Create the Heroku App**
+
+Once you have logged in, create a new Heroku app with the following commands at the terminal:
+
+```
+heroku create <app-name>
+```
+
+Replace \<app-name> with a name of your choice. Do not use underscore. As the app name has to be unique, make sure the name you use is distinctive. You can use your initials as part of the app name, for instance.
+
+**Step 3| Define Procfile**
+
+The Procfile executes a command when Heroku needs to run our server. Create one in the same directory as index.js and name it as Procfile (the first alphabet must be capitalized, and there is no extension).
+
+
+Add the following line to the Procfile:
+```
+web: node index.js
+```
+
+Make sure to save the Procfile
+
+**Step 4| Add a start script to package.json**
+```
+{
+  "name": "06-api-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+. . .
+}
+```
+
+**Step 5| Change the port that we are using**
+
+In index.js, change the 3000 in app.listen to process.env.PORT. 
+```
+app.listen(process.env.PORT, () => {
+    console.log("Server has started");
+});
+```
+
+**Step 6| Push to Heroku**
+
+Make sure you have a .gitignore file, and it must have node_modules, sessions/ and .env included,
+```
+git add .
+git commit -m "Deploy to Heroku"
+git push heroku main
+```
+
+**Step 7| Setup the Database**
+
+We need to use an external database, hosted on an external server such as Postgres.
+
+In the terminal, type in:
+```
+heroku addons:create heroku-postgresql
+```
+
+When you are done, go to Heroku, and open your newly created application. Click on settings, and then "Reveal Config"
+
+**Step 8| Add database information to your .env file**
+
+Make a copy of your .env file.
+
+Open up Notepad, and paste in the DATABASE_URL obtained from the previous step.
+
+Follow the steps below to obtain the host, user, password and database name:
+```
+The syntax is postgres://<user>:<password>@<host>/<database_name>?reconnect = true
+
+Example:
+postgres://b80f8d428xxxxx:f48exxxx@us-cdbr-iron-east-02.cleardb.net/heroku_58632fb6debxxxx?reconnect=true
+
+# host will be: us-cdbr-iron-east-02.cleardb.net
+
+# user will be: B80f8d428xxxxx
+
+# password will be: F48exxxx
+
+# database_name will be: heroku_58632fb6debxxxx
+```
+
+In your .env file, change the setting DB_DRIVER to postgres
+
+Update your .env file with the host, user, password and database name obtained from parsing the syntax above:
+```
+DB_DRIVER=postgres
+DB_USER=nzabcdefghkah
+DB_PASSWORD=84f1d63eb61938670f2efa4aaaaaaaf6b725eeed2e19356e11db92a1
+DB_DATABASE=d1ldaaaa275
+DB_HOST=ec2-54-196-33-23.compute-1.amazonaws.com
+```
+
+Finally, install postgres with:
+```
+yarn add pg
+yarn add db-migrate-pg
+```
+**Step 9| Setup tables with migrations**
+
+Change your database.json to read as below:
+```
+{
+  "dev": {
+    "driver": {"ENV" :"DB_DRIVER"},
+    "user": {"ENV": "DB_USER" },
+    "password": {"ENV":"DB_PASSWORD"},
+    "database": {"ENV":"DB_DATABASE"},
+    "host": {"ENV":"DB_HOST"},
+    "ssl": {
+         "rejectUnauthorized": false
+    }
+  }
+}
+```
+
+Do the same for bookshelf/index.js
+```
+const knex = require('knex')({
+    'client': process.env.DB_DRIVER,
+    'connection': {
+        'user': process.env.DB_USER,
+        'password': process.env.DB_PASSWORD,
+        'database': process.env.DB_DATABASE,
+        'host':process.env.DB_HOST,
+        'ssl': {
+            'rejectUnauthorized': false
+        }
+    }
+})
+```
+In the terminal, type in:
+```
+./db-migrate.sh up
+```
+
+The migration takes a longer time to run now because it is happening on a remote server.
+
+**Step 10 | Copy all settings from the  .ENV file to Heroku**
+
+Once more, go to your application in Heroku and copy over the various settings from your .env file over.
+
+**Step 11| Do a commit and then push to Heroku**
+
+We have made some changes to our code, so be sure to commit and push.
+
+**Step 12| Generate a new endpoint secret for your Heroku checkout**
+
+Go to Stripe, and add in a new endpoint for https::\<heroku url>/checkout/process_payment, and replace the old endpoint secret with the new one in your Heroku settings.
+
+
 
 **Steps to deployment using Netlify**
-1. Check that in the terminal, the current working directory can list the package.json file for the React application.
-2. Build react application using yarn build
-3. Download the build folder and agree to grant permissions when prompted
-4. Log into [Netlify](https://www.netlify.com/) 
-5. Click on "Sites" and drag the downloaded build folder into the upload box
-6. Deployment of App to Netlify is completed
+1. Add, commit, and push any latest edits made to GitHub via the terminal.
+2. Go to [Netlify](https://www.netlify.com/) and log in with Github account.
+3. Click on "New site from Git" button
+4. Select "GitHub" for continuous deployment
+5. Authorize access to GitHub should a pop-up appear
+6. Select the repository that you want to deploy
+7. Click on "Deploy site" button to get a link for the deployed site
 
 
 ## Dependencies

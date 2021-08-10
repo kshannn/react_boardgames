@@ -365,7 +365,7 @@ align-items: center;
 }
 
 #loginExtraSection {
-  flex: 2;
+  flex: 1.5;
   color: white;
   font-size: 3rem;
   display: flex;
@@ -379,12 +379,13 @@ align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px 10px;
 }
 
 #aboutUsContainer {
   height: 310px;
   min-width: 300px;
-  width: 85%;
+  width: 80%;
   background-color: rgb(224 151 42 / 60%);
   padding: 30px;
   border-radius: 20px;
@@ -396,9 +397,13 @@ align-items: center;
   margin-bottom: 20px;
 }
 
+#aboutUsContainer p {
+  font-size: 1.2rem;
+}
+
 #loginContainer {
   height: 500px;
-  width: 85%;
+  width: 80%;
   min-width: 300px;
   padding: 50px 20px;
   background-color: white;
