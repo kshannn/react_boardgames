@@ -81,6 +81,8 @@
 }
 
 /* ==================== Home Page ==================== */
+
+
 #mainSection{
   display:flex;
   min-height: 100vh;
@@ -857,7 +859,8 @@ div #orderItemDetailsSection {
   width: 100%;
   text-align: center;
   font-size: 1.3rem;
-  margin-top: 100px;
+  /* margin-top: 100px; */
+  padding-top: 100px;
 }
 
 

@@ -12,15 +12,13 @@ export default function ListingDetails() {
     let context = useContext(UserContext)
     const [activeListing, setActiveListing] = useState({})
     const [addedMsg, setAddedMsg] = useState("")
-
-
+    
     let { listingId } = useParams();
 
 
     useEffect(() => {
         async function fetchListing () {
             let response = await axios.get(config.API_URL + '/listings/' + listingId)
-            console.log(response.data)
             setActiveListing(response.data)
         }
         fetchListing();
