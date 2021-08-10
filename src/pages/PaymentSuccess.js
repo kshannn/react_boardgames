@@ -17,7 +17,7 @@ export default function PaymentSuccess() {
     let fetchTransactionDetail = async() => {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        let response = await axios.get(config.API_URL + '/orders/success?' + "orderid=" + params.orderId)
+        let response = await axios.get(config.API_URL + '/orders/success?orderid=' + params.orderId)
         setLatestOrderState(response.data)
     }
 

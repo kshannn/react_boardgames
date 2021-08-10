@@ -13,9 +13,36 @@ export default function Cart() {
     const [cartItems, setCartItems] = useState([])
 
 
+    // useEffect(() => {
+    //     fetchCartItems()
+    // }, [])
+
     useEffect(() => {
-        fetchCartItems()
-    }, [])
+        async function fetchCartItems2(){
+            // if user not logged in, redirected to login page
+            if (!context.userInfo()) {
+                window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
+            }
+            try {
+                let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id, {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                    }
+                })
+
+                setCartItems(response.data)
+            } catch (err) {
+                console.log(err);
+                if (err.toString().includes(403)) {
+                    context.logoutRedirect()
+                }
+            }
+        }
+        fetchCartItems2()
+    }, [context])
+
+
+
 
     // remove cart item
     let removeCartItem = async (gameId) => {
@@ -48,7 +75,7 @@ export default function Cart() {
     let fetchCartItems = async () => {
         // if user not logged in, redirected to login page
         if (!context.userInfo()) {
-            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
         }
         try {
             let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id, {
@@ -204,7 +231,7 @@ export default function Cart() {
                             <h3 id="grandTotal">Grand Total: ${grandTotal}.00</h3>
                             <button id="checkoutBtn" className="btn my-4" onClick={async () => {
 
-                                await window.location.assign(config.API_URL + '/checkout' + '?token=' + localStorage.getItem('accessToken'), {
+                                await window.location.assign(config.API_URL + '/checkout?token=' + localStorage.getItem('accessToken'), {
                                     headers: {
                                         Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                                     }

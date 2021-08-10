@@ -18,22 +18,18 @@ export default function ListingDetails() {
 
 
     useEffect(() => {
-        fetchListing()
-    }, [])
+        async function fetchListing () {
+            let response = await axios.get(config.API_URL + '/listings/' + listingId)
+            setActiveListing(response.data)
+        }
+        fetchListing();
+    }, [listingId])
 
-
-
-
-    let fetchListing = async () => {
-        let response = await axios.get(config.API_URL + '/listings/' + listingId)
-        setActiveListing(response.data)
-
-    }
 
     // add item to cart on click
     let addToCart = async (gameId, unit_price) => {
         if (!context.userInfo()) {
-            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
         }
 
         try {
@@ -95,7 +91,7 @@ export default function ListingDetails() {
                             <h3>${activeListing.price / 100}</h3>
                             <p id="description">{activeListing.description}</p>
                             <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
-                            {activeListing.max_player_count != 0 ?
+                            {activeListing.max_player_count !== 0 ?
                                 <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p> :
                                 <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} +</p>}
 

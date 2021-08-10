@@ -54,7 +54,7 @@ function App() {
   const productContext = {
     setCartEmpty: async (user) => {
       if(!user){
-        window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+        window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
       }
       let response = await axios.get(config.API_URL + '/cart/' + user.id, {
         headers: {
@@ -93,7 +93,7 @@ function App() {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('userInfo')
       // redirect user to login
-      window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+      window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
     }
   }
 
@@ -102,7 +102,7 @@ function App() {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
-    window.location.assign(config.REACT_URL + '/login' + '?loggedout=true')
+    window.location.assign(config.REACT_URL + '/login?loggedout=true')
   }
 
 
@@ -120,7 +120,7 @@ function App() {
             <div className="ms-auto userIconContainer">
             {userInfo?
                   <div className="nav-item dropdown">
-                    <a className="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link" href="/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <div id="userIcon">
                         <i className="fas fa-user-circle"></i> {name || userInfo.username}
                       </div>
@@ -162,7 +162,7 @@ function App() {
                   
                 
                 <div className="nav-item">
-                  {userInfo ? <a className="navFunc logInOut" onClick={logout}>Logout</a>:<Link to='/login' className="navFunc logInOut">Login</Link>}
+                  {userInfo ? <button className="navFunc logInOut" onClick={logout}>Logout</button>:<Link to='/login' className="navFunc logInOut">Login</Link>}
                 </div>
             </div>
           </div>

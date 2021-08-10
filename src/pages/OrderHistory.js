@@ -9,29 +9,52 @@ export default function OrderHistory() {
     const [orderState, setOrderState] = useState([])
     let context = useContext(UserContext)
 
+    // useEffect(() => {
+    //     fetchOrderDetails();
+    // }, [])
+
     useEffect(() => {
-        fetchOrderDetails();
-    }, [])
-
-    let fetchOrderDetails = async () => {
-        if (!context.userInfo()) {
-            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
-        }
-        try {
-            let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history", {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+        async function fetchOrderDetails() {
+            if (!context.userInfo()) {
+                window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
+            }
+            try {
+                let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history", {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+                    }
+                })
+    
+                setOrderState(response.data.reverse())
+            } catch (err) {
+                console.log(err);
+                if (err.toString().includes(403)) {
+                    context.logoutRedirect()
                 }
-            })
-
-            setOrderState(response.data.reverse())
-        } catch (err) {
-            console.log(err);
-            if (err.toString().includes(403)) {
-                context.logoutRedirect()
             }
         }
-    }
+        fetchOrderDetails();
+    }, [context])
+
+    // let fetchOrderDetails = async () => {
+    //     if (!context.userInfo()) {
+    //         window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
+    //     }
+    //     try {
+    //         let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history", {
+    //             headers: {
+    //                 Authorization: 'Bearer ' + localStorage.getItem('accessToken')
+    //             }
+    //         })
+
+    //         setOrderState(response.data.reverse())
+    //     } catch (err) {
+    //         console.log(err);
+    //         if (err.toString().includes(403)) {
+    //             context.logoutRedirect()
+    //         }
+    //     }
+    // }
 
 
     // render each unique seller's information 
@@ -54,6 +77,8 @@ export default function OrderHistory() {
                         </div>
                     </React.Fragment>
                 )
+            } else {
+                return null
             }
     
         })

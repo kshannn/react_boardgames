@@ -33,7 +33,7 @@ export default function Home() {
         if (context.userInfo()) {
             productContext.setCartEmpty(context.userInfo())
         }
-    }, [])
+    }, [context,productContext])
 
 
     // 2. fetch all game listings using api

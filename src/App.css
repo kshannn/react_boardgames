@@ -53,6 +53,9 @@
 
 .logInOut {
   margin-right: 10px;
+  background-color:#2f211b;
+  color: white;
+  border: none;
 }
 
 .fa-shopping-cart {
