@@ -33,7 +33,7 @@ export default function ListingDetails() {
     // add item to cart on click
     let addToCart = async (gameId, unit_price) => {
         if (!context.userInfo()) {
-            window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
 
         try {

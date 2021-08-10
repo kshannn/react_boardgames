@@ -48,7 +48,7 @@ export default function Cart() {
     let fetchCartItems = async () => {
         // if user not logged in, redirected to login page
         if (!context.userInfo()) {
-            window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         try {
             let response = await axios.get(config.API_URL + '/cart/' + context.userInfo().id, {

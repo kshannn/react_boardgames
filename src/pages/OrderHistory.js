@@ -15,7 +15,7 @@ export default function OrderHistory() {
 
     let fetchOrderDetails = async () => {
         if (!context.userInfo()) {
-            window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+            window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
         }
         try {
             let response = await axios.get(config.API_URL + "/orders/" + context.userInfo().id + "/history", {

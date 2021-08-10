@@ -80,7 +80,7 @@ export default function ProfileUpdate() {
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('userInfo')
                 // redirect user to login
-                window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + REACT_URL + '/profile')
+                window.location.assign(config.REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + config.REACT_URL + '/profile')
             }
         }
 
