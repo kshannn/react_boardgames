@@ -10,6 +10,7 @@ export default function Register() {
         'username': "",
         'email': "",
         'password': "",
+        'confirmPassword':"",
         'address': "",
         'phone_number': ""
     })
@@ -18,6 +19,7 @@ export default function Register() {
         'emailErr': "",
         'emailTakenErr': "",
         'passwordErr': "",
+        'passwordConfirmationErr': "",
         'addressErr': "",
         'phoneErr': ""
     })
@@ -51,6 +53,13 @@ export default function Register() {
             isError = true
             errMsg['phoneErr'] = "Please provide a valid phone number."
         }
+
+        
+        if (formState.password !== formState.confirmPassword){
+            isError = true
+            errMsg['passwordConfirmationErr'] = "Please ensure this password matches the one above."
+        }
+        
 
 
 
@@ -111,6 +120,13 @@ export default function Register() {
                         <label className="form-label">Password </label>
                         <input type='password' className="form-control" name='password' placeholder="**********" onChange={updateFormField} value={formState.password} />
                         {formState.password === "" ? <div className="invalidMessage">{errorState.passwordErr}</div> : null}
+
+
+                        
+                        <label className="form-label">Confirm Password </label>
+                        <input type='password' className="form-control" name='confirmPassword' placeholder="**********" onChange={updateFormField} value={formState.confirmPassword} />
+                        {<div className="invalidMessage">{errorState.passwordConfirmationErr}</div>}
+                       
 
                         <label className="form-label">Shipping Address </label>
                         <input type='text' className="form-control" name='address' placeholder="e.g. Blk 204C Punggol Field, #02-345, Singapore 823204" onChange={updateFormField} value={formState.address} />

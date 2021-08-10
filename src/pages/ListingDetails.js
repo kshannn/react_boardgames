@@ -20,6 +20,7 @@ export default function ListingDetails() {
     useEffect(() => {
         async function fetchListing () {
             let response = await axios.get(config.API_URL + '/listings/' + listingId)
+            console.log(response.data)
             setActiveListing(response.data)
         }
         fetchListing();
@@ -103,6 +104,7 @@ export default function ListingDetails() {
                             <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
                             <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
                             <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
+                            <p id="listingDetailSeller">Seller: {activeListing.vendor?.username}</p>
 
 
                             {activeListing.stock > 0 ?

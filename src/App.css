@@ -310,6 +310,10 @@ align-items: center;
   color: dimgray;
 }
 
+#listingDetailSeller {
+  font-size: 0.9rem;
+}
+
 .breadcrumb-item > a {
   color: grey;
 }
