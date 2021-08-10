@@ -54,7 +54,7 @@ function App() {
   const productContext = {
     setCartEmpty: async (user) => {
       if(!user){
-        window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+        window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
       }
       let response = await axios.get(config.API_URL + '/cart/' + user.id, {
         headers: {
@@ -93,7 +93,7 @@ function App() {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('userInfo')
       // redirect user to login
-      window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
+      window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + window.location.href)
     }
   }
 
@@ -102,7 +102,7 @@ function App() {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('userInfo')
     setUserInfo(null)
-    window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?loggedout=true')
+    window.location.assign(REACT_URL + '/login' + '?loggedout=true')
   }
 
 

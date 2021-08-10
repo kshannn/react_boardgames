@@ -80,7 +80,7 @@ export default function ProfileUpdate() {
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('userInfo')
                 // redirect user to login
-                window.location.assign('https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/login' + '?' + 'session=expire&' + 'callback_url=' + 'https://3000-green-prawn-u4ktudfo.ws-us13.gitpod.io/profile')
+                window.location.assign(REACT_URL + '/login' + '?' + 'session=expire&' + 'callback_url=' + REACT_URL + '/profile')
             }
         }
 
