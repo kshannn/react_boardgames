@@ -1,5 +1,10 @@
 # Game On!
 
+## Access
+
+Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
+
+Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.app/)
 
 ## Project Summary
 
@@ -190,13 +195,16 @@ _General Features_
     * To create a single page application by using React Hooks
 
 * [Bootstrap v5.0.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
-    * For offcanvas, alerts, navbar templates
+    * For badges, accordion, alerts, navbar templates
 
 * [Git](https://git-scm.com/)
     * For version control
 
 * [GitHub](http://github.com)
     * To create repository and store source code
+
+* [Gitpod](https://www.gitpod.io)
+    * Platform to write code with Express NodeJS and React
 
 * [Balsamiq Mockups 3](https://balsamiq.com/)
     * To create mockups
@@ -215,6 +223,41 @@ _General Features_
 
 * [Google Font](https://fonts.google.com/)
     * To select font families used for web app (e.g. Noto Sans JP, Noto Serif JP)
+
+* [Caolan Form](https://github.com/caolan/forms)
+    * To easily add validation to forms
+
+* [React-multi-select-component](https://www.npmjs.com/package/react-multi-select-component)
+    * To allow easy creation of multiple dropdown selection
+
+* [Bookshelf](https://www.npmjs.com/package/react-multi-select-component)
+    * To represent database entities as objects and their relationships with other objects
+
+* [Knex.js](http://knexjs.org/)
+    * Used with Bookshelf to build MySQL query
+
+* [Moment.js](https://momentjs.com/)
+    * To format date and time
+
+* [Stripes](https://stripe.com/en-sg)
+    * For online payment processing
+
+* [Uploadcare](https://uploadcare.com/)
+    * To store photos of products submitted by vendors
+
+* [db-migrate](https://www.npmjs.com/package/db-migrate)
+    * To create tables on MySql 
+
+* [MySQL](https://www.mysql.com/)
+    * To store all necessary data for the ecommerce site
+
+* [csurf] (https://www.npmjs.com/package/csurf)
+    * For session validation for vendors
+
+* [jsonwebtokens](https://www.npmjs.com/package/jsonwebtoken)
+    * To provide user authentication for API calls in React Application
+
+
 
 
 
@@ -421,4 +464,4 @@ Go to Stripe, and add in a new endpoint for https::\<heroku url>/checkout/proces
 
 
 * Deployment steps
-    * Extracted and edited based on TGC's deployment guide for [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
+    * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1pXu23W775fO9bbr-QzO7I0U7FInZenN5Mo4sqdWIQw4/edit?usp=sharing) and [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
