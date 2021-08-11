@@ -132,12 +132,12 @@ export default function OrderHistory() {
                                         <section id="orderItemDetailsSection">
                                             <div>
                                                 <h2>{eachItem.gameListing.name}</h2>
-                                                <p>${eachItem.unit_price / 100}.00</p>
+                                                <p>${(eachItem.unit_price / 100).toFixed(2)}</p>
                                                 <p id="quantity">Quantity: {eachItem.quantity}</p>
                                                 <p className="sellerName">Seller: {eachItem.gameListing.vendor.username}</p>
                                             </div>
                                             <div id="orderSubtotalContainer">
-                                                <p id="orderSubtotal">Subtotal: ${eachItem.unit_price / 100 * eachItem.quantity}.00 </p>
+                                                <p id="orderSubtotal">Subtotal: ${(eachItem.unit_price / 100 * eachItem.quantity).toFixed(2)} </p>
                                             </div>
                                         </section>
                                     </div>

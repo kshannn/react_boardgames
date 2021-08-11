@@ -87,7 +87,7 @@ export default function ListingDetails() {
                     <section id="listingDetailsSection">
                         <div id="listingDetails">
                             <h2>{activeListing.name}</h2>
-                            <h3>${activeListing.price / 100}</h3>
+                            <h3>${(activeListing.price / 100).toFixed(2)}</h3>
                             <p id="description">{activeListing.description}</p>
                             <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
                             {activeListing.max_player_count !== 0 ?

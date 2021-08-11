@@ -180,7 +180,7 @@ export default function Cart() {
                         </div>
                         <div id="cartItemInfo">
                             <h2>{item.gameListing.name}</h2>
-                            <h3 id="cartItemPrice">${item.unit_price / 100}.00</h3>
+                            <h3 id="cartItemPrice">${(item.unit_price / 100).toFixed(2)}</h3>
 
                             <span id="cartItemQuantity">Quantity:</span>
                             <button className="addSubtractBtn" onClick={() => {
@@ -195,7 +195,7 @@ export default function Cart() {
                             }}>x
                             </button>
 
-                            <h4 id="cartSubtotal">Subtotal: ${item.unit_price / 100 * item.quantity}.00</h4>
+                            <h4 id="cartSubtotal">Subtotal: ${(item.unit_price / 100 * item.quantity).toFixed(2)}</h4>
                             {calculateGrandTotal(item.unit_price / 100 * item.quantity)}
                         </div>
 
@@ -228,7 +228,7 @@ export default function Cart() {
                         {renderCartItems()}
 
                         {!cartItems.length ? <div className="whiteFont">Cart is empty</div> : <div id="checkoutContainer">
-                            <h3 id="grandTotal">Grand Total: ${grandTotal}.00</h3>
+                            <h3 id="grandTotal">Grand Total: ${grandTotal.toFixed(2)}</h3>
                             <button id="checkoutBtn" className="btn my-4" onClick={async () => {
 
                                 await window.location.assign(config.API_URL + '/checkout?token=' + localStorage.getItem('accessToken'), {

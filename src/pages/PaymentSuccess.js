@@ -31,9 +31,9 @@ export default function PaymentSuccess() {
                     <tr>
                         <td>{eachOrder.id}</td>
                         <td>{eachOrder.gameListing.name}</td>
-                        <td>${eachOrder.unit_price/100}.00</td>
+                        <td>${(eachOrder.unit_price/100).toFixed(2)}</td>
                         <td>{eachOrder.quantity}</td>
-                        <td>${eachOrder.quantity * eachOrder.unit_price/100}.00</td>
+                        <td>${(eachOrder.quantity * eachOrder.unit_price/100).toFixed(2)}</td>
 
                     </tr>
                 </React.Fragment>
@@ -67,7 +67,7 @@ export default function PaymentSuccess() {
                     </tbody>
                 </table>
                 <div id="grandTotalContainer">
-                    <p>Grand Total: ${total/100}.00</p>
+                    <p>Grand Total: ${(total/100).toFixed(2)}</p>
                     <a href="/" className="btn" id="backHomeBtn">Back to Home Page</a>
                 </div>
             </div>

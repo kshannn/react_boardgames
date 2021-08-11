@@ -58,7 +58,7 @@ export default function Home() {
                             </div>
 
                             <div id="listingContent">
-                                <h3 id="listingName">{listing.name} — ${listing.price / 100}.00 </h3>
+                                <h3 id="listingName">{listing.name} — ${(listing.price / 100).toFixed(2)} </h3>
                             </div>
                         </div>
 
