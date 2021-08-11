@@ -516,6 +516,11 @@ align-items: center;
   align-items: center;
 }
 
+#cartItemImageContainer:hover{
+ cursor: pointer;
+ opacity: 0.8;
+}
+
 #cartItemImage {
   height: 90%;
   width: 90%;

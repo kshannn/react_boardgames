@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import config from '../config'
 import ProductContext from './ProductContext'
 import UserContext from './UserContext'
@@ -7,6 +8,7 @@ import UserContext from './UserContext'
 
 export default function Cart() {
 
+    const history = useHistory()
     let productContext = useContext(ProductContext)
     let context = useContext(UserContext);
 
@@ -170,7 +172,9 @@ export default function Cart() {
             return (
                 <React.Fragment>
                     <div id="cartItemContainer">
-                        <div id="cartItemImageContainer">
+                        <div id="cartItemImageContainer" onClick={() => {
+                        history.push('/listing/' + item.gameListing.id)
+                    }}>
                             <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
                         </div>
                         <div id="cartItemInfo">

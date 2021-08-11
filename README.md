@@ -2,9 +2,13 @@
 
 ## Access
 
-Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
+<img src='./public/multi_device_display.png' style='display:block'><br>
 
 Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.app/)
+
+Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
+
+
 
 ## Project Summary
 
@@ -251,7 +255,7 @@ _General Features_
 * [MySQL](https://www.mysql.com/)
     * To store all necessary data for the ecommerce site
 
-* [csurf] (https://www.npmjs.com/package/csurf)
+* [csurf](https://www.npmjs.com/package/csurf)
     * For session validation for vendors
 
 * [jsonwebtokens](https://www.npmjs.com/package/jsonwebtoken)
