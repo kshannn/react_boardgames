@@ -8,7 +8,7 @@ Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.a
 
 Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
 
-Refer to the test login details [here](https://github.com/kshannn/react_boardgames/blob/b52e855573487545b63e0a3a3a3e074ecc94954f/public/test_cases.pdf)
+Refer to the login details for testing purpose [here](https://github.com/kshannn/react_boardgames/blob/b52e855573487545b63e0a3a3a3e074ecc94954f/public/test_cases.pdf)
 
 ## Project Summary
 
@@ -38,7 +38,7 @@ There are two types of users for this website: vendors and customers. The aim of
 _Site Owner_
 * Objectives:
     - Provide an online alternative for people to sell and buy boardgames
-    - Integrate my knowledge of MySql, Express (NodeJs) and React Hook to build features (e.g. CRUD) to meet the needs of both vendors and customers in the context of an e-commerce site
+    - Integrate my knowledge of MySQL, Express (NodeJs) and React Hook to build features (e.g. CRUD) to meet the needs of both vendors and customers in the context of an e-commerce site
 
 _User_
 
@@ -48,7 +48,7 @@ For vendors:
 * Needs: An online platform to post their boardgames listing and track orders made to their listing
 
 * Demographics:
-    * Business owners for who owns a warehouse or shop for boardgames
+    * Business owners who owns a warehouse or shop for boardgames
 
 * Pain point: Customers are usually limited to those who come down to the physical stores
 
@@ -71,7 +71,7 @@ User Stories | Acceptance Criteria(s)
 As a vendor who is looking to sell my boardgames, I want to create, update, and delete my listings so that I have the flexibility to sell more than one game and keep their information up to date. | Feature that provides CRUD for game listings
 As a vendor who is looking to track the state of my products (e.g. stocks left), I want to view the details of each transaction made for my games so I can refer to these order receipt for future audit purposes. | Feature that display order history
 As a customer who is looking to buy boardgames, I want to view the details of each game so that I can understand what the game is about.| Master details view for game listings
-As a customer who is buying boardgames, I want to be able to add multiple games to my cart so I can buy more than one games in a single checkout.| Feature that allow users to add games to cart, change quantity of cart items
+As a customer who is buying boardgames, I want to be able to add multiple games to my cart so that I can buy more than one game in a single checkout.| Feature that allow users to add games to cart, change quantity of cart items
 As a customer who might not want to make purchase immediately, I want to be able to save my items in a cart so that I can make payment for them in the future.| Allow customers to create an account to store their details and cart items
 As a customer who want to search for a particular game, I want to be able to search for a game from specific categories so that I can narrow down to the results that I want quickly.| Feature that allow users to search and filter for specific games
 
@@ -179,6 +179,14 @@ _General Features_
 
 3.	All forms are properly validated using both Caolan form validators. and back-end validation
 
+## Limitations and Future Implementations
+1. In the future I would like to add a seller page on the customer site so that customer can view all the games that are sold by a specific seller.
+2. In the future I would like to add more details to the game listings such as the dimensions of the game, what the game includes, and the game instructions
+3. Currently, customers have to click in the listing details page to check if stock is available. In the future, I would like to show on the home page that stock is unavailable for a particular listing so that they do not have to click into the listing.
+4. I would like to implement pagination to limit the number of game listings shown on the home page to improve the page performance.
+5. Currently, deleting a game listing would delete the game from all the past orders. In the future, I would like to attempt to use a soft delete for the game listings such that the past orders would still be retained even though customers would no longer see the game listing itself.
+6. Currently if a customer tries to purchase a product that does not have enough stock, a general message would popup saying that there is insufficient stock. However it does not specify which product is insufficient and customer would have to check the stock in the listing page themselves. In the future, I would like to specify for which game the stock is insufficient.
+7. In the future, I would like to create a service layer to organize codes that are constantly used.
 
 
 ## Testing
