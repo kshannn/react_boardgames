@@ -155,9 +155,10 @@ export default function Home() {
                 {/* ############### Game Listings ############### */}
                 <section id="displaySection">
                     <div id="resultsNum">Displaying {listingState.length} result(s)</div>
-                    <div className="row">
+                    {listingState.length? <div className="row">
                         {renderListings()}
-                    </div>
+                    </div>:<div className="loaderContainer"><div className="loader"></div></div>}
+                    
                 </section>
 
             </div>

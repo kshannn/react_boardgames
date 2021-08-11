@@ -120,7 +120,7 @@ export default function ListingDetails() {
 
                         </div>
                     </section>
-                </div>:<div id="loadedContainer"><div className="loader"></div></div>}
+                </div>:<div className="loaderContainer"><div className="loader"></div></div>}
                 
             </div>
         </React.Fragment>
