@@ -103,7 +103,7 @@
   width:100%;
   margin: 0px 15px;
   height: 130px;
-  background-image: url('https://egyptianstreets.com/wp-content/uploads/2020/04/cover-2.jpg');
+  background-image: url('./images/banner.jpg');
   background-position: bottom;
   background-size:cover;
   box-shadow: 3px 5px 20px rgb(37 13 13 / 58%);
