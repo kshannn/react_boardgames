@@ -456,7 +456,12 @@ Go to Stripe, and add in a new endpoint for https::\<heroku url>/checkout/proces
 
 ## Credits
 
+
+* Banner image
+    * Extracted and edited from https://egyptianstreets.com/2020/04/16/5-classic-family-activities-boardgames-to-re-visit-during-quarantine/
+
 * Hero image
+    * 
 
 
 * Brand logo 
