@@ -124,7 +124,7 @@ export default function OrderHistory() {
                         })}
 
                         <div id="orderTotalContainer">
-                            <p id="orderTotal">Grand Total: ${order.total_cost / 100}.00</p>
+                            <p id="orderTotal">Grand Total: ${(order.total_cost / 100).toFixed(2)}</p>
                         </div>
 
                     </div>
