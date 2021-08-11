@@ -33,31 +33,12 @@ export default function Profile() {
         fetchProfile()
     }, [context])
 
-    // 2. user profile info is fetched from db
-    // let fetchProfile = async () => {
-
-    //     try {
-    //         let userInfo = await axios.get(config.API_URL + '/users/profile', {
-    //             headers: {
-    //                 Authorization: 'Bearer ' + localStorage.getItem('accessToken')
-    //             }
-    //         })
-    //         setUserInfo(userInfo.data)
-    //         context.setName()
-    //     } catch (err) {
-    //         // if user is not logged in, clear session data and redirect to login
-    //         if (err.toString().includes(403)) {
-    //             context.logoutRedirect();
-    //         }
-    //     }
-    // }
 
     let updateDetails = () => {
         history.push('/profile/update', {
             'userInfo': userInfo
         })
     }
-
 
 
     return (

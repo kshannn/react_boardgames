@@ -12,11 +12,6 @@ export default function Cart() {
 
     const [cartItems, setCartItems] = useState([])
 
-
-    // useEffect(() => {
-    //     fetchCartItems()
-    // }, [])
-
     useEffect(() => {
         async function fetchCartItems2(){
             // if user not logged in, redirected to login page
