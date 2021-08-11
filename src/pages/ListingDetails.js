@@ -77,13 +77,15 @@ export default function ListingDetails() {
                         </ol>
                     </nav>
                 </div>
-                <div id="detailsPageContainer">
+                {activeListing.name?<div id="detailsPageContainer">
                     <section id="listingImageSection">
                         <div id="individualListingImageContainer">
                             <div id="individualListingImage" style={{ backgroundImage: `url(${activeListing.image})` }} >
                             </div>
                         </div>
                     </section>
+                    
+                    
                     <section id="listingDetailsSection">
                         <div id="listingDetails">
                             <h2>{activeListing.name}</h2>
@@ -118,7 +120,8 @@ export default function ListingDetails() {
 
                         </div>
                     </section>
-                </div>
+                </div>:<div id="loadedContainer"><div className="loader"></div></div>}
+                
             </div>
         </React.Fragment>
     )

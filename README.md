@@ -495,6 +495,9 @@ Go to Stripe, and add in a new endpoint for https::\<heroku url>/checkout/proces
 * Brand logo 
     * Extracted and edited from [FAVPNG](https://favpng.com/png_view/board-game-chess-tabletop-games-expansions-board-game-png/tunXz2hD)
 
+* Loader
+    * Loader example extracted and edited from [w3schools](https://www.w3schools.com/howto/howto_css_loader.asp)
+
 
 * Deployment steps
     * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1pXu23W775fO9bbr-QzO7I0U7FInZenN5Mo4sqdWIQw4/edit?usp=sharing) and [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
