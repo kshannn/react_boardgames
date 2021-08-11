@@ -904,6 +904,10 @@ div #orderItemDetailsSection {
    right: 20px;
  }
 
+ #backHomeBtn:hover {
+  background-color: rgb(255, 145, 0);
+}
+
  
 
 /* === Misc === */
