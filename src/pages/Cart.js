@@ -13,10 +13,10 @@ export default function Cart() {
     let context = useContext(UserContext);
 
     const [cartItems, setCartItems] = useState([])
-    const [ removedItem, setRemoveItem ] = useState(false)
+    const [removedItem, setRemoveItem] = useState(false)
 
     useEffect(() => {
-        async function fetchCartItems2(){
+        async function fetchCartItems2() {
             // if user not logged in, redirected to login page
             if (!context.userInfo()) {
                 window.location.assign(config.REACT_URL + '/login?session=expire&callback_url=' + window.location.href)
@@ -131,12 +131,12 @@ export default function Cart() {
                     Authorization: 'Bearer ' + localStorage.getItem('accessToken')
                 }
             })
-            
+
             if (currentCartItem.data.quantity <= 1) {
                 // if quantity <1, don't proceed to axios call (provide error message)
                 return
             }
-            
+
             await axios.post(config.API_URL + "/cart/" + gameId + "/subtract", {
                 "user_id": userId
             }, {
@@ -163,11 +163,6 @@ export default function Cart() {
 
 
 
-
-
-
-
-
     let renderCartItems = () => {
         let cartItemsjsx = cartItems.map((item) => {
 
@@ -175,8 +170,8 @@ export default function Cart() {
                 <React.Fragment>
                     <div id="cartItemContainer">
                         <div id="cartItemImageContainer" onClick={() => {
-                        history.push('/listing/' + item.gameListing.id)
-                    }}>
+                            history.push('/listing/' + item.gameListing.id)
+                        }}>
                             <div id="cartItemImage" style={{ backgroundImage: `url(${item.gameListing.image})` }}></div>
                         </div>
                         <div id="cartItemInfo">
@@ -221,9 +216,9 @@ export default function Cart() {
                     {window.location.href.includes('stock=insufficient') ? <div className="alert alert-danger" role="alert">
                         Insufficient stock. Please try again.
                     </div> : null}
-                    {removedItem? <div className="alert alert-success" role="alert">
+                    {removedItem ? <div className="alert alert-success" role="alert">
                         Item removed from cart.
-                    </div>:null}
+                    </div> : null}
                     <div id="cartPage">
 
                         <h1>Your Cart</h1>
@@ -244,14 +239,7 @@ export default function Cart() {
                             }}>Proceed to Check out</button>
                         </div>}
 
-
-
-
-
                     </div></React.Fragment> : <div className="whiteFont">Please sign in to view this page.</div>}
-
-
-
 
         </React.Fragment>
     )

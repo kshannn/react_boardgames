@@ -61,8 +61,6 @@ export default function Register() {
         }
         
 
-
-
         if (isError) {
             setErrorState(errMsg);
             return
