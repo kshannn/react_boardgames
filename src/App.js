@@ -135,8 +135,8 @@ function App() {
                   </div> }
 
                   <div className="ms-auto cartIconContainer">
-                  {!cartEmpty?<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
-                          <span class="visually-hidden">New alerts</span>
+                  {!cartEmpty?<span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
+                          <span className="visually-hidden">New alerts</span>
                         </span>:null }
                     <div className="nav-item" id="cartIcon">
                        

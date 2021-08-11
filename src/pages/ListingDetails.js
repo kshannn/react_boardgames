@@ -89,19 +89,19 @@ export default function ListingDetails() {
                             <h2>{activeListing.name}</h2>
                             <h3>${(activeListing.price / 100).toFixed(2)}</h3>
                             <p id="description">{activeListing.description}</p>
-                            <p><i class="fas fa-tags"></i>Categories:{renderCategories()}</p>
+                            <p><i className="fas fa-tags"></i>Categories:{renderCategories()}</p>
                             {activeListing.max_player_count !== 0 ?
-                                <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p> :
-                                <p><i class="fas fa-users"></i>No. of players: {activeListing.min_player_count} +</p>}
+                                <p><i className="fas fa-users"></i>No. of players: {activeListing.min_player_count} - {activeListing.max_player_count}</p> :
+                                <p><i className="fas fa-users"></i>No. of players: {activeListing.min_player_count} +</p>}
 
 
 
 
-                            <p><i class="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
-                            <p><i class="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>
-                            <p><i class="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
-                            <p><i class="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
-                            <p><i class="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
+                            <p><i className="fas fa-user"></i>Recommended age: {activeListing.min_age} +</p>
+                            <p><i className="fas fa-hourglass"></i>Min. duration: {activeListing.duration} mins</p>
+                            <p><i className="fas fa-newspaper"></i>Publisher: {activeListing.publisher}</p>
+                            <p><i className="fas fa-paint-brush"></i>Designer: {activeListing.designer}</p>
+                            <p><i className="fas fa-calendar-alt"></i>Published date: {Moment(activeListing.published_date).format('LL')}</p>
                             <p id="listingDetailSeller">Seller: {activeListing.vendor?.username}</p>
 
 

@@ -101,7 +101,7 @@ export default function Login() {
         if (window.location.href.includes('session=expire')) {
             return (
                 <React.Fragment>
-                    <div class="alert alert-warning" role="alert">
+                    <div className="alert alert-warning" role="alert">
                         Please log in to continue.
                     </div>
                 </React.Fragment>
@@ -109,7 +109,7 @@ export default function Login() {
         } else if (window.location.href.includes('loggedout=true')) {
             return (
                 <React.Fragment>
-                    <div class="alert alert-success" role="alert">
+                    <div className="alert alert-success" role="alert">
                         You have logged out successfully. See you!
                     </div>
                 </React.Fragment>
