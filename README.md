@@ -8,7 +8,7 @@ Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.a
 
 Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
 
-Refer to the login details for testing purpose [here](https://github.com/kshannn/react_boardgames/blob/8a47d3312cf762a382aac640aca7a95ec8a656b8/public/test_cases.pdf)
+Refer to the login details for testing purpose [here](https://github.com/kshannn/react_boardgames/blob/e3dd7c5fd1ee384452843bcbbd168a208aa699df/public/test_cases.pdf)
 
 ## Project Summary
 
@@ -201,7 +201,7 @@ _General Features_
 
 **Test Cases**
 
-Refer to the test cases [here](https://github.com/kshannn/react_boardgames/blob/8a47d3312cf762a382aac640aca7a95ec8a656b8/public/test_cases.pdf)
+Refer to the test cases [here](https://github.com/kshannn/react_boardgames/blob/e3dd7c5fd1ee384452843bcbbd168a208aa699df/public/test_cases.pdf)
 
 **Testing for Mobile Responsiveness**
 
