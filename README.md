@@ -478,11 +478,14 @@ Go to Stripe, and add in a new endpoint for https::\<heroku url>/checkout/proces
     * Extracted and edited from https://egyptianstreets.com/2020/04/16/5-classic-family-activities-boardgames-to-re-visit-during-quarantine/
 
 * Hero image
-    * 
+    * Taken from [Wallpaper Flare](https://www.wallpaperflare.com/play-board-game-cube-human-don-t-be-angry-game-board-figures-wallpaper-ajphf/download/4096x2304)
 
+
+* Background
+    * Taken from [pptBackgrounds](https://www.ppt-backgrounds.net/wood/3154-wooden-texture-image-downloads-backgrounds.html)
 
 * Brand logo 
-
+    * Extracted and edited from [FAVPNG](https://favpng.com/png_view/board-game-chess-tabletop-games-expansions-board-game-png/tunXz2hD)
 
 
 * Deployment steps
