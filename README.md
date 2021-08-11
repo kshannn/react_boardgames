@@ -1,14 +1,14 @@
 # Game On!
 
-## Access
-
 <img src='./public/multi_device_display.png' style='display:block'><br>
+
+## Access
 
 Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.app/)
 
 Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
 
-
+Refer to the test login details [here]()
 
 ## Project Summary
 
