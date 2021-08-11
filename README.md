@@ -181,12 +181,19 @@ _General Features_
 
 ## Limitations and Future Implementations
 1. In the future I would like to add a seller page on the customer site so that customer can view all the games that are sold by a specific seller.
-2. In the future I would like to add more details to the game listings such as the dimensions of the game, what the game includes, and the game instructions
+
+2. In the future I would like to add more details to the game listings such as the dimensions of the game product, what the game includes, the game instructions, and more pictures of the game.
+
 3. Currently, customers have to click into the listing details page to check if stock is available. In the future, I would like to show on the home page that stock is unavailable for a particular listing so that they do not have to click on the listing.
+
 4. I would like to implement pagination to limit the number of game listings shown on the home page to improve the page performance.
+
 5. Currently, deleting a game listing would delete the game from all the past orders. In the future, I would like to attempt to use a soft delete for the game listings such that the past orders would still be retained even though customers would no longer see the game listing itself.
+
 6. Currently if a customer tries to purchase a product that does not have enough stock, a general message would popup saying that there is insufficient stock. However it does not specify which product is insufficient and customer would have to check the stock in the listing page themselves. In the future, I would like to specify for which game the stock is insufficient.
+
 7. In the future, I would like to create a service layer to organize codes that are constantly used.
+
 8. In the future, I would like to implement refresh tokens to keep users from being logged out only after a fixed period of time.
 
 
@@ -274,7 +281,8 @@ Refer to the test cases [here](https://github.com/kshannn/react_boardgames/blob/
 * [jsonwebtokens](https://www.npmjs.com/package/jsonwebtoken)
     * To provide user authentication for API calls in React Application
 
-
+* [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
+    * To display screen-responsiveness of website across different devices
 
 
 
