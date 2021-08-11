@@ -112,6 +112,17 @@ export default function Home() {
 
     return (
         <React.Fragment>
+            <div id="homePage">
+            <div id="bannerContainer">
+                
+                <div id="banner">
+                <div id="bannerOverlay">
+                    <div>Feeling “board”? Spice up your game nights with these boardgames!</div>
+                    </div>
+                </div>
+                
+                   
+            </div>
             <div className="container-fluid" id="mainSection">
                 {/* ############### Search Forms ############### */}
                 <section id="searchSection">
@@ -149,6 +160,7 @@ export default function Home() {
                     </div>
                 </section>
 
+            </div>
             </div>
 
         </React.Fragment>
