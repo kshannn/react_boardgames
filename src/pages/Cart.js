@@ -13,6 +13,7 @@ export default function Cart() {
     let context = useContext(UserContext);
 
     const [cartItems, setCartItems] = useState([])
+    const [ removedItem, setRemoveItem ] = useState(false)
 
     useEffect(() => {
         async function fetchCartItems2(){
@@ -55,6 +56,7 @@ export default function Cart() {
 
             // re-render page to reflect updated changes
             fetchCartItems();
+            setRemoveItem(true)
 
             productContext.setCartEmpty(context.userInfo())
 
@@ -219,7 +221,9 @@ export default function Cart() {
                     {window.location.href.includes('stock=insufficient') ? <div className="alert alert-danger" role="alert">
                         Insufficient stock. Please try again.
                     </div> : null}
-
+                    {removedItem? <div className="alert alert-success" role="alert">
+                        Item removed from cart.
+                    </div>:null}
                     <div id="cartPage">
 
                         <h1>Your Cart</h1>
