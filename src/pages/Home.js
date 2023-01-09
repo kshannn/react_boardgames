@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config'
-import MultiSelect from "react-multi-select-component";
+import {MultiSelect} from "react-multi-select-component";
 import UserContext from './UserContext';
 import ProductContext from './ProductContext';
 
