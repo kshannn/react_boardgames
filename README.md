@@ -2,13 +2,6 @@
 
 <img src='./public/multi_device_display.png' style='display:block'><br>
 
-## Access
-
-Access the live link (for customer) [here](https://loving-mayer-9f2c72.netlify.app/)
-
-Access the live link (for vendor) [here](https://kls-boardgames.herokuapp.com/)
-
-Refer to the login details for testing purpose [here](https://github.com/kshannn/react_boardgames/blob/e3dd7c5fd1ee384452843bcbbd168a208aa699df/public/test_cases.pdf)
 
 ## Project Summary
 
@@ -196,12 +189,6 @@ _General Features_
 
 8. In the future, I would like to implement refresh tokens to keep users from being logged out only after a fixed period of time.
 
-
-## Testing
-
-**Test Cases**
-
-Refer to the test cases [here](https://github.com/kshannn/react_boardgames/blob/e3dd7c5fd1ee384452843bcbbd168a208aa699df/public/test_cases.pdf)
 
 **Testing for Mobile Responsiveness**
 
